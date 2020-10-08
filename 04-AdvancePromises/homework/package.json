@@ -9,9 +9,12 @@
   "scripts": {
     "test": "gulp",
     "docs": "docco test/*.js",
-    "docs:view": "npm run docs && opn docs/pledge.spec.ch1.html",
-    "postinstall": "npm run docs:view"
+    "grade": "jest --useStderr --json --outputFile=./test/result.json"
   },
+  "jest": {
+    "testRegex": "./test/.*.js$",
+    "rootDir": "."
+ },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/FullstackAcademy/pledge.git"
@@ -32,6 +35,7 @@
     "opn-cli": "^3.1.0"
   },
   "dependencies": {
-    "gulp": "^4.0.2"
+    "gulp": "^4.0.2",
+    "jest": "^26.5.2"
   }
 }
