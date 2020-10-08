@@ -36,6 +36,8 @@
   },
   "dependencies": {
     "gulp": "^4.0.2",
-    "jest": "^26.5.2"
+    "jest": "^26.5.2",
+    "node-fetch": "^2.6.1",
+    "prompt-sync": "^4.2.0"
   }
 }
