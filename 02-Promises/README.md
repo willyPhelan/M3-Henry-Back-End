@@ -1,3 +1,19 @@
+# Henry
+
+<table width="100%" style='table-layout:fixed;'>
+  <tr>
+	  <td>
+	  	<a href="https://airtable.com/shrBpWkYV4K12PPNZ?prefill_clase=02-Promises">
+			<img src="https://static.thenounproject.com/png/204643-200.png" width="100"/>
+			<br>
+			Hacé click acá para dejar tu feedback sobre esta clase.
+	  	</a>
+	  </td>
+    <td>
+		</td>
+  </tr>
+</table>
+
 # Promises
 
 Javascript es muy potente a la hora de trabajar con tareas asincrónicas, de hecho, ya venimos programando funciones y código que hacen uso de `callbacks` para ejecutar código en el futuro cercano, cuando un evento sucede o cuando se termina la ejecución de un proceso (escribir en la bd, o escribir en el disco, hacer un request http, etc...).

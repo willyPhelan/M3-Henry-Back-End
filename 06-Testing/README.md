@@ -1,3 +1,19 @@
+# Henry
+
+<table width="100%" style='table-layout:fixed;'>
+  <tr>
+	  <td>
+	  	<a href="https://airtable.com/shrBpWkYV4K12PPNZ?prefill_clase=06-Testing">
+			<img src="https://static.thenounproject.com/png/204643-200.png" width="100"/>
+			<br>
+			Hacé click acá para dejar tu feedback sobre esta clase.
+	  	</a>
+	  </td>
+    <td>
+		</td>
+  </tr>
+</table>
+
 # Software Testing
 
 Cuando pensamos en testing en software, pensamos en algo que nos de garantías de que la aplicación que estamos construyendo funcione bien. Además de que funcionen bien en nuestra compu, nos vamos a asegurar que cuando lo deployemos (veremos esto más adelante), también funcionen en el destino o que si fallan algunos tests directamente no lleguen las nuevas actualizaciones al servidor de producción, por ejemplo.
