@@ -1,0 +1,19 @@
+{
+  "name": "practical-promises",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha **/*.spec.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^3.2.0",
+    "bluebird": "^3.7.2",
+    "chai": "^4.2.0",
+    "chai-spies": "^1.0.0",
+    "chalk": "^4.1.0",
+    "mocha": "^8.2.1"
+  }
+}
