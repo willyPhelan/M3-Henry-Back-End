@@ -149,7 +149,7 @@ function problemD () {
       });
     },
     function (err) {
-      if (err) magenta(err);
+      if (err) magenta(new Error(err));
       console.log('-- D. callback version done --');
     }
   );

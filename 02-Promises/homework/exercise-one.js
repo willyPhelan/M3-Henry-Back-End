@@ -114,7 +114,7 @@ function problemD () {
   // callback version
   readFile('poem-one/wrong-file-name.txt', function (err, stanza4) {
     console.log('-- D. callback version (stanza four) --');
-    if (err) magenta(err);
+    if (err) magenta(new Error(err));
     else blue(stanza4);
   });
 
@@ -135,11 +135,11 @@ function problemE () {
   // callback version
   readFile('poem-one/stanza-03.txt', function (err, stanza3) {
     console.log('-- E. callback version (stanza three) --');
-    if (err) return magenta(err);
+    if (err) return magenta(new Error(err));
     blue(stanza3);
     readFile('poem-one/wrong-file-name.txt', function (err2, stanza4) {
       console.log('-- E. callback version (stanza four) --');
-      if (err2) return magenta(err2);
+      if (err2) return magenta(new Error(err2));
       blue(stanza4);
     });
   });
@@ -162,14 +162,14 @@ function problemF () {
   readFile('poem-one/stanza-03.txt', function (err, stanza3) {
     console.log('-- F. callback version (stanza three) --');
     if (err) {
-      magenta(err);
+      magenta(new Error(err));
       console.log('-- F. callback version done --');
       return;
     }
     blue(stanza3);
     readFile('poem-one/wrong-file-name.txt', function (err2, stanza4) {
       console.log('-- F. callback version (stanza four) --');
-      if (err2) magenta(err2);
+      if (err2) magenta(new Error(err2));
       else blue(stanza4);
       console.log('-- F. callback version done --');
     });
