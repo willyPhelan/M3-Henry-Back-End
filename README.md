@@ -10,7 +10,7 @@
 - [04-Advance Promises](./04-AdvancePromises)
 - [05-Express](./05-Express)
 - [06-Testing](./06-Testing)
-- [07-Testing](./07-AsyncAwait)
+- [07-AsyncAwait](./07-AsyncAwait)
 - Checkpoint
 
 ## Proceso de subida de homeworks
