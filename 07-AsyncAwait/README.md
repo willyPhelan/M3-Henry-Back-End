@@ -168,3 +168,244 @@ generatorObject.next(); // <-- Retorna {done: false, value: 4}
 ```
 
 ## Async/Await
+
+Las funcines asíncronas o async functions nos van a permitir, como su nombre lo indica, definir código asíncrono con una sintaxis distinta a la que veníamos utilizando con las promesas por lo que no tendremos que encadenarlas nosotros mismos de forma explícita.
+
+### Sintaxis
+
+Para utilizar este tipo de funciones debemos definirlas con una sintaxis en particular:
+
+```javascript
+async function asyncCall() {
+  const result = await resolveAfter2Seconds();
+}
+```
+
+La palabra async es la que va a informarle al intérprete que se trata de una async function y nos va a permitir hacer uso de la palabra reservada `await` en el cuerpo de dicha función. Como su nombre nos sugiere, lo que va a ocurrir cuando la ejecución del programa se tope con un `await` es que se detendrá la ejecución de esa función de forma momentanea hasta que la función o instrucciones que se encuentren a la derecha de dicha palabra finalicen.
+
+### Basic Flow
+
+A continuación analizaremos un pequeño ejemplo para comprender mejor el flow de estas nuevas funciones:
+
+
+```javascript
+function resolveAfter2Seconds() {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve('resolved');
+    }, 2000);
+  });
+}
+
+async function asyncCall() {
+  console.log('calling'); // <-- Se ejecuta luego de la invocación de asyncCall()
+  const result = await resolveAfter2Seconds(); // <-- Detiene la ejecución de asyncCall() hasta que finalice resolveAfter2Seconds()
+  console.log(result); // <-- No se va a ejecutar hasta que la línea anterior finalice su ejecución
+}
+
+asyncCall()
+```
+
+### Return
+
+Una particularidad de las async functions es que siempre retornan una promesa.
+
+```javascript
+function resolveAfter2Seconds() {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve('Promesa resuelta!');
+    }, 2000);
+  });
+}
+
+async function asyncCall() {
+  console.log('Iniciando asyncCall');
+  const result = await resolveAfter2Seconds();
+  console.log(result); // <--- Va a loguear "Promesa resuelta!"
+}
+
+var p1 = asyncCall(); // p1 --> Va a ser una promesa la cual dependiendo el momento en la cual la consultemos puede estar en estado pendiente o ya resulea si asyncCall ya se terminó de ejecutar por completo
+```
+
+En el caso de que la async function no tenga un return statment, la promesa que devolverá tendrá un value `undefined`, por ejemplo el caso anterior almacena en p1 lo siguiente:
+
+```javascript
+Promise --> { state: "fulfilled", value: undefined }
+```
+
+En cambio si tuvieramos un return statment, por ejemplo algo así:
+
+```javascript
+async function asyncCall() {
+  console.log('Iniciando asyncCall');
+  const result = await resolveAfter2Seconds();
+  console.log(result);
+  return "Franco";
+}
+
+var p2 = asyncCall();
+```
+
+Ahora p2 será una promesa cuyo valor de resolución será "Franco":
+
+```javascript
+Promise --> { state: "fulfilled", value: "Franco" }
+```
+
+Como ya sabíamos de cuando estudiamos promesas, las mismas pueden resolverse o rechazarse por lo que en caso de `success` como vimos en el ejemplo de arriba, la promesa retornada se va a resolver al valor retornado por la función asíncrona y en el caso de `error`, la promesa retornada se va a rechazar con la excepción lanzada por la función asíncrona.
+
+Para más ejemplos que incluyen todos los distintos casos posibles ver la demo `demoRetunValue.js`
+
+### Yielding Control
+
+Algo importante de comprender es como continua el flow del resto del programa/aplicación una vez que se encuentra con un `await` dentro de una async function. Como ya hemos mencionado antes, lo que sucede es que en ese instante se le retorna el control a la función o punto del programa desde donde se había invocado a la async function y va a continuar su flow normalmente.
+
+Para terminar de comprenderlo analicemos el siguiente ejemplo:
+
+```javascript
+async function showInstructors() {
+  const instructor1 = await new Promise((resolve) => setTimeout(() => resolve('Franco')));
+  console.log(instructor1);
+  const instructor2 = await new Promise((resolve) => setTimeout(() => resolve('Toni')));
+  console.log(instructor2);
+}
+
+function henryAwait() {
+  console.log("¿Quienes son los intstructores de Henry?");
+  showInstructors();
+  console.log("Gracias vuelvan pronto");
+}
+
+henryAwait()
+console.log("FIN");
+```
+
+¿Cuál será el orden de ejecución de el código de arriba?
+
+Luego de definir tanto ambas funciones, una asíncrona y la otra no, se ejecuta henryAwait que no es asíncrona. Hasta ahí todo normal:
+
+```javascript
+function henryAwait() {
+  console.log("¿Quienes son los intstructores de Henry?"); // <-- Loguea "¿Quienes son los intstructores de Henry?"
+  showInstructors(); // <-- Invoca a showInstructors (Cede el control)
+  console.log("Gracias vuelvan pronto"); // <-- Aún no se invocó...
+}
+```
+
+Veamos ahora que sucede al ingresar a showInstructors:
+
+```javascript
+async function showInstructors() {
+  const instructor1 = await new Promise((resolve) => setTimeout(() => resolve('Franco'))); // <-- Pausa la ejecución y retorna el control a quien se lo había cedido (henryAwait) hasta completar la promesa y poder avanzar con las siguientes instrucciones
+  console.log(instructor1);
+  const instructor2 = await new Promise((resolve) => setTimeout(() => resolve('Toni')));
+  console.log(instructor2);
+}
+```
+
+Como ahora nuevamente el control lo tiene henryAwait, continua con su flow normal:
+
+```javascript
+function henryAwait() {
+  console.log("¿Quienes son los intstructores de Henry?");
+  showInstructors(); // <-- Se había quedado acá, ahora avanza a la siguiente...
+  console.log("Gracias vuelvan pronto"); // <-- Loguea "Gracias vuelvan pronto"
+}
+```
+
+Y ahora como henryAwait finalizo continua hacía:
+
+```javascript
+henryAwait() // <-- Ya finalizó, avanza...
+console.log("FIN"); // <-- Logua "FIN"
+```
+
+Luego de todo esto recién ahí, y si la promesa donde se había pausado showInstructors ya finalizó, vuelve a tomar el control y continua con las sentencias que quedaron sin ejecutarse:
+
+```javascript
+async function showInstructors() {
+  const instructor1 = await new Promise((resolve) => setTimeout(() => resolve('Franco')));
+  console.log(instructor1); // <-- Loguea "Franco"
+  const instructor2 = await new Promise((resolve) => setTimeout(() => resolve('Toni'))); // <-- Pausa hasta finalizar la promesa
+  console.log(instructor2); // <-- Una vez finalizada loguea "Toni"
+}
+```
+
+Si quisieramos que el orden de ejecución seá:
+
+ 1. ¿Quienes son los intstructores de Henry?
+ 2. Franco
+ 3. Toni
+ 4. Gracias vuelvan pronto
+ 5. FIN
+
+¿Cómo deberíamos modificar el código previo?
+
+<p align="center">
+  <img src="./img/Spoiler-Alert.png" />
+</p>
+
+```javascript
+async function showInstructors() {
+  const instructor1 = await new Promise((resolve) => setTimeout(() => resolve('Franco')));
+  console.log(instructor1);
+  const instructor2 = await new Promise((resolve) => setTimeout(() => resolve('Toni')));
+  console.log(instructor2);
+}
+
+async function henryAwait() {
+  console.log("¿Quienes son los intstructores de Henry?");
+  await showInstructors();
+  console.log("Gracias vuelvan pronto");
+}
+
+await henryAwait()
+console.log("FIN");
+```
+
+### Ventajas
+
+* El código suele ser más prolijo y similar a código sincrónico:
+
+```javascript
+const readFilePromise = (archivo) => {
+  promisifiedReadFile(archivo)
+    .then(file => {
+      console.log("Log promise file: ", file);
+      return "Lectura exitosa";
+    });
+}
+
+const readFileAsync = async(archivo) => {
+  console.log("Log async file: ", await promisifiedReadFile(archivo));
+  return "Lectura exitosa";
+}
+```
+Para más detalle ver la demo `demoCleanCode.js`
+
+* Permite manejar tanto errores de código sincrónico como asincrónico en un mismo lugar (try/catch)
+
+```javascript
+const readFileAsync = async(archivo) => {
+  try {
+    console.log("Log async file: ", await promisifiedReadFile(archivo));
+    return "Lectura exitosa";
+  } catch (err) {
+    console.log("Error unificado: ", err);
+  }
+}
+```
+Para más detalle ver la demo `demoErrorHandler.js`
+
+### Desventajas
+
+* El código suele ser más prolijo y similar a código sincrónico. ¿¿¿Qué??? ¿No les habíamos dicho hace un par de líneas que era una ventaja esto?
+
+Si, no estamos locos, esto puede ser un arma de doble filo, porque al maquillar código asíncrono haciendolo parecer como sincrónico muchas veces solemos utilizarlo de forma incorrecta y terminando sin entender el flow del programa. Recuerden el ejemplo que hicimos más arriba de showInstructors y verán que si no se comprende bien como funcionan `async` y `await` puede llevar a grandes confusiones.
+
+Por eso mismo, ustedes que ya entienden a la perfección el funcionamiento de promesas si comprender en el fondo que es lo que está ocurriendo y no pensar que es simplemente 'magia'.
+
+Por último podríamos pensar que Async/Await tomo y combinó las ideas de Generators junto con Promesas:
+
+<center><h3>Async/Await = Generators + Promises</h3></center>
