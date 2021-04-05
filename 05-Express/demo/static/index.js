@@ -9,11 +9,9 @@ app.use('/', function(req,res, next ){
 	next();
 });
 
-
 app.get('/', function(req, res){
 	res.send('Hola');
 });
-
 
 app.get('/api', function(req, res){
 	var obj = {
@@ -31,7 +29,6 @@ app.get('/datos/', function(req, res) {
 app.get('/api/:id', function(req, res) {
 	res.json( { parametro: req.params.id } );
 });
-
 
 app.get('/form', function(req, res) {
 	res.send( '<html><head> \
@@ -58,7 +55,6 @@ var jsonParser = bodyParser.json()
 app.post('/formjson', jsonParser, function (req, res) {
   res.json( req.body )
 });
-
 
 app.get('/static', function(req, res) {
 	res.send( '<html><head> \

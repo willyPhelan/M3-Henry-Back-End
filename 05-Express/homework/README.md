@@ -36,7 +36,7 @@ Desarrollar las siguientes cinco rutas dentro del archivo `server.js` de la carp
 
 ### Breve repaso de creación de rutas
 
-Básicamente, la creación de rutas sirve para determinar cómo una aplicación responde a la solicitud de un cliente en un determinada vía de acceso (llamada URI) con un método de solicitud HTTP específico. En otras palabras, lo que vamos a hacer es invocar uno de estos métodos HTTP (especialmente POST, GET, PUT, HEAD y DELETE), utilizando la variable app, para indicarle la acción que queremos realizar y disponer la ruta que queremos para una determinada URI. 
+Básicamente, la creación de rutas sirve para determinar cómo una aplicación responde a la solicitud de un cliente en un determinada vía de acceso (llamada URI) con un método de solicitud HTTP específico. En otras palabras, lo que vamos a hacer es invocar uno de estos métodos HTTP (especialmente POST, GET, PUT, HEAD y DELETE), utilizando la variable app, para indicarle la acción que queremos realizar y disponer la ruta que queremos para una determinada URI.
 
 Es por esto que la definición de creación de rutas es la siguiente:
 
@@ -44,7 +44,7 @@ Es por esto que la definición de creación de rutas es la siguiente:
 server.METHOD(PATH, HANDLER)
 ```
 
-Donde: 
+Donde:
 
   - server es una instancia de express
   - METHOD es un método de solicitud HTTP
@@ -124,6 +124,8 @@ Cuando se ejecute un request del tipo `DELETE` en la ruta `posts`
 - Asegurarse que dentro del body del request exista un `id` correspondiente a un Post válido. De no ser así, ya sea por falta del campo `id` o por ser un id inválido, devolver un JSON con un objeto con un mensaje correspondiente en cada caso manteniendo la forma de siempre: `{error: "Mensaje de error"}`
 
 - En el caso de que el `id` corresponda a un Post válido, eliminarlo del array de Posts y devolver un JSON con el siguiente objeto: `{ success: true }`.
+
+- Nota: Ver que método van a utilizar para eliminar un post, dependiendo el caso puede que sea necesario modificar el `const posts = []` del comienzo por `let posts = []`
 
 ## Postman
 

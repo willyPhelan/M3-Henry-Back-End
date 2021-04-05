@@ -10,8 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "nodemon": "^2.0.3",
-    "request": "^2.88.2",
     "node-fetch": "^2.6.1",
     "prompt-sync": "^4.2.0"
   }

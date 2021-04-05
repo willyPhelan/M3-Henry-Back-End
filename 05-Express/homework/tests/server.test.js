@@ -116,10 +116,8 @@ describe('Request', () => {
     it('Agrega un nuevo Post', () => {
       const post = { title: 'first title', contents: 'first contents' };
       return addPost(post)
-        .then(() => req(METHOD_GET, STATUS_OK))
-        .then((posts) => {
-          expect(posts).to.have.length(1);
-          expect(posts[0]).to.deep.equal(post);
+        .then((postReturned) => {
+          expect(postReturned).to.deep.equal(post);
         });
     });
 

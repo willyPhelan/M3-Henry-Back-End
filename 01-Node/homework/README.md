@@ -21,7 +21,7 @@ Tenes creados dos archivos `bash.js` y `commands/index.js`. En estos dos archivo
 
 ## Objetivo del homework
 
-En este homework vas a tener que implementar comandos bash (a.k.a terminal) comunes usando Node.js. 
+En este homework vas a tener que implementar comandos bash (a.k.a terminal) comunes usando Node.js.
 
 Básicamente, cuando ejecutemos `node bash.js` vamos a obtener un `prompt` parecido al de la terminal de linux o git, en donde vamos a poder escribir una serie finita de comandos.
 
@@ -232,6 +232,8 @@ Probá implementar alguno de estos comandos.
 `curl` es un comando útil para descargar páginas web. En vez de ejecutarse con el nombre de un archivo, se hace con una URL.
 
 Deberás implementar curl usando el módulo `request` (vas a tener que instalarlo):
+
+`npm install --save request`
 
 También lo podés hacer por el módulo nativo http, pero es menos amigable.
 
