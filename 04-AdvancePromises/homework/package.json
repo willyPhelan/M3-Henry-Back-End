@@ -1,7 +1,7 @@
 {
-  "name": "pledge",
+  "name": "04-advanced-promises",
   "version": "1.0.0",
-  "description": "Implement a promise library from scratch",
+  "description": "",
   "main": "src/pledge.js",
   "directories": {
     "test": "test"
@@ -15,28 +15,17 @@
     "testRegex": "./test/.*.js$",
     "rootDir": "."
  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/FullstackAcademy/pledge.git"
-  },
-  "keywords": [
-    "promises"
-  ],
-  "author": "Gabriel Lebec <glebec@gmail.com> (https://github.com/glebec)",
+  "author": "",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/FullstackAcademy/pledge/issues"
-  },
-  "homepage": "https://github.com/FullstackAcademy/pledge#readme",
   "devDependencies": {
-    "docco": "^0.7.0",
+    "docco": "^0.8.1",
     "gulp-jasmine-livereload-task": "^0.11.0",
-    "jasmine-core": "^2.5.2",
-    "opn-cli": "^3.1.0"
+    "jasmine-core": "^3.7.1",
+    "opn-cli": "^4.1.0"
   },
   "dependencies": {
     "gulp": "^4.0.2",
-    "jest": "^26.5.2",
+    "jest": "^26.6.3",
     "node-fetch": "^2.6.1",
     "prompt-sync": "^4.2.0"
   }
