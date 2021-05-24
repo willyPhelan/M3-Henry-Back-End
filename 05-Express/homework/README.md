@@ -26,13 +26,14 @@ Cada `Post` va a ser un objeto con la siguiente estructura:
 
 ```js
 {
+  author: "Autor del Post"
   title: "Titulo del Post",
   contents: "Contenido del Post"
 }
 ```
-Tanto `title` como `contents` van a ser del tipo String.
+Tanto `author` como `title` y `contents` van a ser del tipo String.
 
-Desarrollar las siguientes cinco rutas dentro del archivo `server.js` de la carpeta `src`
+Desarrollar las siguientes rutas dentro del archivo `server.js` de la carpeta `src`
 
 ### Breve repaso de creación de rutas
 
@@ -95,9 +96,17 @@ Para finalizar si queremos acceder a los parámetros de una consulta utilizaremo
 
 Cuando se ejecute un request del tipo `POST` en la ruta `/posts`:
 
-- Asegurarse que dentro del body del request existan tanto `title` como `contents`. En el caso de que alguno de ellos no se encuentre, devolver un JSON con un objeto de la forma `{error: "No se recibieron los parámetros necesarios para crear el Post"}`. Verificar que el código de error sea el adecuado.
+- Asegurarse que dentro del body del request existan `author`, `title` y `contents`. En el caso de que alguno de ellos no se encuentre, devolver un JSON con un objeto de la forma `{error: "No se recibieron los parámetros necesarios para crear el Post"}`. Verificar que el código de error sea el adecuado.
 
-- Si ambos cambos fueron provistos, crear un nuevo objeto Post con los valores indicados para `title` y `contents` y asignándole un valor numérico único como propiedad `id`. Agregar dicho objeto al array de posts. Devolver un JSON con el objeto recientemente creado.
+- Si los tres campos fueron provistos, crear un nuevo objeto Post con los valores indicados para `author`, `title` y `contents` y asignándole un valor numérico único como propiedad `id`. Agregar dicho objeto al array de posts. Devolver un JSON con el objeto recientemente creado.
+
+### `POST /posts/author/:author`
+
+Cuando se ejecute un request del tipo `POST` en la ruta `/posts/author/:author`:
+
+- Asegurarse que dentro del body del request existan tanto `title` como `contents`. Ademas, por parametros viaja el nombre del autor. En el caso de que alguno de ellos no se encuentre, devolver un JSON con un objeto de la forma `{error: "No se recibieron los parámetros necesarios para crear el Post"}`. Verificar que el código de error sea el adecuado.
+
+- Si los tres campos fueron provistos, crear un nuevo objeto Post con los valores indicados para `author`, `title` y `contents` y asignándole un valor numérico único como propiedad `id`. Agregar dicho objeto al array de posts. Devolver un JSON con el objeto recientemente creado.
 
 ### `GET /posts`
 
@@ -106,6 +115,22 @@ Cuando se ejecute un request del tipo `GET` en la ruta `/posts`:
 - Si existe el parámetro `term` dentro de la URL (query-string parameter) devolver aquellos Posts que contengan el valor del parámetro `term` en su título o en su contenido (o en ambos).
 
 - Caso contrario, devolver todos los Posts que se encuentren almacenados en el array `posts`.
+
+### `GET /posts/:author`
+
+Cuando se ejecuta el request del tipo `GET` en la ruta `posts/:author`:
+
+- Si existen Post del autor indicado en el parametro `author`, devolverlos.  
+
+- Caso contrario, devolver un JSON con un objeto de la forma `{error: "No existe ningun post del autor indicado"}`. Verificar que el código de error sea el adecuado.
+   
+                                                                                                                   
+### `GET /posts/:author/:title`
+Cuando se ejecuta el request del tipo `GET` en la ruta `posts/:author/:title`:
+
+- Si existen Post que coincidan con ambos parametros, `author` y `title` devolver aquellos Posts que correspondan con la información provista, es decir que coincidan `author` y `title`. 
+
+- Caso contrario, devolver un JSON con un objeto de la forma `{error: "No existe ningun post con dicho titulo y autor indicado"}`. Verificar que el código de error sea el adecuado.
 
 ### `PUT /posts`
 
@@ -117,6 +142,7 @@ Cuando se ejecute un request del tipo `PUT` en la ruta `/posts`
 
 - Si se encuentran todos los parámetros y el `id` es válido, actualizar los datos del `title` y `contents` del Post que coincida con dicho `id` . Devolver un JSON con el objeto recientemente actualizado.
 
+
 ### `DELETE /posts`
 
 Cuando se ejecute un request del tipo `DELETE` en la ruta `posts`
@@ -124,6 +150,16 @@ Cuando se ejecute un request del tipo `DELETE` en la ruta `posts`
 - Asegurarse que dentro del body del request exista un `id` correspondiente a un Post válido. De no ser así, ya sea por falta del campo `id` o por ser un id inválido, devolver un JSON con un objeto con un mensaje correspondiente en cada caso manteniendo la forma de siempre: `{error: "Mensaje de error"}`
 
 - En el caso de que el `id` corresponda a un Post válido, eliminarlo del array de Posts y devolver un JSON con el siguiente objeto: `{ success: true }`.
+
+- Nota: Ver que método van a utilizar para eliminar un post, dependiendo el caso puede que sea necesario modificar el `const posts = []` del comienzo por `let posts = []`
+
+### `DELETE /author`
+
+Cuando se ejecute un request del tipo `DELETE` en la ruta `author`
+
+- Asegurarse que dentro del body del request exista un `author` correspondiente a un autor válido. De no ser así, ya sea por falta del campo `author` o por ser un autor inválido, devolver un JSON con un objeto con un mensaje correspondiente en cada caso manteniendo la forma de siempre: `{error: "Mensaje de error"}`
+
+- En el caso de que el `author` corresponda a un autor válido, eliminar del array de Posts todos los Post correspondientes a dicho autor y devolver los posts eliminados.
 
 - Nota: Ver que método van a utilizar para eliminar un post, dependiendo el caso puede que sea necesario modificar el `const posts = []` del comienzo por `let posts = []`
 
