@@ -1,5 +1,11 @@
 // const bodyParser = require("body-parser");
 const express = require("express");
+const {
+  validateId,
+  validateTitle,
+  validateContents,
+  existId,
+} = require("./validators");
 
 const STATUS_USER_ERROR = 422;
 
@@ -16,15 +22,8 @@ server.use(express.json());
 
 server.post("/posts", (req, res) => {
   //verifico si no existe la propiedad "title"
-  if (!req.body.hasOwnProperty("title")) {
-    res.status(STATUS_USER_ERROR).send({
-      error: "No se recibieron los parámetros necesarios para crear el POST",
-    });
-  } else if (!req.body.hasOwnProperty("contents")) {
-    res.status(STATUS_USER_ERROR).send({
-      error: "No se recibieron los parámetros necesarios para crear el POST",
-    });
-  }
+  validateTitle(req, res, STATUS_USER_ERROR);
+  validateContents(req, res, STATUS_USER_ERROR);
 
   //para asignar un id a cada post, mido el tamaño del array y sumo 1 para no empezar en 0
   let id = posts.length + 1;
@@ -41,17 +40,6 @@ server.post("/posts", (req, res) => {
 server.get("/posts", (req, res) => {
   //verifico si la query tiene "term"
   if (req.query.term) {
-    //////Intenté con un for pero al siempre retornar algo, tenía undefined cuando no encontraba el term
-    // let results = posts.map((p) => {
-    //   //map retorna un nuevo array
-    //   if (
-    //     p["title"].includes(req.query.term) ||
-    //     p["contents"].includes(req.query.term)
-    //   ) {
-    //     return p;
-    //   }
-    // });
-
     let results = [];
     //verifico si el "term" está en la propiedad title o contents
     for (let i in posts) {
@@ -72,32 +60,11 @@ server.get("/posts", (req, res) => {
 
 server.put("/posts", (req, res) => {
   //verifico si no existe la propiedad "id"
-  if (!req.body.hasOwnProperty("id")) {
-    res.status(STATUS_USER_ERROR).send({
-      error: "No se recibieron los parámetros necesarios para crear el POST",
-    });
-  } else if (!req.body.hasOwnProperty("title")) {
-    res.status(STATUS_USER_ERROR).send({
-      error: "No se recibieron los parámetros necesarios para crear el POST",
-    });
-  } else if (!req.body.hasOwnProperty("contents")) {
-    res.status(STATUS_USER_ERROR).send({
-      error: "No se recibieron los parámetros necesarios para crear el POST",
-    });
-  }
+  validateId(req, res, STATUS_USER_ERROR);
+  validateTitle(req, res, STATUS_USER_ERROR);
+  validateContents(req, res, STATUS_USER_ERROR);
 
-  let idExist = false;
-  for (let i in posts) {
-    //identifico si no está el id que busco
-    if (posts[i]["id"] === req.body.id) {
-      idExist = true;
-    }
-  }
-  if (!idExist) {
-    res
-      .status(STATUS_USER_ERROR)
-      .send({ error: "El `id` indicado no corresponde con un Post existente" });
-  }
+  existId(req, res, STATUS_USER_ERROR, posts);
 
   //actualizo el post
   for (let i in posts) {
@@ -111,24 +78,8 @@ server.put("/posts", (req, res) => {
 
 server.delete("/posts", (req, res) => {
   //verifico si no existe la propiedad "id"
-  if (!req.body.hasOwnProperty("id")) {
-    res.status(STATUS_USER_ERROR).send({
-      error: "No se recibieron los parámetros necesarios para crear el POST",
-    });
-  }
-
-  let idExist = false;
-  for (let i in posts) {
-    //identifico si no está el id que busco
-    if (posts[i]["id"] === req.body.id) {
-      idExist = true;
-    }
-  }
-  if (!idExist) {
-    res
-      .status(STATUS_USER_ERROR)
-      .send({ error: "El `id` indicado no corresponde con un Post existente" });
-  }
+  validateId(req, res, STATUS_USER_ERROR);
+  existId(req, res, STATUS_USER_ERROR, posts);
 
   //Elimino el post
   posts.splice(req.query.id, 1);
