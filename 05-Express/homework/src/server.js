@@ -1,5 +1,5 @@
-const bodyParser = require('body-parser');
-const express = require('express');
+// const bodyParser = require("body-parser");
+const express = require("express");
 
 const STATUS_USER_ERROR = 422;
 
@@ -9,8 +9,9 @@ const posts = [];
 
 const server = express();
 // to enable parsing of json bodies for post requests
-server.use(bodyParser.json());
+// server.use(express.json());
 
 // TODO: your code to handle requests
+
 
 module.exports = { posts, server };
