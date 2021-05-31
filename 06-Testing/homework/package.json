@@ -1,20 +1,19 @@
 {
-  "name": "workshop",
+  "name": "06-testing",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "test": "mocha ./tests/**/*.spec.js"
+    "test": "mocha ./tests/**/*.spec.js --exit"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.17.2",
-    "chai": "^4.1.1",
-    "express": "^4.15.4",
-    "mocha": "^3.5.0",
-    "supertest-session": "^3.1.0",
+    "body-parser": "^1.19.0",
+    "chai": "^4.3.4",
+    "express": "^4.17.1",
+    "mocha": "^8.3.2",
     "node-fetch": "^2.6.1",
-    "prompt-sync": "^4.2.0"
+    "prompt-sync": "^4.2.0",
+    "supertest-session": "^4.1.0"
   }
 }
