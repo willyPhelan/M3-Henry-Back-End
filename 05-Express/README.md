@@ -426,3 +426,59 @@ app.use('/users', users);
 Hay que notar que cuando usamos `app.use` y le pasamos un `Router` también le pasamos un path, esto quiere decir que las rutas definidas dentro del `Router` que les pasamos serán accesibles desde el path origin que le pasamos. Por ejemplo:
 
 Como en el archivo `routes/users.js` tenemos una ruta para el URL `/`, al cargarlo usando `app.use()` en `/users`, ese path será accesible en el path `/users/`. Para que se entienda mejor, creé una nueva ruta dentro de `users.js` con la URL `/api`, esa ruta será accesible desde `/users/api/`, ya que cargamos ese `Router` en `/users`. ;D 
+
+
+## Cross-Origin Resource Sharing (CORS) 
+
+Por razones de seguridad, los navegadores sólo permiten que se carguen recursos que provengan del mismo origen. Dos URL tienen el mismo origen si el protocolo , el puerto y el host son los mismos para ambos. Esto es lo que llamamos Same-Origin Policy (SOP). Esta política ya viene por default en los navegadores y controla las interacciones entre orígenes diferentes ayudando así a aislar documentos potencialmente maliciosos y reduciendo posibles ataques. 
+
+Ejemplos de URL con mismo origen: 
+
+```
+http://e-commerce.com/admin/orders   //Mismo origen, Path diferente
+
+http://e-commerce.com/user/me        //Mismo origen, Path diferente
+```
+
+Sin embargo, muchas veces necesitamos cargar en nuestro sitio recursos provenientes de otro origen, por ejemplo, cuando utilizamos una fuente distinta o queremos mostrar una imágen. ¿Qué pasaría si quisiéramos realizar una petición a un servidor con un dominio diferente? En ese caso, veríamos un error como este: 
+
+![CORS Blocking](./img/cors.png)
+
+¿Qué está pasando? Desde ‘http://localhost:3001’ se realizó una petición a ‘http://localhost:3004/second-server’ y el navegador bloqueó la solicitud por política de CORS (Cross-Origin Resource Sharing). A diferencia de la política del mismo origen (SOP) este mecanismo nos permite, mediante el uso de cabeceras HTTP adicionales, acceder a recursos desde un dominio, un protocolo o un puerto diferente al del documento que lo generó. Este tipo de solicitudes se denominan de origen cruzado.
+
+Ejemplos de URL con distinto origen: 
+
+```
+https://e-commerce.com/user/me	     //Diferente protocolo
+
+http://api.e-commerce.com/user/me	//Diferente host
+```
+
+### Access-Control-Allow-Origin
+
+Para habilitar una petición de origen cruzado debemos incluir una cabecera denominada Access-Control-Allow-Origin en la respuesta de la petición, donde debe indicarse el dominio al que se le quiere dar permiso. Es decir, en nuestro ejemplo el servidor que está utilizando el puerto 3004 debería incluir en su respuesta  a la solicitud de localhost.3001 un header Access-Control-Allow-Origin donde se indica el dominio al que se le quiere dar permiso. 
+
+```
+Access-Control-Allow-Origin: http://localhost:3001
+```
+
+De esta forma, el navegador comprobará dichas cabeceras y si coinciden con el dominio de origen que realizó la petición, ésta se permitirá. En el ejemplo anterior, la cabecera tiene el valor http://localhost:3001, pero en algunos casos el valor puede ser un "*". El asterisco indica que se permiten peticiones de origen cruzado a cualquier dominio.
+
+
+![Headers](./img/headers.png)
+
+
+Además de ese, existen otros cors headers. Algunos de ellos son: 
+
+- Access-Control-Allow-Origin: ¿qué origen está permitido?
+- Access-Control-Allow-Credentials: ¿también se aceptan solicitudes cuando el modo de credenciales es include?
+- Access-Control-Allow-Headers: ¿qué cabeceras pueden utilizarse?
+- Access-Control-Allow-Methods: ¿qué métodos de petición HTTP están permitidos?
+- Access-Control-Expose-Headers: ¿qué cabeceras pueden mostrarse?
+- Access-Control-Max-Age: ¿cuándo pierde su validez la solicitud preflight?
+- Access-Control-Request-Headers: ¿qué header HTTP se indica en la solicitud preflight?
+- Access-Control-Request-Method: ¿qué método de petición HTTP se indica en la solicitud preflight?
+
+
+Otra forma que tenemos para habilitar las solicitudes CORS pueden ser librerías que manejen las autorizaciones por nosotros a modo de middleware. Por ejemplo, el módulo [cors](https://www.npmjs.com/package/cors). 
+
