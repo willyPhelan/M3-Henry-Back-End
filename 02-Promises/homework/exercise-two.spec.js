@@ -20,11 +20,15 @@ var stanzas = fs.readdirSync(dirpath)
 	return fs.readFileSync(path.join(dirpath, filename)).toString();
 });
 
+function resetCalls(spy) {
+	spy.__spy.calls = [];
+}
+
 describe('exercise two (involving poem two)', function () {
 
 	beforeEach(function () {
-		blue.reset();
-		magenta.reset();
+		resetCalls(blue);
+		resetCalls(magenta);
 	});
 
 	var blueCalls, redCalls;
