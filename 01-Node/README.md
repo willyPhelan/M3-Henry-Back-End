@@ -497,20 +497,6 @@ De hecho, el **^** antes del número de versión en 'dependencies' indica qué p
   }
 ```
 
-### Streams, Buffers y Pipes
-
-Otro concepto importante para entender como funciona Nodejs ( o cualquier pieza de software en general ) es el de Streams, Buffers y Pipes. Ahora veremos que son cada uno y como se usan.
-
-* __Buffer__: Un espacio limitado en tamaño cuyo objetivo es guardar datos de forma temporal mientras estos datos son movidos de un lugar a otro. Generalmento estos datos provienen de lo que se conoce como un _Stream_ de datos.
-
-* __Stream__: Un stream es una secuencia de datos que se hace disponible a medida que pasa el tiempo. O sea, son pedazos de datos que van llegando de a poco, y que forman parte de algo más grande. Por ejemplo, cuando hacen stream de peliculas en NetFlix, pueden ir viendola a medida que van llegando los datos, en contraposicion con tener que bajar toda la pelicula entera antes de poder verla ( Torrents anyone? ).
-
-![stream](./img/stream.gif)
-
-En la mayoría de los casos estos dos conceptos se utilizan juntos: un __Stream__ de datos llena un __Buffer__, cuando este esta lleno, los datos se pasan para que sean procesados. ¿Vieron en YouTube cuando se traba el video y les dicen: __BUFFERING__?? Bueno, lo que está ocurriendo es que el Stream de datos (El video) se está bajando lento, entonces el reproductor no puede seguir reproduciendolo, por lo tanto tiene que esperar que el _buffer_ se llene nuevamente para poder procesar la siguiente imagen que mostrará. 
-
-![stream-buffer](./img/streambuffer.gif)
-
 ### Leyendo un archivo con Node
 
 Para trabajar con archivos en Node, vamos a usar el módulo `fs` que tiene la funcionalidad para leer y escribir archivos, como se encuentra en las librerías core de node, vamos a requerirlo usando `require('fs')`.
@@ -556,96 +542,6 @@ Otra cosa a notar es que la función anónima que le pasamos tiene dos parámetr
 ![fs-2](./img/fs2.png)
 
 Como vemos, primero se ejecutó el segundo console log, luego el console log del _callback_. 
-
-### Trabajando con Streams
-
-Ya vimos el concepto de Streams, pero veamos como podemos manejarlos con Node.
-De nuevo, en los módulos core hay uno que nos permite trabajar con `streams` podemos ver la documentación [aquí](https://nodejs.org/dist/latest-v6.x/docs/api/stream.html#stream_stream).
-
-Vamos a crear un archivo llamado `greet.txt` que contenga texto, nos tenemos que asegurar que sea mucho texto asi podamos observar mejor los resultados. Yo busqué un generador de texto, como [este](http://www.lipsum.com/), y generé exactamente 20000 bytes de texto sin sentido!
-
-Ahora lo primero que vamos a hacer es crear un _lecto de Stream_, lo hacemos usando la función `createReadStream`, que recibe por parámetros el path del archivo a leer, y un objeto de [opciones](https://nodejs.org/dist/latest-v6.x/docs/api/fs.html#fs_fs_createreadstream_path_options). En este caso le pasamos como opciones el encoding y highWaterMark.
-
-__highWaterMark__: Es el número de bytes ( 1 byte = 8 bits) que queremos que tenga el buffer del lector de Streams.
-
-```javascript
-var fs = require('fs');
-
-var readable = fs.createReadStream(__dirname + '/greet.txt', 
-   {encoding: 'utf8', highWaterMark: 1 * 1024 }
-);
-
-readable.on('data', function(chunk) {
-	console.log(chunk);
-	console.log('========================================');
-});
-```
-Una vez definido el reader de Stream, vamos a usarlo para leer el archivo y mostrar lo que va leyendo por consola.
-El reader lo que hace es empezar a leer, en este caso, el archivo (podría leer datos llegando de internet tambien, por ejemplo) y va llenado un buffer, cuando se llena (se alcanza el tamaño definido en `highWaterMark`) o cuando no tiene más que leer (si el archivo fuera más chico que el `highWaterMark`) entonces el reader _emite_ un evento. Por lo tanto, lo que vamos a hacer es capturar ese evento, llamado `data` y vamos a mostrar el contenido que haya tenido el buffer en ese momento, para poder diferenciar en la salida lo que corresponde a cada buffer, hemos hecho el console log de una línea horizontal. Veamos el resultado:
-
-![stream](./img/stream.png)
-
-Como vemos, se fue llenando el buffer y emitiendo el evento _'on'_ y cada vez que ocurría eso se imprimia en pantalla el contenido del archivo, y la línea separadora.
-
-__Prueben achicar o agrandar el `highWaterMark` para que vean en donde empiezan a aparecer las ĺíneas.__
-
-Ahora para probar un Stream que sea `writer` vamos a tomar los pedazos de datos que vaya leyendo el `reader` y usandolos para escribirlos en un archivo. Para eso vamos a crear un archivo vació llamado `greetcopy.txt` en el mismo folder que los demás.
-
-```javascript
-var writable = fs.createWriteStream(__dirname + '/greetcopy.txt');
-
-readable.on('data', function(chunk) {
-	console.log('========================================');
-	writable.write(chunk);
-});
-```
-Ahora vamos a crear un Stream de tipo write usando la función `createWriteStream` y le pasamos por parámetro el archivo nuevo que hemos creado. 
-Ahora, cada vez el que reader termine de leer un _chunk_ ( o sea llenar su buffer ), queremos que se escriba esos datos en el nuevo archivo: para eso usamos la función `write` del objeto `writable` que recibe por parámetro los datos a escribir.
-
-Veamos el output de correr este código:
-
-![copy](./img/copy.png)
-
-Veamos el tamaño de los archivos _antes_ de ejecutar el código: `greet.txt` tiene 20120 bytes, y `greetcopy.txt` tiene 0 bytes. Luego ejecutamos `app.js` y veamos que ahora los dos archivos tienen el mismo tamaño! o sea que nuestro copiador funcionó!
-
-
-### Pipes
-
-Un Pipe se crea cuando conectamos un Stream que lee a uno que escribe. Básicamente los _Pipes_ nos van a servir para conectar Streams, y así poder mandar información de un lugar a otro, sería como _conectar_ fuentes y destinos de información.
-
-En Nodejs los Streams _readables_ cuentan con la función `pipe`, como pueden ver en la [documentación](https://nodejs.org/dist/latest-v6.x/docs/api/stream.html#stream_readable_pipe_destination_options). Esta función recibe como parámetro una destination ( un Stream _writable_ ) y una serie de opciones, y retorna una referencia al Stream destination (el que le pasamos), de tal manera que podemos encadenar Streams.
-Para ver este concepto, haremos lo siguiente: Vamos a leer un archivo de texto con un _readable_ y primero vamos a copiarlo en otro archivo nuevo, igual que antes pero ahora con pipes. Luego vamos a agarrar de nuevo ese primer archivo, vamos a pasarlo por un proceso de compresión (usando `zlib`) y el resultado de la compresión lo vamos a escribir en nuevo archivo, esto lo vamos a lograr encadenando pipes:
-
-```javascript
-var fs = require('fs');
-var zlib = require('zlib');
-
-var readable = fs.createReadStream(__dirname + '/greet.txt');
-
-var writable = fs.createWriteStream(__dirname + '/greetcopy.txt');
-
-var compressed = fs.createWriteStream(__dirname + '/greet.txt.gz');
-
-var gzip = zlib.createGzip();
-
-readable.pipe(writable);
-
-readable.pipe(gzip).pipe(compressed);
-```
-
-Como vemos al principio requerimos `fs` y `zlib`, este último también es parte de las librerías core de nodejs, si leemos su [documentación](https://nodejs.org/dist/latest-v6.x/docs/api/zlib.html#zlib_zlib) vemos que lo que hace, básicamente, es leer un stream de datos, comprimir su contenido y luego enviar un stream de salida con los datos comprimidos.
-
-__Notese que el Stream creado por `zlib` es de tipo _duplex_ o sea que puede usarse para leer o escribir, justamente por eso lo podemos usar como conector de nuestro Pipe__
-
-Para copiar el texto de el primer archivo al segundo simplemente _'conectamos'_ el stream __readable__ (que lee el archivo) con el __writable__ (que lo escribe), esto lo hacemos usando la función `pipe` en _readable_, y pasandole como destination a _writable_.
-
-Ahora vamos a crear un stream _duplex_ llamado `gzip` que implementa un algoritmo de compresión que tiene el mismo nombre. Ese stream va a recibir datos y los va a devolver comprimidos, siempre en chunks.
-
-Ahora para comprimir el contenido antes de guardarlo, vamos a _'conectar'_ readable (que es un stream readable) con `gzip`, y la salida de eso con _compress_ (que es un stream writable). Para hacer esta _'conexion'_ hacemos: `readable.pipe(gzip).pipe(compressed)`. Básicamento estamos pasando la salida de readable a gzip, que comprime lo que le llegué y da como salida un stream de datos comprimidos, entonces vamos a agarrar esos datos comprimidos y escribirlos en un archivo usando un nuevo stream writable. Veamos el resultado de ejecutar nuestro script:
-
-![zlib](./img/zlib.png)
-
-Excelente! Vemos que `greetcopy.txt` pesa lo mismo que `greet.txt` y que la versión comprimida (`greet.txt.gz`) ocupa menos! Pueden abrir los archivos y comprobar que el contenido es el mismo tambien!
 
 
 ### Combinando Todo
