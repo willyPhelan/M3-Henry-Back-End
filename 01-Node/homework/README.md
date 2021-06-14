@@ -219,15 +219,7 @@ Refactoreá todas tus funciones existentes para tomar un parámetro explícito, 
 
 ¿Para qué? Estructurá a todos tus comandos de la misma manera (orden y tipo de parámetros). Así podés ejecutar a todos de la misma manera, sin saber a cuál estás llamando. Para la mayoría de las próximas funciones, nombrá ese parámetro file o filename.
 
-### Otros comandos útiles
-
-Probá implementar alguno de estos comandos.
-
-- `sort filename.txt`: Devuelve el archivo ordenado lexicográficamente por línea.
-- `wc filename.txt`: El wc de Unix imprime el conteo de líneas, palabras y caracteres de un archivo. El tuyo puede simplemente devolver el número de líneas.
-- `uniq filename.txt`: Si una línea en un archivo es la misma que la línea de arriba, la saca del resultado. Un archivo que esta ordenado( sort) y después filtrado por únicos ( uniq) te garantiza que no tendrá ni una sola línea duplicada.
-
-### Implementando curl
+### curl
 
 `curl` es un comando útil para descargar páginas web. En vez de ejecutarse con el nombre de un archivo, se hace con una URL.
 
@@ -240,6 +232,7 @@ También lo podés hacer por el módulo nativo http, pero es menos amigable.
 Ahora que tenés `request` disponible para requerir, implementá el comando `curl`. `curl` hará un pedido GET de HTTP a un URL dado, e imprimirá el body del response del HTTP.
 
 ej: `curl http:www.google.com`
+
 
 ## Refactoreando
 
@@ -277,6 +270,14 @@ const commands = {
   }
 }
 ```
+
+### EXTRA CREDIT: Otros comandos útiles
+
+Probá implementar alguno de estos comandos.
+
+- `sort filename.txt`: Devuelve el archivo ordenado lexicográficamente por línea.
+- `wc filename.txt`: El wc de Unix imprime el conteo de líneas, palabras y caracteres de un archivo. El tuyo puede simplemente devolver el número de líneas.
+- `uniq filename.txt`: Si una línea en un archivo es la misma que la línea de arriba, la saca del resultado. Un archivo que esta ordenado( sort) y después filtrado por únicos ( uniq) te garantiza que no tendrá ni una sola línea duplicada.
 
 
 #### Materiales recomendados
