@@ -15,10 +15,12 @@
 
 ## Proceso de subida de homeworks
 
-__IMPORTANTE:__ Luego de completar cada una de las homeworks del día deberán ejecutar el siguiente comando para subir sus trabajos a sus repositorios (Deben estar posicionados sobre la carpeta `homework` para que funcione y haber corrido previamente `npm install`):
+__IMPORTANTE:__ Luego de completar cada una de las homeworks del día deberán ejecutar los siguientes comandos para subir sus trabajos a sus repositorios (Deben estar posicionados sobre la carpeta del repositorio):
 
 ```bash
-  node submit.js
+  git add . 
+  git commit -m "el mensaje que ustedes quieran"
+  git push
 ```
 
 > El **Checkpoint** consiste en un ejercicio que integra todo este contenido, va a ser individual y van a tener un día completo para terminarlo. Para continuar con la carrera es necesario aprobar este Checkpoint.
