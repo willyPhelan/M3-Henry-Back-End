@@ -53,6 +53,8 @@ Este spec es iterativo y opinionado; deberías hacer los test en orden. Comenzá
 
 Este repo no contiene solo los test spec. Notá que el `Promises Flowchart.pdf` esta también incluido para tu referencia. Lo más probable es que lo necesites repasar durante el capítulo 4 del spec; no aplica a los capitulos 1-3.
 
+__IMPORTANTE:__ Los tests se mostararán de forma desordenada, para revertir esta situación, acceder desde la esquina superior derecha a **Options** y _quitar_ **"run tests in random order"** de las opciones seleccionadas. 
+
 
 ### Extra Credit
 
