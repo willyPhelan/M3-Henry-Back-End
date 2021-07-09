@@ -5,8 +5,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "node-fetch": "^2.6.1",
-    "prompt-sync": "^4.2.0",
     "request": "^2.88.2"
   }
 }
