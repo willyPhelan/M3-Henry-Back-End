@@ -1,15 +1,14 @@
 {
-  "name": "06-testing-demo",
+  "name": "testing-demo",
   "version": "1.0.0",
   "description": "",
-  "main": "chai.js",
+  "main": "index.js",
   "scripts": {
-    "test": "mocha test.js"
+    "test": "jest --verbose"
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "chai": "^4.3.4",
-    "mocha": "^8.3.2"
+  "devDependencies": {
+    "jest": "^27.0.6"
   }
 }
