@@ -16,6 +16,6 @@ app.post('/product', (req, res) => {
   });
 });
 
-app.listen(3000);
+// app.listen(3000);
 
 module.exports = app; // Exportamos app para que supertest session la pueda ejecutar

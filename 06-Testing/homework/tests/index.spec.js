@@ -1,4 +1,3 @@
-const { expect } = require('chai');
 const session = require('supertest-session');
 const app = require('../index.js'); // Importo el archivo de entrada del server de express.
 
@@ -9,7 +8,7 @@ describe('Test de APIS', () => {
     it('responds with 200', () => agent.get('/').expect(200));
     it('responds with and object with message `hola`', () =>
         agent.get('/').then((res) => {
-          expect(res.body.message).to.be.equal('hola');
+          expect(res.body.message).toEqual('hola');
         }));
   });
 
@@ -17,7 +16,7 @@ describe('Test de APIS', () => {
     it('responds with 200', () => agent.get('/test').expect(200));
     it('responds with and object with message `test`', () =>
       agent.get('/test').then((res) => {
-        expect(res.body.message).to.be.equal('hola');
+        expect(res.body.message).toEqual('hola');
       }));
   });
 
@@ -27,7 +26,7 @@ describe('Test de APIS', () => {
       agent.post('/sum')
         .send({a: 2, b: 3})
         .then((res) => {
-          expect(res.body.result).to.be.equal(5);
+          expect(res.body.result).toEqual(5);
         })
     );
   });
@@ -38,7 +37,7 @@ describe('Test de APIS', () => {
       agent.post('/product')
         .send({a: 2, b: 3})
         .then((res) => {
-          expect(res.body.result).to.be.equal(6);
+          expect(res.body.result).toEqual(6);
         })
     );
   });
@@ -49,7 +48,7 @@ describe('Test de APIS', () => {
       agent.post('/sumArray')
         .send({array: [2,5,7,10,11,15,20], num: 13})
         .then((res) => {
-          expect(res.body.result).to.be.equal(true);
+          expect(res.body.result).toEqual(true);
       }));
   });
 
