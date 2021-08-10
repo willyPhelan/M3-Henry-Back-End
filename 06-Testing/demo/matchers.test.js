@@ -1,4 +1,4 @@
-describe('Tests that will pass', () => {
+xdescribe('Tests that will pass', () => {
   it('should pass if exact match', () => {
     const number = 3;
     const string = 'Franco';
@@ -28,7 +28,7 @@ xdescribe('Tests that will not pass', () => {
   });
 })
 
-describe('Extra matchers', () => {
+xdescribe('Extra matchers', () => {
 
     it('toBeNull', () => {
       expect(null).toBeNull();
