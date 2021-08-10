@@ -1,6 +1,6 @@
 const { usingCallback, cacheFunction } = require('./mock');
 
-describe('Mock Functions', () => {
+xdescribe('Mock Functions', () => {
 
   describe('usingCallback', () => {
 
