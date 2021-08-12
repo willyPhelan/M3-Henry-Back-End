@@ -1,8 +1,7 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const app = express();
 
-app.use(bodyParser.json()); // for parsing application/json
+app.use(express.json()); // for parsing application/json
 
 app.get('/', (req, res) => {
   res.send({
@@ -15,7 +14,5 @@ app.post('/product', (req, res) => {
     result: req.body.a / req.body.b,
   });
 });
-
-app.listen(3000);
 
 module.exports = app; // Exportamos app para que supertest session la pueda ejecutar
