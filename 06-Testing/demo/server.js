@@ -35,4 +35,8 @@ app.get('/paramsData/:id', (req, res) => {
   });
 });
 
+app.get('/image', (req, res) => {
+  res.sendFile(__dirname + '/Logo.jpg');
+});
+
 module.exports = app;

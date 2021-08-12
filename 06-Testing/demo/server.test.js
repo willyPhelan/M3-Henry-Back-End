@@ -2,12 +2,12 @@ const request = require('supertest');
 const app = require('./server.js');
 
 it('should reply the GET method with status code 300', async () => {
-  const res = await request(app).get('/')
+  const res = await request(app).get('/');
   expect(res.statusCode).toBe(300);
 });
 
 it('should reply the GET method with a list of names', async () => {
-  const res = await request(app).get('/')
+  const res = await request(app).get('/');
   expect(res.body).toEqual(['Franco', 'Toni', 'Martu']);
 });
 
@@ -47,4 +47,13 @@ it('should reply the GET method /paramsData with the number passed and msg with 
   const res = await request(app).get('/paramsData/7');
   expect(res.statusCode).toBe(200);
   expect(res.body).toEqual({id: 7, msg: 'OK'});
+});
+
+it('should reply the GET method /image with status code 200', async() => {
+  const res = await request(app).get('/image');
+  expect(res.statusCode).toBe(200);
+});
+
+it('should reply the GET method /image with content type image', async() => {
+  const res = await request(app).get('/image').expect('Content-Type', 'image/jpeg');
 });
