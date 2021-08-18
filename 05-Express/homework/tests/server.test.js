@@ -394,7 +394,7 @@ describe('Request', () => {
 
       return Promise.all(posts.map(p => addPost(p)))
           .then(() => req(METHOD_DELETE, STATUS_USER_ERROR, {author: 'Pedro'}, `/author`))
-          .then((found) => expect(found).to.deep.equal({error: "There is no author that matches"}));
+          .then((found) => expect(found).to.deep.equal({error: "No existe el autor indicado"}));
     });
 
     it('Si el autor indicado existe, elimina todos sus Posts, devuelve los posts eliminados', () => {
