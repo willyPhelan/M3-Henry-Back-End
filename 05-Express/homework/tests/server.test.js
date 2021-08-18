@@ -281,7 +281,7 @@ describe('Request', () => {
       return Promise.all(posts.map(p => addPost(p)))
           .then(() => req(METHOD_GET, STATUS_USER_ERROR, null, `${PATH}/Juana/Un%20titulo`))
           .then((found) => {
-            expect(found).to.deep.equal({error: "There is no author with those titles"})
+            expect(found).to.deep.equal({error: "No existe ningun post con dicho titulo y autor indicado"})
           });
     });
 
@@ -296,7 +296,7 @@ describe('Request', () => {
       return Promise.all(posts.map(p => addPost(p)))
           .then(() => req(METHOD_GET, STATUS_USER_ERROR, null, `${PATH}/Juana/title`))
           .then((found) => {
-            expect(found).to.deep.equal({error: "There is no author with those titles"})
+            expect(found).to.deep.equal({error: "No existe ningun post con dicho titulo y autor indicado"})
           });
     })
   });
