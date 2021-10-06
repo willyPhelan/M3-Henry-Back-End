@@ -24,12 +24,10 @@ function generatorExec(){
 }
 
 function naturalXNumbers(x){
-    let count = 0;
     let array = [];
     let y = 0;
     while(y < x){
-        y++;
-        array.push(count++);
+        array.push(y++);
     }
     return array;
 }
