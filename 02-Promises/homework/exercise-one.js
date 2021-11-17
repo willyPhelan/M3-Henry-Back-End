@@ -82,7 +82,7 @@ function problemC () {
    *
    * C. lee & loggea el poema uno stanza dos y *DESPUES* lee & loggea
    *    stanza tres. Loggea 'done' cuando ambas hayan terminado. Fijate
-   *    que los specs estan opinionados y espara la palabra exacata
+   *    que los specs estan opinionados y espera la palabra exacta
    *    'done' (case sensitive) para ser loggeada para poder pasar
    *    (ignora errores)
    *
