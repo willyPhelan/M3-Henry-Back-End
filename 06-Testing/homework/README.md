@@ -2,10 +2,8 @@
 
 Vamos a codear una mini app para hacer algo de testing.
 
-Para testing vamos a usar `mocha`, `chai` y `supertest`.
+Para testing vamos a usar `jest` y `supertest`.
 
-`mocha` es el _test runner_, nos da las funciones para ordenar y ejecutar nuestros tests.
-`chai` es una _assertion library_, tiene las funciones para hacer assertions, básicamente compara dos resultados: el _expected_ y el _actual_, si no coinciden entonces tira un error, que es capturado por `mocha`.
 `supertest` nos va a servir para levantar nuestra app cada vez que se ejecutan los tests, de tal modo que los tests sean autocontenidos.
 
 > [cheatsheet](https://github.com/Euricom/training-workshop-JS-VUE-2017Q1/blob/master/slides/unit-tests.md)
