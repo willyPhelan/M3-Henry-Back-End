@@ -95,211 +95,174 @@ Existen muchas herramientas que nos van a ayudar a automatizar la creación, eje
 
 > En programación una _aserción_ o _assertion_ es un predicado (expresión que devuelve verdadero o falso), incluido en un programa y que generalmente compara el resultado o el estado esperado de algo contra el real en el momento de ejecución.
 
-Hay muchos tipos de frameworks de pruebas y también librerías de assertion, nosotros vamos a usar `Mocha` como framework y `Chai` como assertion. Hay muchas [opiniones](https://medium.com/javascript-scene/why-i-use-tape-instead-of-mocha-so-should-you-6aa105d8eaf4#.oijsbkjr9) sobre los distinos framework, nosotros elegimos este simplemente porque es el más usado!
+Hay muchos tipos de frameworks de pruebas y también librerías de assertion, nosotros vamos a usar `Jest`.
 
-## Mocha
+## [JEST](https://jestjs.io/)
 
-Mocha viene con muchas features copadas, en su [website](https://mochajs.org/) listan todas, pero algunas que valen la pena mencionar son:
+JEST es un framework de testing de fácil uso pero a la vez con muchisimas posibilidades. Viene con una librería de assertion integrada por lo que no tendremos que configurar ninguna.
 
-* Soporta muy bien el código asincrónico, incluido Promesas.
-* Podés setear el timeout de una llamada asincrónica.
-* Tenés distintos `hooks` como `before`, `after`, `before each`, `after` que nos van a dar la posibilidad de armar/limpiar el ambiante antes y después de cada prueba (si es necesario).
-* Podés combinarlo con varias librerías de assertion.
+### Configuración
 
-Vamos a intalar `mocha` con `npm`, para poder usarlo dentro del proyecto:
+Para comenzar a utilizar JEST basta con:
+  - Instalar la dependencia: `npm install --save-dev jest`
+  - Ejecutar `jest` o sino agregar script al package.json:
 
+  ```js
+  "scripts": {
+    "test": "jest"
+  }
+  ```
+
+Luego ejecutamos `npm test` y ya estaríamos corriendo los tests, como inicialmente no vamos a tener ninguno por consola nos dirá que no ha encontrado tests. En breve explicaremos como armar nuestro primer archivo de test pero antes, el comando jest admite muchas opciones o flags entre los cuales vamos a mencionar los siguientes:
+
+- Correr solo los archivos de tests que matcheen con determinado patron dentro de su nombre: `jest test-pattern`
+- Correr un determinado archivo de test mediante su path: `jest path/to/test.js`
+- Correr solo UN test mediante su nombre (Ya veremos como definir nombre para los tests): `jest -t name-spec`
+- Correr en modo 'watcher': `jest --watch` o `jest --watchAll` (El primero solo correra los tests que fueron afectados por alguna modificación desde la última vez que hicimos cambio en el código)
+- Agregar un resumen de cada archivo de test: `jest --verbose` (En el caso de ser un único archivo automáticamente lo hace sin necesidad del flag)	
+
+### Ejemplo (Está dentro de la carpeta demo)
+
+Estos archivos ya se encuentran creados dentro de la carpeta demo pero si quieren hacerlo de cero en otro lado para practicar pueden hacerlo.
+
+Crearemos un archivo `sum.js` y dentro de él una función `sum` que la exportaremos para poder utilizarla luego en el archivo de tests:
+
+```js
+function sum(a, b) {
+  return a + b;
+}
+
+module.exports = sum;
 ```
-npm install  mocha
+
+Luego crearemos otro archivo, `sum.test.js` donde definiremos los tests que luego ejecutará JEST:
+
+```js
+const sum = require('./sum');
+
+// it === test
+it('should return 8 if adding 3 and 5', () => {
+  expect(sum(3, 5)).toBe(8);
+});
+
+it('should return 15 if adding 7 and 8', () => {
+  expect(sum(7, 8)).toBe(15);
+});
 ```
 
-Para crear nuestras pruebas vamos a armar uno o varios archivos `.js` que luego vamos a ejecutar con mocha. Dentro de ellos vamos a usar las funciones que nos provee la librería:
+Si ahora ejecutamos `npm test` (Configurar previamente el package.json como mostramos antes) debería ejecutarse los tests.
 
-```javascript
-var assert = require('assert');
-describe('Array', function() {
-  describe('#indexOf()', function() {
-    it('should return -1 when the value is not present', function() {
-      assert.equal(-1, [1,2,3].indexOf(4));
-    });
+![Demo Test](./images/demo-test.png)
+
+Si analizamos la estructura del ejemplo anterior usamos algunas palabras que hasta hoy no conociamos, como por ejemplo `it`, `expect` y `toBe`. 
+
+Entendamos para que sirve cada uno de ellas:
+
+- `it` o `test`: nos permiten definir un nuevo test
+- `expect`: función de JEST que va a devolver un "expectatio" object sobre el cual luego podremos invocar algunos `matchers`. Explicado más sencillo es lo que estamos ejecutando para probar, por ejemplo `sum(3,5)` arriba estariamos probando la función que creamos pasandole esos dos parámetros y sobre la respuesta vemos si se cumple la condición que queremos o no.
+- `toBe`: es un matcher propio de JEST (no es el único de hecho ahora vamos a ver otros) que nos permite hacer una comparación exacta, en este ejemplo entre lo que devolvió la funcion `sum(3,5)` y el valor numérico 8. Si coinciden el test va a pasar y sino no.
+
+### Matchers
+
+JEST tiene distintos matchers para realizar distintas validaciones sobre las funcionalidades que queremos probar:
+
+- `toBe`: igualdad exacta
+- `toEqual`: verificación recursiva de cada propiedad del objeto o elemento del arreglo
+- `toBeNull`: verifica que el valor sea null
+- `toBeUndefined`: verifica que el valor sea undefined
+- `toBeDefined`: verifica que el valor sea distinto de undefined
+- `toBeTruthy`: verifica que el valor de veracidad sea verdadero sin necesariamente ser literalmente `true`
+- `toBeFalse`: verifica que el valor de veracidad sea falso sin necesariamente ser literalmente `false`
+- `toBeGreaterThan`: verifica que el valor sea mayor al de referencia
+- `toBeGreaterThanOrEqual`: verifica que el valor sea mayor o igual al de referencia
+- `toBeLessThan`: verifica que el valor sea menor al de referencia
+- `toBeLessThanOrEqual`: verifica que el valor sea menor o igual al de referencia
+- `toBeCloseTo`: verifica que el número este a pocos decimales de diferencia del valor de referencia
+- `toMatch`: compara contra una expresión regular
+- `toContain`: verifica si dentro de un arreglo existe determinado elemento
+- `toThrow`: verifica si la función arroja un error
+
+No son los únicos, existen más que pueden consultar en la [documentación oficial de JEST](https://jestjs.io/docs/expect).
+Adicionalmente algunos de estos matchers mencionados arriba se encuentran en la demo `matchers.test.js` para que puedan ver como utilizarlos con ejemplos.
+
+### Running Options
+
+#### describe
+
+Podemos también agrupar tests en "categorías" utilizando la palabra `describe`, por ejemplo siguiendo el ejemplo anterior de la suma podríamos tener casos con numeros enteros, otros con números decimales y otro con inputs inválidos:
+
+![Describe Demo](./images/describe-demo.png)
+
+Es posible armar también subcategorias poniendo describes dentro de otros describes.
+
+#### Skip Tests
+
+En el caso de que algunos tests no queramos que se ejecuten podemos saltearlos de forma individual colocando `xit` en vez de `it` cuando son definidos en el archivo de tests o sino podemos incluso saltear todo un `describe` completo colocando `xdescribe`.
+
+Por ejemplo en el archivo `sum-describe.test.js` de la carpeta demo podríamos modificar alguns tests para que no se ejecuten:
+
+```js
+describe('Decimal numbers', () => {
+  it('should return 8.33 if adding 3.32 and 5.01', () => {
+    expect(sum(3.32, 5.01)).toBe(8.33);
   });
-  describe('#slice()', function() {
-    it('should return [2,3] when args are (1,3)', function() {
-      assert.equal([2,3], [1,2,3].slice(1,3));
-    });
+  
+  xit('should return 15.82 if adding 7.72 and 8.1', () => {
+    expect(sum(7.72, 8.1)).toBe(15.82);
   });
-  describe('#slice()', function() {
-    it('should return [2,3] when args are (1,3)', function() {
-      assert.deepEqual([2,3], [1,2,3].slice(1,3));
-    });
+});
+
+xdescribe('Invalid inputs', () => {
+  it('should throw an TypeError if first parameter is not a number', () => {
+    expect(() => sum('Franco', 5)).toThrow(TypeError);
+  });
+  
+  it('should throw an TypeError if second parameter is not a number', () => {
+    expect(() => sum(3, true)).toThrow(TypeError);
   });
 });
 ```
 
-> Node trae una librería de assertion nativa llamda `assert`, pueden ver su documentación [aquí](https://nodejs.org/api/assert.html).
+Si observamos ahora la ejecución del comando `npm test sum-describe` veremos que el segundo test del describe de 'Decimal numbers' y todo el describe de 'Invalid inputs' no se van a ejecutar:
 
-![Mocha](./img/mocha.png)
+![Skip](./images/skip.png)
 
-El de arriba es el output que nos devuelve `mocha`. Nos lo presenta de una forma tal que sea fácil y rápido ver qué pruebas pasaron OK y cúales no.
+#### only
 
-Primero, vemos que la función `describe` nos sirve tanto para agrupar pruebas como para declarar pruebas unitarias. Estas librerías estan hechas de tal forma que se pueda 'leer' naturalmente lo que está ocurriendo, por ejemplo, para la primera prueba podriamos decir (en inglés): _'Describe: IndexOF it should return -1 when value is not present.'_. 
-De esta forma vamos a poder naturalizar el lenguaje de las pruebas, y escribir lo que debería pasar y mocha se encargará de colorear la salida y decirnos si pasó lo que esperabamos u otra cosa.
+Hay casos en los que solamente queremos probar un tests para evitar que la consola se nos llene de código que no nos estaría interesando en ese momento, para esto JEST tien también una opcion `only` para ejecutar únicamente un test de toda la suite de tests. Volviendo al ejemplo anterior, si solo quisieramos ejecutar el test `should throw an TypeError if first parameter is not a number` podríamos colocarle `it.only` (Para probarlos en la demo saquen los `xit` y `xdescribe`).
 
-Ahora dentro de `it()` es donde vamos a ejecutar nuestro código y poner las assertions necesarias para saber si está funcionando bien. En nuestro ejemplo, probamos el código y el assertion en una misma línea:
+```js
+...
 
-```
-assert.equal(-1, [1,2,3].indexOf(4));
-```
-
-Fijensé que cómo `[1,2,3].indexOf(4);` devuelve -1 , y pasamos cómo primer parámetro el -1, entonces la prueba finalizó con éxito (mocha nos pintó con una flechita verde avisandonos esto).
-
-> Si prueban assert.equal en Node, van a ver que si el assertion es correcto retorna undefined, pero si no es correcto lanzá un error. Justamente Mocha captura estos errores y nos lo muestra de una manera bonita.
-
-Ahora, si vemos el output, mocha nos dice que la segunda prueba falló. Si probamos `[1,2,3].slice(1,3)` en Node, vamos a ver que efectivamente nos devuelve `[2,3]` como pusimos en el test. El problema es la comparación de arreglos, como se pueden imaginar, al ser objetos distintos la comparación da siempre falsa. Para poder comparar objetos, se hace lo que se llama una `deep comparison`, es decir controlamos que la estructura y contenido sean iguales y no sólo si los objetos son los mismos. (pueden leer más de esto [aquí](http://stackoverflow.com/questions/13225274/the-difference-between-assert-equal-and-assert-deepequal-in-javascript-testing-w)). Como vemos, al usar `deepEqual` en vez de `equal` el assert no da error, y por lo tanto mocha nos muestra la querida flechita verde!
-
-Vamos a instalar chai en nuestro proyecto: `npm install chai` y vamos a requerirlo en vez de assert. Ahora vamos a usar las funciones  propias de chai (ver [documentación](http://chaijs.com/api/assert/)), que por suerte son parecidas a las nativas de Node:
-
-```javascript
-var chai = require('chai');
-describe('Array', function() {
-  describe('#indexOf()', function() {
-    it('should return -1 when the value is not present', function() {
-      chai.assert.equal(-1, [1,2,3].indexOf(4));
-    });
+describe('Invalid inputs', () => {
+  it.only('should throw an TypeError if first parameter is not a number', () => {
+    expect(() => sum('Franco', 5)).toThrow(TypeError);
   });
-  describe('#slice()', function() {
-    it('should return [2,3] when args are (1,3)', function() {
-      chai.assert.deepEqual([2,3], [1,2,3].slice(1,3));
-    });
+  
+  it('should throw an TypeError if second parameter is not a number', () => {
+    expect(() => sum(3, true)).toThrow(TypeError);
   });
 });
 ```
 
-![chai](./img/chai.png)
+Ahora al ejecutar `npm test sum-describe` veremos que todo el resto de los tests fueron salteados:
 
-### Tipos de Assertions de Chai
+![it only](./images/it-only.png)
 
-De hecho, Chai soporta tres _estilos_ de assertions distintos:
+Lo mismo se puede aplicar sobre los `describe` para ejecutar únicamente un grupo de tests.
 
-* Assert: Es la que vimos en los ejemplos anteriores.
-	
-	```javascript
-	var assert = require('chai').assert;
-	assert.typeOf(1, 'number');
-	```
+```js
+...
 
-* Expect: Este estilo y el siguiente utilizan el `method chaining` para darle una forma de lenguaje natural a las assertions:
-	
-	```javascript
-	var expect = require('chai').expect;
-	expect(1).to.be.a('number');
-	```
-
-* Should: La diferencia con el anterior es cómo se construye el assertion. Más info [acá](http://chaijs.com/guide/styles/)
-	
-	```javascript
-	var chai = require('chai');
-	chai.should();
-	1.should.be.a('number');
-	```
-
-> Pueden leer la documentacion de Except y Assert [aquí](http://chaijs.com/api/bdd/)
-
-## Hooks
-
-Los hooks nos dan la posibilidad de ejecutar código antes o despueś de todas las pruebas, o inclusive antes o después de cada una.
-
-```javascript
-var chai = require('chai');
-describe('Array', function() {
-  before(function() {
-    console.log('Hola, probando hook');
+describe.only('Invalid inputs', () => {
+  it('should throw an TypeError if first parameter is not a number', () => {
+    expect(() => sum('Franco', 5)).toThrow(TypeError);
   });
-  afterEach(function() {
-    console.log('Cuantas veces aparezco!');
-  });
-  describe('#indexOf()', function() {
-    it('should return -1 when the value is not present', function() {
-      chai.assert.equal(-1, [1,2,3].indexOf(4));
-    });
-  });
-  describe('#slice()', function() {
-    it('should return [2,3] when args are (1,3)', function() {
-      chai.assert.deepEqual([2,3], [1,2,3].slice(1,3));
-    });
+  
+  it('should throw an TypeError if second parameter is not a number', () => {
+    expect(() => sum(3, true)).toThrow(TypeError);
   });
 });
 ```
 
-![hooks](./img/hook.png)
-
-Como vemos, los hooks son funciones que se ejecutan antes o despues de todas las pruebas del bloque (dentro del primer `describe`), o también antes o después de cada una.  Mocha nos provee los siguientes hooks:
-
-```javascript
-describe('hooks', function() {
-
-  before(function() {
-    // Corre antes que todas pruebas en el bloque
-  });
-
-  after(function() {
-    // Corre despues que todas pruebas en el bloque
-  });
-
-  beforeEach(function() {
-    // Corre antes de cada prueba en el bloque
-  });
-
-  afterEach(function() {
-    // Corre despues de cada prueba en el bloque
-  });
-
-  // test cases
-});
-```
-
-La idea de los tests unitarios es que sean __idempotentes__ es decir que si los ejecuto varias veces, el resultado/estado de la app sea siempre sea el mismo. Es decir que si, por ejemplo, yo creo un usuario en nuestra app, cuando termine de hacer las pruebas, debería borrarlo, para que el estado de la app no se modifique. Los `hooks` nos van a ser de gran utilidad para poder cumplir con esto.
-
-
-## Code Coverage
-
-El `Code Coverage` es una métrica usada para saber qué tan bien estás probando tu applicación. Simplemente se basa en medir cuantas líneas de código se ejecutaron en tus tests, es decir que si tenés un code coverage del 100%, significa que no hubo ni una línea de código que no se ejecutó.
-
-> Que tengas 100% de code coverage no quiere decir necesariamente que tu aplicación no puede fallar, simplemente es una métrica que ayuda a tener una idea de lo que probamos.
-
-Para sacar esta métrica de nuestro proyecto vamos a usar una librería llamda `istambul`.
-
-Primero empezemos instalandola: ` npm install --save-dev istanbul`.
-
-Ahora, queremos medir el coverage de nuestros tests (obviamente como es un caso trivial, va a dar 100%!), entonces corremos: `./node_modules/.bin/istanbul cover _mocha chai.js`.
-
-> [Explicación de porqué usamos _mocha en vez de mocha.](https://github.com/gotwarlost/istanbul/issues/44#issuecomment-16093330)
-
-Istanbul nos va generar un reporte con el code coverage dentro de la carpeta `coverage`. Lo genera en varios formatos, el más lindo es en HTML asi que vamos a ver ese:
-
-[Istanbul](./img/istambul.png)
-
-Como vemos, el code coverage nos da 100%! eso es porque se ejecutaron todas las lineas de código.
-
-Ahora agregemos un if en el código de algún test de tal forma que ese branch nunca se ejecute:
-
-```javascript
- describe('#indexOf()', function() {
-    it('should return -1 when the value is not present', function() {
-      if(false){
-        console.log('esto nunca se ejecutara! jajaja!');
-      }else{
-        chai.assert.equal(-1, [1,2,3].indexOf(4));
-      }
-    });
-  });
-```
-
-Ahora, si volvemos a correr istanbul, vamos a ver que el `coverage` no nos da 100%!
-
-![IFtanbul](./img/istanulif.png)
-
-Si vamos al reporte HTML, vamos a ver que nos indica que estamos cubriendo la mitad de las `branches` e inclusive nos colorea la parte que jamás se ejecuto.
-
-![ReporteIf](./img/reporteif.png)
-
-Esto nos va a servir mucho para saber qué partes de nuestro código hemos 'testeado'. Fijensé que puede ocurrir que una aplicación tenga pedazos de código que jamás se ejecuten y lo mismo anda perfecto. O puede pasar que tengamos 100% de `code coverage` pero que la apliación falle igual. Es decir, esta no es la única métrica que tenemos que mirar para decidir si nuestra aplicación está bien testeada o no.
+![describe only](./images/describe-only.png)
