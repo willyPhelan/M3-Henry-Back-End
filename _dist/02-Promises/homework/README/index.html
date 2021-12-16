@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="/_src/styles/fonts.css">
+    <link rel="stylesheet" href="/_src/styles/header.css">
+    <link rel="stylesheet" href="/_src/styles/main.css">
+    <link rel="stylesheet" href="/_src/styles/topbar.css">
+    <link rel="stylesheet" href="/_src/styles/sidebar.css">
+    <link rel="stylesheet" href="/_src/styles/lesson.css">
+    <link rel="stylesheet" href="/_src/styles/code.css">
+    <link rel="stylesheet" href="/_src/styles/footer.css">
+    <link rel="stylesheet" href="/_src/styles/responsive.css">
+    <script src="https://kit.fontawesome.com/2c38f3d850.js" crossorigin="anonymous"></script>
+
+    <title> | Módulo 3 - Backend </title>
+  </head>
+
+  <body>
+    <div class="reader-bar-start">
+
+      <div class="headerResponsive">
+        <div class="leftContent">
+          <span><img src="/_src/assets/logo-white.png" alt='logo Henry' height=22px class="d-inline-block align-text-top"></span><span></span>
+        </div>
+        <div class="menuDiv">
+          <input type="checkbox">
+          <i class="fas fa-bars"></i>
+          <i class="fas fa-times"></i>
+          <nav>
+            <ul><li><a href="/">Intro</a></li>
+<li><a href="/Node/">Node</a></li>
+<li><a href="/Promises/">Promises</a></li>
+<li><a href="/WebServer/">Web Server</a></li>
+<li><a href="/AdvancedPromises/">Advanced Promises</a></li>
+<li><a href="/Express/">Express</a></li>
+<li><a href="/Testing/">Testing</a></li>
+<li><a href="/AsyncAwait/">Async/Await</a></li></ul>
+          </nav>
+        </div>
+      </div>
+
+      <div class="headerContainer">
+        <div class="headerContained">
+          <img src="/_src/assets/logo-white.png" alt='logo Henry' height=27px class="d-inline-block align-text-top">
+          <div>
+            <span class="lessonTitle"></span> | <span>Módulo 3 - Backend</span>
+          </div>
+        </div>
+      </div>
+
+      <main>
+        <div class="topnav" id='myTopnav' >
+          
+          <ul class="nav">
+      
+      <li class="link">
+        <a href="/" class="nav-link" role="menuitem">Intro</a>
+      </li>
+<li class="link">
+        <a href="/Node/" class="nav-link" role="menuitem">Node</a>
+      </li>
+<li class="link">
+        <a href="/Promises/" class="nav-link" role="menuitem">Promises</a>
+      </li>
+<li class="link">
+        <a href="/WebServer/" class="nav-link" role="menuitem">Web Server</a>
+      </li>
+<li class="link">
+        <a href="/AdvancedPromises/" class="nav-link" role="menuitem">Advanced Promises</a>
+      </li>
+<li class="link">
+        <a href="/Express/" class="nav-link" role="menuitem">Express</a>
+      </li>
+<li class="link">
+        <a href="/Testing/" class="nav-link" role="menuitem">Testing</a>
+      </li>
+<li class="link">
+        <a href="/AsyncAwait/" class="nav-link" role="menuitem">Async/Await</a>
+      </li>
+    </ul>
+        </div>
+
+        <div class='sidebar'>
+          <div class="tocTitle">
+            Contenido de la clase
+            </div>
+          <div class="tocBox">
+            
+            <nav class="toc" >
+        <ul><li><a href="#introducci%C3%B3n">Introducción </a><ul><li><a href="#setup">Setup </a></li></ul></li><li><a href="#ejercicios">Ejercicios </a><ul><li><a href="#single-promises-%26-promise-chains">Single Promises &amp; Promise Chains </a></li><li><a href="#combinado-promises-%26-promise-chains">Combinado Promises &amp; Promise Chains </a></li></ul></li></ul>
+      </nav>
+          </div>
+        </div>
+
+        <div class='lesson'>
+          <div style="display:flex; justify-content: right; right: 0; width: 100%;">
+            <div class="readingTime">
+                    Tiempo de lectura 6 min
+            </div>
+          </div>
+          <div>
+            
+            <h1 id="henry" tabindex="-1">Henry <a class="anchor-link" href="#henry"></a></h1>
+<h2 id="introducci%C3%B3n" tabindex="-1">Introducción <a class="anchor-link" href="#introducci%C3%B3n"></a></h2>
+<h3 id="setup" tabindex="-1">Setup <a class="anchor-link" href="#setup"></a></h3>
+<p>Vas a examinar un poco de código asincrónico usando vanilla callbacks, e intentando escribir código que haga acciones idénticas usando promises.</p>
+<p><strong>Por favor lee estas notas antes de empezar:</strong></p>
+<ul>
+<li>Porque el código asincrónico es no-determinístico (i.e. los resultados no pueden ser determinados antes de tiempo), asegurate de testear el output de tus soluciones corriéndolos múltiples veces, para ver las posibilidades.</li>
+<li>Adicionalmente, asegurate de comentar las soluciones que implementan vanilla callbacks antes de testear tus versiones <em>promisificadas</em>; de otra manera, las soluciones con callback pasaran los tests por vos!</li>
+<li>Cuando la consigna pida un catch para manejo de errores, asegurate de verificar que funcione en ambos casos. Es decir, si la promesa se resuelve por el camino del error debería ingresar al catch y si se resuelve por el camino del éxito deberia mostrar las stanzas cumpliendo con el orden especificado en la consigna.</li>
+<li>En caso de tener que lanzar un error deberías hacerlo con new Error() para que pase los tests correctamente.</li>
+<li>Y por último, tomate tu tiempo de leer las primeras lineas de ambos ejercicios; en particular, toma nota de <code>promisifiedReadFile</code> como también las funciones <code>blue</code> y <code>magenta</code>. Vas a querer usar la primera función en tus soluciones, pero mirá si también puedes incorporar las otras dos.</li>
+</ul>
+<h2 id="ejercicios" tabindex="-1">Ejercicios <a class="anchor-link" href="#ejercicios"></a></h2>
+<h3 id="single-promises-%26-promise-chains" tabindex="-1">Single Promises &amp; Promise Chains <a class="anchor-link" href="#single-promises-%26-promise-chains"></a></h3>
+<p>Para los primeros ejercicios, vas a empezar una Promise y encadenar de ella con <code>.then</code>. El patrón basico se ve algo así:</p>
+<pre class="language-js"><code class="hljs language-js"><span class="token function">asyncFunctionThatReturnsPromise</span><span class="token punctuation">(</span><span class="token punctuation">)</span><br>  <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token function">successHandler1</span><span class="token punctuation">(</span><span class="token parameter">result</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token comment">// Usa el valor adentro del callback</span><br>    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"async1 is done!"</span><span class="token punctuation">,</span> result<span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token keyword">return</span> <span class="token function">asyncFunctionThatReturnsPromise</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// wow, devolviendo algo asincrónico</span><br>  <span class="token punctuation">}</span><span class="token punctuation">)</span><br>  <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token function">successHandler2</span><span class="token punctuation">(</span><span class="token parameter">result2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token comment">// usa el siguiente valor</span><br>    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"async2 is done!"</span><span class="token punctuation">,</span> result2<span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Notá un punto muy importante: llamar a <code>.then</code> siempre devuelve una nueva promesa a la cual podes llamar a <code>.then</code> otra vez (y otra vez).</p>
+<p>También, si devuelves un valor o una promesa por un valor de un success handler, la siguiente parte de la cadena recibe ese valor. De esta manera, podes evitar el “callback hell”.</p>
+<hr>
+<p>Una parte crucial de la asincronicidad es recordar manejar los errores. En el estilo de node, <em>“error first”</em>, eras recordado manejar los errores en cada paso:</p>
+<pre class="language-js"><code class="hljs language-js"><span class="token function">asyncFunction</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token function">callback1</span><span class="token punctuation">(</span><span class="token parameter">err<span class="token punctuation">,</span> result</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  <span class="token keyword">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"ERR!"</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span><span class="token punctuation">;</span><br>  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token function">asyncFunction</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token function">callback2</span><span class="token punctuation">(</span><span class="token parameter">err<span class="token punctuation">,</span> result</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"ERR2!"</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span><span class="token punctuation">;</span><br>    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>result2<span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Con Promises, podemos manejar errores en cada paso si queremos (pasando un segundo “error handler” function al <code>.then</code>), pero podemos también simplemente manejar TODOS los errores de una cadena usando <code>.catch</code> al final:</p>
+<pre class="language-js"><code class="hljs language-js"><span class="token function">asyncFunctionThatReturnsPromise</span><span class="token punctuation">(</span><span class="token punctuation">)</span><br>  <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token function">successHandler1</span><span class="token punctuation">(</span><span class="token parameter">result</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token keyword">return</span> <span class="token function">asyncFunctionThatReturnsPromise</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// wow, devolviendo algo asincrónico</span><br>  <span class="token punctuation">}</span><span class="token punctuation">)</span><br>  <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token function">successHandler2</span><span class="token punctuation">(</span><span class="token parameter">result2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"async2 is done!"</span><span class="token punctuation">,</span> result2<span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><span class="token punctuation">)</span><br>  <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token function">errorHandler</span><span class="token punctuation">(</span><span class="token parameter">err</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"ERR"</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// maneja cualquier error de toda la cadena de arriba.</span><br>  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h3 id="combinado-promises-%26-promise-chains" tabindex="-1">Combinado Promises &amp; Promise Chains <a class="anchor-link" href="#combinado-promises-%26-promise-chains"></a></h3>
+<p>En el siguiente ejercicio de este workshop, vas a tener que combinar múltiples promesas independientes / Promise chains. Como mínimo, los docs de <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">ES6</a> en promesas deberían darte una idea de como proceder; no necesitas ningún otro metodo(s) ademas de los que las promises tienen de forma nativa para resolver este problema.</p>
+<p>+++Combinando promises<br>
+Fijate en <code>.all</code><br>
++++</p>
+<p>Sin embargo, la librería de Promise de Bluebird que estamos usando también tiene bastantes funciones mas copadas para investigar si estas interesado. Algunas de ellas pueden resultar en código mas elegante si lo podes usar correctamente.</p>
+<p>+++Combinando promises (Edición Picante)<br>
+Además de <code>.all</code>, mira <code>.join</code>, <code>.spread</code>, <code>.each</code>, <code>.map</code>, y <code>.reduce</code>. Algunos o varios de estos métodos pueden ser usados de distintas formas para llegar a resultados idénticos.<br>
++++</p>
+
+          </div>
+        </div>
+
+      </main>
+
+      <div class="feedback">
+        <a href='https://airtable.com/shrBpWkYV4K12PPNZ?prefill_clase=' target="_blank">
+          Dejanos tu feedback!👍
+        </a>
+      </div>
+
+      <div class="footerContainer">
+        <div class="footerContained">
+          <p>Hecho con 💛 por alumnos de Henry</p>
+        </div>
+      </div>
+
+      <div class="readerBarDiv">
+        
+  <!-- up button -->
+  <div>
+    <button
+      id="upBtn"
+      style="position:fixed; width:32px; height:32px; border-radius:50%; border:none; background-color:black; right:20px; bottom:55px; color:white; z-index:999; focus:outline-none; cursor:pointer; transition-duration:500ms; opacity:0; pointer-events:none;"
+    ><i class="arrow up"></i></button>
+  </div>
+  
+  <style>
+  .arrow {
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+  }
+
+  .up {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+  }
+  </style>
+
+  <script>
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 250) {
+      upBtn.style.opacity = 1;
+      upBtn.style.pointerEvents = 'auto';     
+    }
+    else {
+      upBtn.style.opacity = 0;
+      upBtn.style.pointerEvents = 'none';
+    }
+  })
+
+  upBtn.addEventListener('click', () => {
+    let start = document.querySelector('.reader-bar-start')
+    start.scrollIntoView({behavior: "smooth"})
+  })
+  </script>
+
+  <!-- reader bar -->
+  <div id="readerBarContainer" style="height:3px;width:100%;background-color:black;position:fixed;top:66px;left:0;z-index:1099;transition:0.2s;">
+    <div id="readerBar" style="height:3px;width:0;background-color:yellow;position:fixed;top:66px;left:0;z-index:1099;transition:0.2s;"></div>
+  </div>
+
+  <script>
+    let winH = window.innerHeight;
+    const content = document.querySelector('.reader-bar-start');
+
+    let contentH = content.offsetHeight;
+    let contentS = contentH - winH;
+    let readerBar = document.getElementById('readerBar');
+    window.addEventListener('load', () => {
+      document.addEventListener ('scroll', updateBar);
+    })
+    window.addEventListener('resize', redefine)
+
+    function redefine() {
+      winH = window.innerHeight;
+      contentH = content.offsetHeight;
+      contentS = contentH - winH;
+      updateBar();
+    }
+
+    function updateBar() {
+      const pagePos = window.scrollY; 
+      const updatedBar = pagePos * 100 / contentS;
+      readerBar.style.width = updatedBar + "%";
+    }
+  </script>
+  
+      </div>
+
+    </body>
+  </html>

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="/_src/styles/fonts.css">
+    <link rel="stylesheet" href="/_src/styles/header.css">
+    <link rel="stylesheet" href="/_src/styles/main.css">
+    <link rel="stylesheet" href="/_src/styles/topbar.css">
+    <link rel="stylesheet" href="/_src/styles/sidebar.css">
+    <link rel="stylesheet" href="/_src/styles/lesson.css">
+    <link rel="stylesheet" href="/_src/styles/code.css">
+    <link rel="stylesheet" href="/_src/styles/footer.css">
+    <link rel="stylesheet" href="/_src/styles/responsive.css">
+    <script src="https://kit.fontawesome.com/2c38f3d850.js" crossorigin="anonymous"></script>
+
+    <title> | Modulo 3 - Backend </title>
+  </head>
+
+  <body>
+    <div class="reader-bar-start">
+
+      <div class="headerResponsive">
+        <div class="leftContent">
+          <span><img src="/_src/assets/logo-white.png" alt='logo Henry' height=22px class="d-inline-block align-text-top"></span><span></span>
+        </div>
+        <div class="menuDiv">
+          <input type="checkbox">
+          <i class="fas fa-bars"></i>
+          <i class="fas fa-times"></i>
+          <nav>
+            <ul><li><a href="/">Intro</a></li>
+<li><a href="/Node/">Node</a></li>
+<li><a href="/Promises/">Promises</a></li></ul>
+          </nav>
+        </div>
+      </div>
+
+      <div class="headerContainer">
+        <div class="headerContained">
+          <img src="/_src/assets/logo-white.png" alt='logo Henry' height=27px class="d-inline-block align-text-top">
+          <div>
+            <span class="lessonTitle"></span> | <span>Prep Course</span>
+          </div>
+        </div>
+      </div>
+
+      <main>
+        <div class="topnav" id='myTopnav' >
+          
+          <ul class="nav">
+      
+      <li class="link">
+        <a href="/" class="nav-link" role="menuitem">Intro</a>
+      </li>
+<li class="link">
+        <a href="/Node/" class="nav-link" role="menuitem">Node</a>
+      </li>
+<li class="link">
+        <a href="/Promises/" class="nav-link" role="menuitem">Promises</a>
+      </li>
+    </ul>
+        </div>
+
+        <div class='sidebar'>
+          <div class="tocTitle">
+            Contenido de la clase
+            </div>
+          <div class="tocBox">
+            
+            <nav class="toc" >
+        <ul><li><a href="#qu%C3%A9-es-un-servidor-web%2C-exactamente%3F">Qué es un servidor web, exactamente? </a><ul><li><a href="#modelo-cliente-servidor">Modelo cliente servidor </a></li></ul></li><li><a href="#qu%C3%A9-necesitamos-que-tenga-un-servidor-web-en-node">Qué necesitamos que tenga un servidor web en Node </a><ul><li><a href="#entendiendo-el-protocolo-http">Entendiendo el protocolo HTTP </a></li></ul></li><li><a href="#%C2%BFqu%C3%A9-m%C3%A1s-podemos-hacer%2C-ahora-que-tenemos-un-server-corriendo%3F">¿Qué más podemos hacer, ahora que tenemos un server corriendo? </a><ul><li><a href="#enviando-html">Enviando HTML </a></li><li><a href="#contenido-din%C3%A1mico%3A-templates">Contenido Dinámico: Templates </a></li><li><a href="#devolviendo-json">Devolviendo JSON </a></li><li><a href="#creando-m%C3%A1s-de-un-endpoint%3A-routing">Creando más de un Endpoint: Routing </a></li><li><a href="#manejando-las-urls-que-no-existen">Manejando las URLs que no existen </a></li></ul></li><li><a href="#api-(aplication-programming-interface)">API (Aplication Programming Interface) </a><ul><li><a href="#en-librer%C3%ADas-y-frameworks">En Librerías y Frameworks </a></li><li><a href="#sistemas-operativos">Sistemas Operativos </a></li><li><a href="#apis-remotas">Apis Remotas </a></li><li><a href="#web-apis">Web APIS </a></li></ul></li><li><a href="#rest">REST </a></li><li><a href="#cliente---servidor">Cliente - Servidor </a></li><li><a href="#stateless">Stateless </a></li><li><a href="#cacheable">Cacheable </a></li><li><a href="#sistema-de-capas">Sistema de capas </a></li><li><a href="#interface-uniforme">Interface Uniforme </a></li><li><a href="#otras-arquitecturas">Otras Arquitecturas </a></li></ul>
+      </nav>
+          </div>
+        </div>
+
+        <div class='lesson'>
+          <div style="display:flex; justify-content: right; right: 0; width: 100%;">
+            <div class="readingTime">
+                    Tiempo de lectura 31 min
+            </div>
+          </div>
+          <div>
+            
+            <h1 id="henry" tabindex="-1">Henry <a class="anchor-link" href="#henry"></a></h1>
+<table width="100%" style='table-layout:fixed;'>
+  <tr>
+	  <td>
+	  	<a href="https://airtable.com/shrBpWkYV4K12PPNZ?prefill_clase=03-WebServer">
+			<img src="https://static.thenounproject.com/png/204643-200.png" width="100"/>
+			<br>
+			Hacé click acá para dejar tu feedback sobre esta clase.
+	  	</a>
+	  </td>
+              <td>
+	    <a href="https://quiz.soyhenry.com/evaluation/new/606e31b2656c8d23c2e60ecb">
+	    	<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/HSQuiz.svg/768px-HSQuiz.svg.png" width="100" height="100"/>
+	    	<br>
+	    	Hacé click acá completar el quiz teórico de esta lecture.
+	    </a>
+	 </td>
+  </tr>
+</table>
+<h1 id="armando-un-servidor-web-con-nodejs" tabindex="-1">Armando un Servidor Web con Nodejs <a class="anchor-link" href="#armando-un-servidor-web-con-nodejs"></a></h1>
+<h2 id="qu%C3%A9-es-un-servidor-web%2C-exactamente%3F" tabindex="-1">Qué es un servidor web, exactamente? <a class="anchor-link" href="#qu%C3%A9-es-un-servidor-web%2C-exactamente%3F"></a></h2>
+<p>Un servidor web es cualquier computadora o sistema que procese solicitudes (requests) y que devuelva una respuesta (response) a través de un protocolo de red.</p>
+<h3 id="modelo-cliente-servidor" tabindex="-1">Modelo cliente servidor <a class="anchor-link" href="#modelo-cliente-servidor"></a></h3>
+<p><img src="./img/csmodel.png" alt="client-server"></p>
+<p>Este es el modelo simplificado de cualquier consulta a un servidor web.</p>
+<p>El cliente pide un recurso o servicio a un servidor, usando un mensaje en un formato standart (HTTP). El servidor recibe el mensaje, lo decodifica, realiza el servicio que se le pidió y devuelve el resultado en el mismo formato.</p>
+<h2 id="qu%C3%A9-necesitamos-que-tenga-un-servidor-web-en-node" tabindex="-1">Qué necesitamos que tenga un servidor web en Node <a class="anchor-link" href="#qu%C3%A9-necesitamos-que-tenga-un-servidor-web-en-node"></a></h2>
+<ul>
+<li>Maneras de organizar nuestro código para que sea reusable
+<ul>
+<li>Nodejs Modules</li>
+</ul>
+</li>
+<li>Poder leer y escribir archivos ( input/output)
+<ul>
+<li>streams y pipes</li>
+</ul>
+</li>
+<li>Leer y escribir en Bases de Datos</li>
+<li>Poder enviar y recibir datos de internet</li>
+<li>Poder interpretar los formatos estándares
+<ul>
+<li>http_parser</li>
+</ul>
+</li>
+<li>Alguna forma de manejar procesos que lleven mucho tiempo
+<ul>
+<li>Naturaleza asincrónica de javascript, callbacks</li>
+</ul>
+</li>
+</ul>
+<h3 id="entendiendo-el-protocolo-http" tabindex="-1">Entendiendo el protocolo HTTP <a class="anchor-link" href="#entendiendo-el-protocolo-http"></a></h3>
+<p>Nodejs viene preparado para poder leer e interpretar el contenido de un mensaje HTTP. Lo logra con la librería <a href="https://github.com/nodejs/http-parser">http_parser</a>, qué es un programa hecho en C y que está embebido en Node.</p>
+<p>Usando esta librería de C, Nodejs tiene módulos que nos ayudan a manejar de manera fácil request y reponses HTTP.</p>
+<h1 id="empezemos-a-construir-un-server-b%C3%A1sico" tabindex="-1">Empezemos a construir un server básico <a class="anchor-link" href="#empezemos-a-construir-un-server-b%C3%A1sico"></a></h1>
+<pre class="language-javascript"><code class="hljs language-javascript"><span class="token keyword">var</span> http <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'http'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// importamos el módulo http para poder trabajar con el protocolo</span><br><br>http<span class="token punctuation">.</span><span class="token function">createServer</span><span class="token punctuation">(</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token comment">// Creamos una serie de events listener, que van a escuchar por requests que ocurren en este socket</span><br>	<span class="token comment">//Para crear un response empezamos escribiendo el header</span><br>	res<span class="token punctuation">.</span><span class="token function">writeHead</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token string">'Content-Type'</span><span class="token operator">:</span><span class="token string">'text/plain'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token comment">//Le ponemos el status code y algunos pair-values en el header</span><br>	res<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token string">'Hola, Mundo!\n'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span><span class="token number">1337</span><span class="token punctuation">,</span> <span class="token string">'127.0.0.1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//Por último tenemos que especificar en que puerto y en qué dirección va a estar escuchando nuestro servidor</span></code></pre>
+<p>Para probar el código, corremos el código usando <code>node app.js</code>. Primero notamos que a diferencia de otro código que podamos haber corrido, este programa no termina su ejecución, esto sucede porque el servidor está hecho de manera que se quede escuchando indefinidamente por requests en el puerto y dirección especificadas.</p>
+<p>Ahora, para ver si está funcionando como esperábamos vamos a ir al browser y en la barra de dirección escribrimos <code>localhost:1337</code>, de esta forma el browser va a ser un request al socket donde dejamos escuchando nuestro server.</p>
+<p><img src="./img/serverRunning.png" alt="Server-Running"></p>
+<p>Como vemos el servidor respondió con el texto que especificamos en nuestro código!</p>
+<p>De hecho, usando las developer tools, podemos ver el request HTTP que hizo el server:</p>
+<p><img src="./img/serverNetwork.png" alt="Server-Network"></p>
+<h2 id="%C2%BFqu%C3%A9-m%C3%A1s-podemos-hacer%2C-ahora-que-tenemos-un-server-corriendo%3F" tabindex="-1">¿Qué más podemos hacer, ahora que tenemos un server corriendo? <a class="anchor-link" href="#%C2%BFqu%C3%A9-m%C3%A1s-podemos-hacer%2C-ahora-que-tenemos-un-server-corriendo%3F"></a></h2>
+<h3 id="enviando-html" tabindex="-1">Enviando HTML <a class="anchor-link" href="#enviando-html"></a></h3>
+<p>Ahora vamos a mejorar el servidor para que no sólo devuelva texto plano, sino que devuelva HTML.<br>
+Podríamos incluir el html como string dentro del código del servidor, pero eso sería engorroso de manejar.</p>
+<p>Por lo que vamos a crear un nuevo archivo HTML muy simple llamado <code>index.html</code> al que vamos a leer con el servidor.</p>
+<pre class="language-html"><code class="hljs language-html"> <span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">></span></span><br> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span><br> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span><br> 	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>Prueba!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span><br> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span><br> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span><br> 	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span>Hola, Mundo!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span><br> 	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>Bienvenidos!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span><br> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre>
+<p>Como dijimos que vamos a tener que <strong>leer</strong> el archivo, vamos a necesitar el módulo <em>fs</em> de nodejs.</p>
+<pre class="language-javascript"><code class="hljs language-javascript"><span class="token keyword">var</span> fs   <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'fs'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Además ahora tenemos que cambiar la propiedad <code>Content-type</code> de <code>text/text</code> a <code>text/html</code> para que el browser sepa que le estamos enviando un archivo que contiene html y no sólo texto plano. <em><strong>¿Qué pasaría si no cambiaramos esta propiedad?</strong></em></p>
+<p>Ahora vamos a usar el método <code>readFileSync</code> de <code>fs</code> para leer el archivo <code>index.html</code> que habiamos creado y lo guardamos en una nueva variable que llamaremos <code>html</code>.</p>
+<p><strong>En este caso particular usaremos el método de lectura sincrónico para no complicar el código</strong></p>
+<p>Una vez leído el archivo, vamos a poder enviarlo como argumento del método <code>end</code>.</p>
+<pre class="language-javascript"><code class="hljs language-javascript"><span class="token keyword">var</span> http <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'http'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token keyword">var</span> fs   <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'fs'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//Importamos el módulo fs que nos permite leer y escribir archivos del file system</span><br><br>http<span class="token punctuation">.</span><span class="token function">createServer</span><span class="token punctuation">(</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span><span class="token punctuation">{</span> <br>	<br>	res<span class="token punctuation">.</span><span class="token function">writeHead</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token string">'Content-Type'</span><span class="token operator">:</span><span class="token string">'text/html'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><br>	<span class="token keyword">var</span> html <span class="token operator">=</span> fs<span class="token punctuation">.</span><span class="token function">readFileSync</span><span class="token punctuation">(</span>__dirname <span class="token operator">+</span><span class="token string">'/html/index.html'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>	res<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span>html<span class="token punctuation">)</span><span class="token punctuation">;</span><br><br><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span><span class="token number">1337</span><span class="token punctuation">,</span> <span class="token string">'127.0.0.1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Corremos el servidor con <code>node</code> y vemos el nuevo resultado:</p>
+<p><img src="./img/serverConHtml.png" alt="Server-con-Html"></p>
+<p>Como vemos, cuando le llegó el request al server, este leyó el archivo html y lo envió. El browser interpretó que el contenido era <code>text/html</code> y lo renderizó como tal.</p>
+<h3 id="contenido-din%C3%A1mico%3A-templates" tabindex="-1">Contenido Dinámico: <strong>Templates</strong> <a class="anchor-link" href="#contenido-din%C3%A1mico%3A-templates"></a></h3>
+<p>Si quisieramos que el contenido del html no sea estático podriamos, por ejemplo, hacer que el html varie según una variable. Veamos como podemos lograr eso.</p>
+<p>Primero vamos a crear un nuevo html al que llamaremos <code>template.html</code>. Y vamos a agregar un placeholder (en este caso particular encerramos una palabra con <code>{}</code> ), lo que haremos luego será buscar en el archivo lo que esté encerrado en <code>{}</code> y reemplazarlo por el contenido la variable que elijamos.</p>
+<pre class="language-html"><code class="hljs language-html"> <span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">></span></span><br> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span><br> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span><br> 	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>Prueba!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span><br> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span><br> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span><br> 	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span>Hola, {nombre}!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span><br> 	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>Bienvenidos!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span><br> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre>
+<p>Esta idea, de tener placeholders que luego serán reemplazados por contenido que esté en una variable es conocido como <strong>Templates</strong>. Existen varios <em>lenguajes</em> de templating que trabajan con este concepto. Más adelante veremos algunos de ellos.</p>
+<p>Ahora volvamos al código del servidor. Ahora, antes de enviar el html leído del archivo lo vamos a tener que parsear, por eso vamos a tener que tratar el archivo como una <code>String</code> y no como un <code>Buffer</code>, por lo que agregaremos el argumento <code>'utf-8' a la función </code>readFileSync`, para que el buffer sea codificado a una String.</p>
+<p>Luego, vamos a crear la variable que va a tener el texto que queremos que se reemplaze en nuestro template. Por ejemplo: <code>var nombre = 'Soy Henry'</code>.</p>
+<p>Ahora vamos a usar el método <code>replace</code> del objeto <code>String</code>, para que cuando encuentre el placeholder antes definido ( <em>{nombre}</em> ) lo reemplaze por el contenido de nuestra variable <code>nombre</code>.</p>
+<p>Finalmente, enviamos lo que está en la variable <code>html</code> en el response.</p>
+<pre class="language-javascript"><code class="hljs language-javascript"><span class="token keyword">var</span> http <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'http'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token keyword">var</span> fs   <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'fs'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//Importamos el módulo fs que nos permite leer y escribir archivos del file system</span><br><br>http<span class="token punctuation">.</span><span class="token function">createServer</span><span class="token punctuation">(</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span><span class="token punctuation">{</span> <br>	<br>	res<span class="token punctuation">.</span><span class="token function">writeHead</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token string">'Content-Type'</span><span class="token operator">:</span><span class="token string">'text/html'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><br>	<span class="token keyword">var</span> html <span class="token operator">=</span> fs<span class="token punctuation">.</span><span class="token function">readFileSync</span><span class="token punctuation">(</span>__dirname <span class="token operator">+</span><span class="token string">'/html/template.html'</span><span class="token punctuation">,</span> <span class="token string">'utf8'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//Codificamos el buffer para que sea una String</span><br>	<span class="token keyword">var</span> nombre <span class="token operator">=</span> <span class="token string">'Soy Henry'</span><span class="token punctuation">;</span> <span class="token comment">//Esta es la variable con la que vamos a reemplazar el template</span><br>	html <span class="token operator">=</span> html<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token string">'{nombre}'</span><span class="token punctuation">,</span> nombre<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Usamos el método replace es del objeto String</span><br>	res<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span>html<span class="token punctuation">)</span><span class="token punctuation">;</span><br><br><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span><span class="token number">1337</span><span class="token punctuation">,</span> <span class="token string">'127.0.0.1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Si todo funcionó bien, al recibir el request el server leerá el archivo html, reemplazará el contenido de la variable dentro del placeholder que habíamos definido. Luego enviará el resultado al browser por lo que deberíamos ver lo siguente:</p>
+<p><img src="./img/serverTemplate.png" alt="Server-Template"></p>
+<h3 id="devolviendo-json" tabindex="-1">Devolviendo JSON <a class="anchor-link" href="#devolviendo-json"></a></h3>
+<p>Como sabemos, existen servidores cuyas URLS no nos devuelven un archivo HTML, si no que nos devuelven datos en formato JSON. Comunmente estos <em>endpoints</em> son parte de un <strong>API</strong>.</p>
+<p>Veamos como podríamos modificar nuestro servidor para que se comporte como lo haría un endpoint de un API.</p>
+<p>Como vimos antes, lo primero que debemos cambiar es el header que indica el tipo de contenido que estamos devolviendo, ahora vamos a cambiar el <code>content-type</code> a <code>application/json</code>, que es el <strong>MIME TYPE</strong> para JSON.</p>
+<p>Ahora, en vez de leer de un archivo, vamos a crear algo de datos. Por ejemplo, podemos crear un objeto:</p>
+<pre class="language-javascript"><code class="hljs language-javascript"><span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span><br>	nombre<span class="token operator">:</span> <span class="token string">'Juan'</span><span class="token punctuation">,</span><br>	apellido<span class="token operator">:</span> <span class="token string">'Perez'</span><br><span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>Antes de enviar el objeto, debemos convertir el contenido a un String con formato JSON. Para esto vamos a usar la función <code>stringify</code> del objeto <code>JSON</code>, el cuál transforma un objeto a un string con notación JSON.</p>
+<p>El proceso de transformar un objeto a un formato que pueda ser transferido o guardado se conoce como <strong>SERIALIZE</strong>. En este caso transformamos un objeto que estaba en memoria en un string con formato JSON que puede ser enviado por internet. Otros ejemplo de formatos pueden ser CSV, XML, etc.<br>
+El proceso inverso (el de transformar de un formato a un objeto en memoria) se conoce como <strong>DESERIALIZE</strong>.</p>
+<pre class="language-javascript"><code class="hljs language-javascript"><span class="token keyword">var</span> http <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'http'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token keyword">var</span> fs   <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'fs'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>http<span class="token punctuation">.</span><span class="token function">createServer</span><span class="token punctuation">(</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span><span class="token punctuation">{</span> <br>	<br>	res<span class="token punctuation">.</span><span class="token function">writeHead</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token string">'Content-Type'</span><span class="token operator">:</span><span class="token string">'application/json'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token comment">//Vamos a devolver texto en formato JSON</span><br>	<span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span><br>		nombre<span class="token operator">:</span> <span class="token string">'Juan'</span><span class="token punctuation">,</span><br>		apellido<span class="token operator">:</span> <span class="token string">'Perez'</span><br>	<span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment">//Creamos un objeto de ejemplo para enviar como response</span><br>	<br>	res<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span> <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//Antes de enviar el objeto, debemos parsearlo y transformarlo a un string JSON</span><br><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span><span class="token number">1337</span><span class="token punctuation">,</span> <span class="token string">'127.0.0.1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>De nuevo, corremos el servidor y vamos al browser a probar nuestro nuevo endpoint.</p>
+<p><img src="./img/jsonServer.png" alt="Server-Template"></p>
+<p>Como vemos, nuestro servidor nos devolvió correctamente el objeto que habiamos creado.</p>
+<h3 id="creando-m%C3%A1s-de-un-endpoint%3A-routing" tabindex="-1">Creando más de un Endpoint: <strong>Routing</strong> <a class="anchor-link" href="#creando-m%C3%A1s-de-un-endpoint%3A-routing"></a></h3>
+<p>Todos los ejemplos anteriores de servidores mantiene una sola ruta, es decir, que cualquier request que llegué al servidor va a ser servida de la misma forma ( <em>Prueben desde el browser hacer request a un path distinto, por ejemplo: <code>http://localhost:1337/index/</code> o <code>http://localhost:1337/hola.jpg</code></em>). Esto se debe a que en ningún momento en nuestro código nos fijamos qué URL está pidiendo el request, simplemente le devolvemos lo mismo a cualquier request!</p>
+<p>Ahora veremos como podemos mapear distintos requests HTML a distintos contenidos en el servidor, este proceso de mapeo es conocido como <strong>ROUTING</strong>.</p>
+<p>Para hacerlo vamos a tener que examinar en cada request que llega la URL a la que quiere acceder, para eso vamos a hacer uso del objeto <code>req</code> que vive dentro de la función <code>createServer</code>. Ese objeto tiene toda la información del request que llegó, en este caso nos interesa la URL, ese dato lo encontraremos en <code>req.url</code>.</p>
+<p>Para este ejemplo vamos a agregar dos rutas, la primera <em>‘/’</em> en la que devolveremos el html leyendo del archivo como hicimos al princio, y la segunda <em>‘/api’</em> en la que devolveremos el objeto JSON.</p>
+<p>Como dijimos la propiedad <code>req.url</code> contiene la URL del request, por la tanto nos fijaremos en su contenido para decidir qué queremos devolver:</p>
+<pre class="language-javascript"><code class="hljs language-javascript"><span class="token keyword">var</span> http <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'http'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token keyword">var</span> fs   <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'fs'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>http<span class="token punctuation">.</span><span class="token function">createServer</span><span class="token punctuation">(</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span><span class="token punctuation">{</span> <br>	<span class="token keyword">if</span><span class="token punctuation">(</span> req<span class="token punctuation">.</span>url <span class="token operator">===</span> <span class="token string">'/'</span><span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token comment">//Si la URL es / devolvemos el HTML</span><br>		res<span class="token punctuation">.</span><span class="token function">writeHead</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token string">'Content-Type'</span><span class="token operator">:</span><span class="token string">'text/html'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><br>		<span class="token keyword">var</span> html <span class="token operator">=</span> fs<span class="token punctuation">.</span><span class="token function">readFileSync</span><span class="token punctuation">(</span>__dirname <span class="token operator">+</span><span class="token string">'/html/index.html'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>		res<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span>html<span class="token punctuation">)</span><span class="token punctuation">;</span><br>	<span class="token punctuation">}</span><br>	<span class="token keyword">if</span><span class="token punctuation">(</span>req<span class="token punctuation">.</span>url <span class="token operator">===</span> <span class="token string">'/api'</span><span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token comment">//Si la URL es /api devolvemos el objeto</span><br>		res<span class="token punctuation">.</span><span class="token function">writeHead</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token string">'Content-Type'</span><span class="token operator">:</span><span class="token string">'application/json'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><br>		<span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span><br>			nombre<span class="token operator">:</span> <span class="token string">'Juan'</span><span class="token punctuation">,</span><br>			apellido<span class="token operator">:</span> <span class="token string">'Perez'</span><br>		<span class="token punctuation">}</span><span class="token punctuation">;</span>	<br>		res<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span> <span class="token punctuation">)</span><span class="token punctuation">;</span><br>	<span class="token punctuation">}</span> <br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span><span class="token number">1337</span><span class="token punctuation">,</span> <span class="token string">'127.0.0.1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Ahora corramos el servidor, y probemos los distintos endpoints en el browser.</p>
+<p>Vamos a ‘localhost:1337/’:</p>
+<p><img src="./img/slashServer.png" alt="Slash-Server"></p>
+<p>Nos devolvió el HTML, como esperabamos!</p>
+<p>Ahora a ‘localhost:1337/’:</p>
+<p><img src="./img/apiserver.png" alt="Api-Server"></p>
+<p>:D</p>
+<p><strong>¿Qué pasa ahora con los demás endpoints, por ejemplo ‘localhost:1337/hola/como/va’? Por qué el servidor se comporta de esa forma?</strong></p>
+<h3 id="manejando-las-urls-que-no-existen" tabindex="-1">Manejando las URLs que no existen <a class="anchor-link" href="#manejando-las-urls-que-no-existen"></a></h3>
+<p>Todos sabemos que cuando ingresamos una URL que no existe en la web terminamos obteniendo el error <strong>404</strong>, que es el código que define el error ‘Not Found’ dentro del standart HTTP.</p>
+<p>Entonces, agreguemos a nuestro server la funcionalidad que si la URL del request no coincide con ninguna de las que habiamos ruteado que devuelva el error 404. Vamos a agregar un <code>else if</code> y luego un <code>else</code> para asegurnos que sólo se ejecute la porción de código que queremos en cada caso:</p>
+<pre class="language-javascript"><code class="hljs language-javascript"><span class="token keyword">var</span> http <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'http'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token keyword">var</span> fs   <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'fs'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>http<span class="token punctuation">.</span><span class="token function">createServer</span><span class="token punctuation">(</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span><span class="token punctuation">{</span> <br>	<span class="token keyword">if</span><span class="token punctuation">(</span> req<span class="token punctuation">.</span>url <span class="token operator">===</span> <span class="token string">'/'</span><span class="token punctuation">)</span><span class="token punctuation">{</span><br>		res<span class="token punctuation">.</span><span class="token function">writeHead</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token string">'Content-Type'</span><span class="token operator">:</span><span class="token string">'text/html'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><br>		<span class="token keyword">var</span> html <span class="token operator">=</span> fs<span class="token punctuation">.</span><span class="token function">readFileSync</span><span class="token punctuation">(</span>__dirname <span class="token operator">+</span><span class="token string">'/html/index.html'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>		res<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span>html<span class="token punctuation">)</span><span class="token punctuation">;</span><br>	<span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>req<span class="token punctuation">.</span>url <span class="token operator">===</span> <span class="token string">'/api'</span><span class="token punctuation">)</span><span class="token punctuation">{</span><br>		res<span class="token punctuation">.</span><span class="token function">writeHead</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token string">'Content-Type'</span><span class="token operator">:</span><span class="token string">'application/json'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><br>		<span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span><br>			nombre<span class="token operator">:</span> <span class="token string">'Juan'</span><span class="token punctuation">,</span><br>			apellido<span class="token operator">:</span> <span class="token string">'Perez'</span><br>		<span class="token punctuation">}</span><span class="token punctuation">;</span>	<br>		res<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span> <span class="token punctuation">)</span><span class="token punctuation">;</span><br>	<span class="token punctuation">}</span> <span class="token keyword">else</span><span class="token punctuation">{</span><br>		res<span class="token punctuation">.</span><span class="token function">writeHead</span><span class="token punctuation">(</span><span class="token number">404</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//Ponemos el status del response a 404: Not Found</span><br>		res<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//No devolvemos nada más que el estado.</span><br>	<span class="token punctuation">}</span><br>	<br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span><span class="token number">1337</span><span class="token punctuation">,</span> <span class="token string">'127.0.0.1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Ahora, si probamos desde el browser una URL que <em>no existe</em>, por ejemplo <code>http://localhost:1337/hola/como/va</code> obtenemos el siguiente resultado:</p>
+<p><img src="./img/404server.png" alt="404-Server"></p>
+<p>Copado, no?</p>
+<p>Ya pudimos armar nuestro propio servidor con algunos endpoints. Pero no les parece que si nuestro servidor tuviera muchas endpoints el código se haría muy engorroso y díficil de mantener? Por suerte hay gente que ya se topó con estos problemas y escribieron código que les ayuda a simplificar esta tarea.</p>
+<h1 id="restful-api" tabindex="-1">RESTful API <a class="anchor-link" href="#restful-api"></a></h1>
+<h2 id="api-(aplication-programming-interface)" tabindex="-1">API (Aplication Programming Interface) <a class="anchor-link" href="#api-(aplication-programming-interface)"></a></h2>
+<p>Una API es a un software o aplicación lo que una interfaz gráfica es al manejo de una computadora, es decir, una API nos facilita la comunicación con el software. Lo hace <strong>abstrayendo</strong> la implementación subyacente y mostrando solamente las acciones que son útiles para el desarrollador. De esta forma, al reducir el nivel de complejidad aparente de un software, bajan la carga de <em>entendimiento</em> que tienen que tener los desarrolladores antes de utilizar ciertas tecnologías.</p>
+<p>Ahora están de moda las API webs, pero existen de todo tipo y en casi todos los tipos de software:</p>
+<h3 id="en-librer%C3%ADas-y-frameworks" tabindex="-1">En Librerías y Frameworks <a class="anchor-link" href="#en-librer%C3%ADas-y-frameworks"></a></h3>
+<p>Cada vez que usemos una librería o un framework y vamos a su documentación es muy probable que nos encontremos un link a su API (si la librería o framework está bien documentado). En ella vamos a encontrar la descripción, la forma de usar y el comportamiento esperado de las tareas que realiza esa librería.<br>
+Según el tipo de lenguaje que usemos, la documentación de las API puede variar, por ejemplo: para lenguajes de scripting como <code>Lua</code> las api pueden consistir en describir funciones y rutinas con fines específicos, pero en lenguajes orientas a objetos como <code>java</code>, la api puede describir una serie de <em>clases</em> y sus respectivos <em>métodos</em>.</p>
+<h3 id="sistemas-operativos" tabindex="-1">Sistemas Operativos <a class="anchor-link" href="#sistemas-operativos"></a></h3>
+<p>Un API tambien puede especificar la interfaz entre una aplicación y el sistema operativo. De hecho, puede servir para mantener compatibilidad hacia atrás, ya que podemos espcificar distintas versiónes del API y mantener varias implementaciones. Por ejemplo, Microsoft Windows mantiene API de compatibilidad para ejecutar programas viejos sobre los nuevos sistemas operativos Windows, le llaman <em>Modo de Compatibilidad</em>.</p>
+<h3 id="apis-remotas" tabindex="-1">Apis Remotas <a class="anchor-link" href="#apis-remotas"></a></h3>
+<p>Una API remota les permite a los desarrolladores manipular recursos remotos a traves de un <em>protocolo</em> (no necesariamente HTTP). Por ejemplo, existen API que nos dejan hacer queries a distintos tipos de bases de datos que en general se encuentran en hosts remotos.</p>
+<h3 id="web-apis" tabindex="-1">Web APIS <a class="anchor-link" href="#web-apis"></a></h3>
+<p>Cuando la usamos en la web, van a estar montadas sobre el protocolo <code>http</code>, por lo tanto podríamos decir que una API web es un set de tipos de mensajes HTTPs posibles, junto con la descripción el formato de la eventual respuesta de esos mensajes ( en general la respuesta es en JSON o XML ). Históricamente el término Web api es similar a <em>web services</em>. La forma de implementar y de usar estos web services fue cambiando de paradigma, actualmente se usa el diseño tipo REST, y en general en una web se consumen más de un API y se combinan sus resultados en una sóla página.</p>
+<h4 id="endpoints" tabindex="-1">Endpoints <a class="anchor-link" href="#endpoints"></a></h4>
+<p>Un endpoint en un web api especifica donde están los recursos que pueden ser accedidos desde afuera de la API. Por ejemplo: <code>https://api.punkapi.com/v2/beers</code> especifica un endpoint de la API de <code>Punk Api</code>.</p>
+<blockquote>
+<p>Noten que esta API tiene la versión, por lo tanto ofrece compatibilidad hacia atrás.</p>
+</blockquote>
+<h2 id="rest" tabindex="-1">REST <a class="anchor-link" href="#rest"></a></h2>
+<p>Rest es una estilo arquitectura o forma de diseñar el backend de una aplicación que viva en internet. REST viene de “REpresentational State Transfer” y está basado fuertemente en cómo trabaja HTTP, que es el protocolo que usamos comunmente en la web.</p>
+<p>Como sabemos, HTTP es un protocolo basado en el modelo cliente servidor, quienes intercambian mensajes basados en ciertas acciones. Por ejemplo, un mensaje HTTP tipo GET realizado a la URL <code>http://example.com/</code>.</p>
+<p>está basado en recursos y no en acciones.</p>
+<p>Vamos a ver</p>
+<h1 id="concepto" tabindex="-1">Concepto <a class="anchor-link" href="#concepto"></a></h1>
+<h1 id="caracter%C3%ADsticas" tabindex="-1">Características <a class="anchor-link" href="#caracter%C3%ADsticas"></a></h1>
+<h2 id="cliente---servidor" tabindex="-1">Cliente - Servidor <a class="anchor-link" href="#cliente---servidor"></a></h2>
+<p>La arquitectura REST utiliza los conceptos del modelo cliente servidor en el sentido de separar las inquietudes de la interfaz de usuario con las inquietudes del manejo y guardado de datos. Esto ayuda a que cada componente pueda evolucionar de manera separada, acomodanse a como cambian hoy en día las interfaces en internet.</p>
+<h2 id="stateless" tabindex="-1">Stateless <a class="anchor-link" href="#stateless"></a></h2>
+<p>La comunicación entre el cliente y el servidor se logra sin que el servidor tenga guardado ningún contexto del cliente entre requests. Cada request del cliente contiene toda la información necesaria para que el servidor pueda contestar correctamente al request.</p>
+<h2 id="cacheable" tabindex="-1">Cacheable <a class="anchor-link" href="#cacheable"></a></h2>
+<p>En esta arquitectura, cada recurso tiene que estar marcado como cacheable o no. En el primer caso para ayudar al servidor a realizar menos trabajo y aumentar la performance y en el segundo para que no lleguen al cliente recursos con datos inapropiados.</p>
+<h2 id="sistema-de-capas" tabindex="-1">Sistema de capas <a class="anchor-link" href="#sistema-de-capas"></a></h2>
+<p>Un cliente no debería ser capaz de distinguir si se está conectado directamente con le servidor, o está pasando por un intermediario antes de llegar a él. Estos servidores intermediarios pueden ayudar a aumentar la performance implementando servicios de load-balancing, shared caches, etc…</p>
+<h2 id="interface-uniforme" tabindex="-1">Interface Uniforme <a class="anchor-link" href="#interface-uniforme"></a></h2>
+<p>El diseño de una interfaz uniforme es fundamental para la arquitectura, hacerlo bien simplifica mucho la arquitectura y la hace modular, logrando asi que pueda evolucionar o escalar para parte por separado. Las características que deben tener las interfaces uniformes son:</p>
+<ul>
+<li><strong>Identificación de recursos</strong>: Cada recurso tiene que ser identificado en el request, por ejemplo a través de un <em>URI</em>. El recurse per se también está separado de su representación, la que es enviada al cliente; esta puede ser, por ejemplo, el mismo recurso representado en: JSON, XML, HTML, etc…</li>
+<li><strong>Manipulación de recursos a través de representaciones</strong>: Cuando un cliente tiene la <em>representación</em> de un recursos, deberá tener la suficiente información para <em>modificar</em> o <em>eliminar</em> ese <strong>recurso</strong>.</li>
+<li><strong>Mensajes descriptivos</strong>: Cada mensaje deberá contener suficiente información para describir cómo procesar el mensaje. En una API web, esto se traduce a mapear rutas con los verbos <em>HTTP</em>.</li>
+<li><em><em>Hypermedia as the engine of application state(HATEOAS</em>)</em>_: Un cliente REST debería ser capaz de <em>navegar</em> y <em>descubrir</em> todas las acciones posibles de hacer a un recurso luego de interactuar con él. Es similar a cuando entramos a una web desde una <em>URL</em> y la web misma nos provee los <em>links</em> para que sigamos navegando. En la arquitectura REST debería ocurrir lo mismo, cada respuesta debería contener <em>links</em>  o información a las siguientes acciones que se pueden tomar.</li>
+</ul>
+<h2 id="otras-arquitecturas" tabindex="-1">Otras Arquitecturas <a class="anchor-link" href="#otras-arquitecturas"></a></h2>
+<p>REST no es la única forma de diseñar tu API, existen otras. Cada una será mejor o peor según el problema a resolver y un poco por el gusto del programador. Veamos algunas que están pisando fuerte pero todavía no son las más usadas:</p>
+<ul>
+<li><strong><a href="http://jsonapi.org/">JSON API</a></strong>: Es una especificación, al igual que REST. Está pensada para minimizar el número de requests y la cantidad de datos que se transmiten por la red.</li>
+<li><strong><a href="http://graphql.org/">GraphQL</a></strong>: Es en realidad una librería que ofrece un nuevo <strong>lenguaje</strong> para hacer consultas a nuestra API. Cambia un poco el concepto de endpoints, y los embebe en esta nueva forma de hacer queries. Todavía es nuevo, pero está tomando tracción rápidamente.</li>
+</ul>
+
+          </div>
+        </div>
+
+      </main>
+
+      <div class="feedback">
+        <a href='https://airtable.com/shrBpWkYV4K12PPNZ?prefill_clase=' target="_blank">
+          Dejanos tu feedback!👍
+        </a>
+      </div>
+
+      <div class="footerContainer">
+        <div class="footerContained">
+          <p>Hecho con 💛 por alumnos de Henry</p>
+        </div>
+      </div>
+
+      <div class="readerBarDiv">
+        
+  <!-- up button -->
+  <div>
+    <button
+      id="upBtn"
+      style="position:fixed; width:32px; height:32px; border-radius:50%; border:none; background-color:black; right:20px; bottom:55px; color:white; z-index:999; focus:outline-none; cursor:pointer; transition-duration:500ms; opacity:0; pointer-events:none;"
+    ><i class="arrow up"></i></button>
+  </div>
+  
+  <style>
+  .arrow {
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+  }
+
+  .up {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+  }
+  </style>
+
+  <script>
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 250) {
+      upBtn.style.opacity = 1;
+      upBtn.style.pointerEvents = 'auto';     
+    }
+    else {
+      upBtn.style.opacity = 0;
+      upBtn.style.pointerEvents = 'none';
+    }
+  })
+
+  upBtn.addEventListener('click', () => {
+    let start = document.querySelector('.reader-bar-start')
+    start.scrollIntoView({behavior: "smooth"})
+  })
+  </script>
+
+  <!-- reader bar -->
+  <div id="readerBarContainer" style="height:3px;width:100%;background-color:black;position:fixed;top:66px;left:0;z-index:1099;transition:0.2s;">
+    <div id="readerBar" style="height:3px;width:0;background-color:yellow;position:fixed;top:66px;left:0;z-index:1099;transition:0.2s;"></div>
+  </div>
+
+  <script>
+    let winH = window.innerHeight;
+    const content = document.querySelector('.reader-bar-start');
+
+    let contentH = content.offsetHeight;
+    let contentS = contentH - winH;
+    let readerBar = document.getElementById('readerBar');
+    window.addEventListener('load', () => {
+      document.addEventListener ('scroll', updateBar);
+    })
+    window.addEventListener('resize', redefine)
+
+    function redefine() {
+      winH = window.innerHeight;
+      contentH = content.offsetHeight;
+      contentS = contentH - winH;
+      updateBar();
+    }
+
+    function updateBar() {
+      const pagePos = window.scrollY; 
+      const updatedBar = pagePos * 100 / contentS;
+      readerBar.style.width = updatedBar + "%";
+    }
+  </script>
+  
+      </div>
+
+    </body>
+  </html>

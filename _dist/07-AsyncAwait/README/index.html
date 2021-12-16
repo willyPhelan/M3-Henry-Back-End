@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="/_src/styles/fonts.css">
+    <link rel="stylesheet" href="/_src/styles/header.css">
+    <link rel="stylesheet" href="/_src/styles/main.css">
+    <link rel="stylesheet" href="/_src/styles/topbar.css">
+    <link rel="stylesheet" href="/_src/styles/sidebar.css">
+    <link rel="stylesheet" href="/_src/styles/lesson.css">
+    <link rel="stylesheet" href="/_src/styles/code.css">
+    <link rel="stylesheet" href="/_src/styles/footer.css">
+    <link rel="stylesheet" href="/_src/styles/responsive.css">
+    <script src="https://kit.fontawesome.com/2c38f3d850.js" crossorigin="anonymous"></script>
+
+    <title> | Módulo 3 - Backend </title>
+  </head>
+
+  <body>
+    <div class="reader-bar-start">
+
+      <div class="headerResponsive">
+        <div class="leftContent">
+          <span><img src="/_src/assets/logo-white.png" alt='logo Henry' height=22px class="d-inline-block align-text-top"></span><span></span>
+        </div>
+        <div class="menuDiv">
+          <input type="checkbox">
+          <i class="fas fa-bars"></i>
+          <i class="fas fa-times"></i>
+          <nav>
+            <ul><li><a href="/">Intro</a></li>
+<li><a href="/Node/">Node</a></li>
+<li><a href="/Promises/">Promises</a></li>
+<li><a href="/WebServer/">Web Server</a></li>
+<li><a href="/AdvancedPromises/">Advanced Promises</a></li>
+<li><a href="/Express/">Express</a></li>
+<li><a href="/Testing/">Testing</a></li></ul>
+          </nav>
+        </div>
+      </div>
+
+      <div class="headerContainer">
+        <div class="headerContained">
+          <img src="/_src/assets/logo-white.png" alt='logo Henry' height=27px class="d-inline-block align-text-top">
+          <div>
+            <span class="lessonTitle"></span> | <span>Módulo 3 - Backend</span>
+          </div>
+        </div>
+      </div>
+
+      <main>
+        <div class="topnav" id='myTopnav' >
+          
+          <ul class="nav">
+      
+      <li class="link">
+        <a href="/" class="nav-link" role="menuitem">Intro</a>
+      </li>
+<li class="link">
+        <a href="/Node/" class="nav-link" role="menuitem">Node</a>
+      </li>
+<li class="link">
+        <a href="/Promises/" class="nav-link" role="menuitem">Promises</a>
+      </li>
+<li class="link">
+        <a href="/WebServer/" class="nav-link" role="menuitem">Web Server</a>
+      </li>
+<li class="link">
+        <a href="/AdvancedPromises/" class="nav-link" role="menuitem">Advanced Promises</a>
+      </li>
+<li class="link">
+        <a href="/Express/" class="nav-link" role="menuitem">Express</a>
+      </li>
+<li class="link">
+        <a href="/Testing/" class="nav-link" role="menuitem">Testing</a>
+      </li>
+    </ul>
+        </div>
+
+        <div class='sidebar'>
+          <div class="tocTitle">
+            Contenido de la clase
+            </div>
+          <div class="tocBox">
+            
+            <nav class="toc" >
+        <ul><li><a href="#generators">Generators </a><ul><li><a href="#run-to-completion-model">Run-to-completion Model </a></li><li><a href="#generators-model">Generators Model </a></li><li><a href="#generators-syntax">Generators Syntax </a></li><li><a href="#yield-vs-return">Yield vs Return </a></li><li><a href="#infinite-generator">Infinite Generator </a></li></ul></li><li><a href="#async%2Fawait">Async/Await </a><ul><li><a href="#sintaxis">Sintaxis </a></li><li><a href="#basic-flow">Basic Flow </a></li><li><a href="#return">Return </a></li><li><a href="#yielding-control">Yielding Control </a></li><li><a href="#ventajas">Ventajas </a></li><li><a href="#desventajas">Desventajas </a></li></ul></li></ul>
+      </nav>
+          </div>
+        </div>
+
+        <div class='lesson'>
+          <div style="display:flex; justify-content: right; right: 0; width: 100%;">
+            <div class="readingTime">
+                    Tiempo de lectura 23 min
+            </div>
+          </div>
+          <div>
+            
+            <h1 id="henry" tabindex="-1">Henry <a class="anchor-link" href="#henry"></a></h1>
+<table width="100%" style='table-layout:fixed;'>
+  <tr>
+	  <td>
+	  	<a href="https://airtable.com/shrBpWkYV4K12PPNZ?prefill_clase=03-WebServer">
+			<img src="https://static.thenounproject.com/png/204643-200.png" width="100"/>
+			<br>
+			Hacé click acá para dejar tu feedback sobre esta clase.
+	  	</a>
+	  </td>
+              <td>
+	    <a href="https://quiz.soyhenry.com/evaluation/new/60b9163656b4056ff032f732">
+	    	<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/HSQuiz.svg/768px-HSQuiz.svg.png" width="100" height="100"/>
+	    	<br>
+	    	Hacé click acá completar el quiz teórico de esta lecture.
+	    </a>
+	 </td>
+  </tr>
+</table>
+<h2 id="generators" tabindex="-1">Generators <a class="anchor-link" href="#generators"></a></h2>
+<blockquote>
+<p>“Generator Functions are functions that can be exited and later re-entered. Their context (variable bindings) will be saved across re-entrances”</p>
+</blockquote>
+<p>Los generators son funciones que a diferencia de las que conocíamos hasta el momento pueden detener su ejecución para luego retomar el control más adelante en el flujo del programa. Al volver a la función luego de una “pausa”, el contexto sigue siendo el mismo, por lo que sus variables no se van a ver afectadas.</p>
+<p>Podrían hacer la analogía de este tipo de funciones con un control remoto en el cual podemos pausar lo que estemos viendo y luego, cuando lo deseemos, volver a darle “play” o incluso dejar de ver lo que estábamos mirando (stop).</p>
+<h3 id="run-to-completion-model" tabindex="-1">Run-to-completion Model <a class="anchor-link" href="#run-to-completion-model"></a></h3>
+<p>Lo que usualmente conocemos como “Run-to-completion Model” es el paradigma sobre el cual se basan todas las funciones de JS, a excepción de los generators. La idea principal consiste en que toda función va a ejecutarse por completo hasta llegar a su última instrucción o punto de salida, ya sea por:</p>
+<ul>
+<li>Return statement</li>
+<li>Error thrown</li>
+<li>Fin de instrucciones (implicit undefined return)</li>
+</ul>
+<h3 id="generators-model" tabindex="-1">Generators Model <a class="anchor-link" href="#generators-model"></a></h3>
+<p>Por su parte el modelo en que se basan los generators previamente explicado consta de</p>
+<ul>
+<li><strong>Ejecución inical</strong>: retorna un “generator object” que va a ser nuestro iterador</li>
+<li><strong>Comienzo</strong>: comienza a ejecutarse el generator cuando se invoca la instrucción <code>next</code> o a través de algún ciclo de iteración</li>
+<li><strong>“Pausas”</strong>: puede tener una cantidad infinita de puntos de pausa en los cuales se guarda su contexto y se cede nuevamente el control a la función o programa que invocó al generator</li>
+<li><strong>Resume</strong>: luego de cada pausa es posible que el generator tome nuevamente el control para continuar con sus operaciones</li>
+<li><strong>Fin</strong>: una vez completadas o pasados todos los puntos de pausa el generator llega a su fin</li>
+</ul>
+<p>La siguiente imagen muestra en detalle las diferencias entre ambos modelos recién expuestas:</p>
+<p align="center">
+  <img src="./img/flow.png" />
+</p>
+<h3 id="generators-syntax" tabindex="-1">Generators Syntax <a class="anchor-link" href="#generators-syntax"></a></h3>
+<pre class="language-javascript"><code class="hljs language-javascript"><span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">generatorShowInstructors</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Iniciando generator function"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token keyword">yield</span> <span class="token string">"Franco"</span><span class="token punctuation">;</span><br>  <span class="token keyword">yield</span> <span class="token string">"Toni"</span><br>  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Generator function terminada"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><br><br><span class="token keyword">var</span> generatorObject <span class="token operator">=</span> <span class="token function">generatorShowInstructors</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>generatorObject<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>En primer lugar para poder definir un generator debemos utilizar la sintaxis <code>function*</code> lo que va a indicar que la misma debe retornar un <code>Generator Object</code>.</p>
+<p>Una vez definida dicha función podemos invocarla al igual que cualquiera de las funciones que ya conocíamos de antes. La particularidad que tienen los generators es que no se va a ejecutar el cuerpo de la función una vez que hagamos la invocación de la misma, en el ejemplo: <code>generatorShowInstructors()</code> sino que simplemente nos va a devolver como mencionamos antes un <code>Generator Object</code> que nos va a permitir luego “controlar” esta función.</p>
+<p>Una vez obtenido nuestro iterador podemos invocar las veces que queramos al método <code>next()</code> que se va a encargar ahora si de ejecutar el cuerpo del generator previamente invocado hasta llegar a un “punto de pausa” que se van a identificar con la palabra reservada <code>yield</code>.</p>
+<p>Para que quede más claro veamos como sería el flow de ejecución del ejemplo de arriba</p>
+<pre class="language-javascript"><code class="hljs language-javascript"><br><span class="token keyword">var</span> generatorObject <span class="token operator">=</span> <span class="token function">generatorShowInstructors</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token comment">// En este punto todavía no se ejecutó nada del cuerpo de la función generatorShowInstructors</span><br><span class="token comment">// Simplemente tenemos guardado en la variable generatorObject el justamente Generetor Object</span><br><span class="token comment">// que nos va a servir como iterador y poder controlar el generator</span><br><br><span class="token keyword">var</span> firstNext <span class="token operator">=</span> generatorObject<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token comment">// La primera vez que ejecutamos el método next sobre el iterador vamos a ejecutar las instrucciones</span><br><span class="token comment">// de la función generatorShowInstructors hasta encontrar el primer yield</span><br><br><span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">generatorShowInstructors</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Iniciando generator function"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// &lt;-- Se ejecuta</span><br>  <span class="token keyword">yield</span> <span class="token string">"Franco"</span><span class="token punctuation">;</span>                               <span class="token comment">// &lt;-- Se pausa le ejecución</span><br>  <span class="token keyword">yield</span> <span class="token string">"Toni"</span><br>  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Generator function terminada"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><br><br><span class="token comment">// Si observamos que quedó almacenado en firstNext obtendremos un objeto de la siguiente forma:</span><br><span class="token punctuation">{</span><br>  done<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span><br>  value<span class="token operator">:</span> <span class="token string">"Franco"</span><br><span class="token punctuation">}</span><br><span class="token comment">// Es decir tenemos información sobre el estado de nuestro generator.</span><br><span class="token comment">// Por un lado la propiedad done nos indica que el generator aún no ha finalizado</span><br><span class="token comment">// y por otro lado el value corresponde con el valor actual que tiene el generator en</span><br><span class="token comment">// este punto de pausa que se corresponde con el valor que se coloqué después de la palabra</span><br><span class="token comment">// yield</span><br><br><span class="token comment">// Si volvemos a ejecutar next, ¿qué creen que sucederá?</span><br><span class="token keyword">var</span> secondNext <span class="token operator">=</span> generatorObject<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br><span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">generatorShowInstructors</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Iniciando generator function"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token keyword">yield</span> <span class="token string">"Franco"</span><span class="token punctuation">;</span>                               <br>  <span class="token keyword">yield</span> <span class="token string">"Toni"</span>                                  <span class="token comment">// &lt;-- Avanza hasta acá y se pausa le ejecución</span><br>  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Generator function terminada"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><br><br><span class="token comment">// Lo que sucede es que vuelve a tomar el control el generator y vuelve a avanzar hasta el próximo</span><br><span class="token comment">// punto de pausa o hasta su finalización (lo que ocurra primero)</span><br><span class="token comment">// Por lo que si observamos ahora que contiene secondNext:</span><br><span class="token punctuation">{</span><br>  done<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span><br>  value<span class="token operator">:</span> <span class="token string">"Toni"</span><br><span class="token punctuation">}</span><br><br><span class="token comment">// Otra vez :D</span><br><span class="token keyword">var</span> thirdNext <span class="token operator">=</span> generatorObject<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br><span class="token comment">// Obtenemos:</span><br><span class="token punctuation">{</span><br>  done<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><br>  value<span class="token operator">:</span> <span class="token keyword">undefined</span><br><span class="token punctuation">}</span><br><br><span class="token comment">// Que nos está indicando que efectivamente el generator llegó a su fin ya que done es igual a true</span></code></pre>
+<h3 id="yield-vs-return" tabindex="-1">Yield vs Return <a class="anchor-link" href="#yield-vs-return"></a></h3>
+<p>Si bien a simple vista pueden parecer equivalentes tanto el <code>yield</code> como el <code>return</code>, no lo son:</p>
+<ul>
+<li>Yield: se encarga de establecer los “puntos de pausa” por lo que al llegar a un yield se pausa el generator y se retorna un objecto como el que vimos en el ejemplo de arriba que indica el estado actual del generator</li>
+<li>Return: una vez que se alcanza un return statement dentro de un generator, se finaliza su ejecución seteando el valor de “done” del objeto devuelto en true.</li>
+</ul>
+<pre class="language-javascript"><code class="hljs language-javascript">  <span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">generatorUnreacheableValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Iniciando generator function"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>   <span class="token keyword">yield</span> <span class="token string">"First reacheable value"</span><span class="token punctuation">;</span><br>   <span class="token keyword">yield</span> <span class="token string">"Second reacheable value"</span><span class="token punctuation">;</span><br>   <span class="token keyword">return</span> <span class="token string">"Return executed"</span><span class="token punctuation">;</span><br>   <span class="token keyword">yield</span> <span class="token string">"Unreacheable value"</span><br>  <span class="token punctuation">}</span><br><br> <span class="token keyword">var</span> generatorObject <span class="token operator">=</span> <span class="token function">generatorUnreacheableValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br> generatorObject<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &lt;-- {done: false, value: "First reacheable value"}</span><br> generatorObject<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &lt;-- {done: false, value: "Second reacheable value"}</span><br> generatorObject<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &lt;-- {done: true, value: "Return executed"}</span><br> generatorObject<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &lt;-- {done: true, value: undefined}</span><br><br> <span class="token comment">// Vamos a poder seguir ejecutando el método "next" sobre generatorObject pero como el generator</span><br> <span class="token comment">// ya finalizó vamos a seguir obteniendo siempre el mismo resultado: {done: true, value: undefined}</span><br> <span class="token comment">// En este ejemplo la instrucción `yield "Unreacheable value"` nunca va a ser ejecutada.</span></code></pre>
+<h3 id="infinite-generator" tabindex="-1">Infinite Generator <a class="anchor-link" href="#infinite-generator"></a></h3>
+<p>Es posible también definir generators cuyo flow de ejecución sea infinito que no quiere decir que va a estar ejecutandose en background por tiempo indefinido sino que nosotros somos quienes tenemos el control y podríamos en caso de querer ejecutar el método <code>next</code> infinitas veces.</p>
+<p>A continuación definiremos un generador de números naturales:</p>
+<pre class="language-javascript"><code class="hljs language-javascript"><span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">naturalNumbers</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  <span class="token keyword">let</span> number <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span><br>  <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">yield</span> number<span class="token punctuation">;</span><br>    number <span class="token operator">=</span> number <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><br><span class="token punctuation">}</span><br><br><span class="token keyword">var</span> generatorObject <span class="token operator">=</span> <span class="token function">naturalNumbers</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>generatorObject<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &lt;-- Retorna {done: false, value: 1}</span><br>generatorObject<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &lt;-- Retorna {done: false, value: 2}</span><br>generatorObject<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &lt;-- Retorna {done: false, value: 3}</span><br>generatorObject<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &lt;-- Retorna {done: false, value: 4}</span><br><br><span class="token comment">// En value tendremos la secuendia de números naturales que queríamos</span></code></pre>
+<h2 id="async%2Fawait" tabindex="-1">Async/Await <a class="anchor-link" href="#async%2Fawait"></a></h2>
+<p>Las funcines asíncronas o async functions nos van a permitir, como su nombre lo indica, definir código asíncrono con una sintaxis distinta a la que veníamos utilizando con las promesas por lo que no tendremos que encadenarlas nosotros mismos de forma explícita.</p>
+<h3 id="sintaxis" tabindex="-1">Sintaxis <a class="anchor-link" href="#sintaxis"></a></h3>
+<p>Para utilizar este tipo de funciones debemos definirlas con una sintaxis en particular:</p>
+<pre class="language-javascript"><code class="hljs language-javascript"><span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">asyncCall</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  <span class="token keyword">const</span> result <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">resolveAfter2Seconds</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+<p>La palabra async es la que va a informarle al intérprete que se trata de una async function y nos va a permitir hacer uso de la palabra reservada <code>await</code> en el cuerpo de dicha función. Como su nombre nos sugiere, lo que va a ocurrir cuando la ejecución del programa se tope con un <code>await</code> es que se detendrá la ejecución de esa función de forma momentanea hasta que la función o instrucciones que se encuentren a la derecha de dicha palabra finalicen.</p>
+<h3 id="basic-flow" tabindex="-1">Basic Flow <a class="anchor-link" href="#basic-flow"></a></h3>
+<p>A continuación analizaremos un pequeño ejemplo para comprender mejor el flow de estas nuevas funciones:</p>
+<pre class="language-javascript"><code class="hljs language-javascript"><span class="token keyword">function</span> <span class="token function">resolveAfter2Seconds</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token parameter">resolve</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>    <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>      <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">'resolved'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">2000</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><br><br><span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">asyncCall</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'calling'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &lt;-- Se ejecuta luego de la invocación de asyncCall()</span><br>  <span class="token keyword">const</span> result <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">resolveAfter2Seconds</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &lt;-- Detiene la ejecución de asyncCall() hasta que finalice resolveAfter2Seconds()</span><br>  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &lt;-- No se va a ejecutar hasta que la línea anterior finalice su ejecución</span><br><span class="token punctuation">}</span><br><br><span class="token function">asyncCall</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<h3 id="return" tabindex="-1">Return <a class="anchor-link" href="#return"></a></h3>
+<p>Una particularidad de las async functions es que siempre retornan una promesa.</p>
+<pre class="language-javascript"><code class="hljs language-javascript"><span class="token keyword">function</span> <span class="token function">resolveAfter2Seconds</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token parameter">resolve</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>    <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>      <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">'Promesa resuelta!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">2000</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><br><br><span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">asyncCall</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Iniciando asyncCall'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token keyword">const</span> result <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">resolveAfter2Seconds</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &lt;--- Va a loguear "Promesa resuelta!"</span><br><span class="token punctuation">}</span><br><br><span class="token keyword">var</span> p1 <span class="token operator">=</span> <span class="token function">asyncCall</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// p1 --> Va a ser una promesa la cual dependiendo el momento en la cual la consultemos puede estar en estado pendiente o ya resulea si asyncCall ya se terminó de ejecutar por completo</span></code></pre>
+<p>En el caso de que la async function no tenga un return statment, la promesa que devolverá tendrá un value <code>undefined</code>, por ejemplo el caso anterior almacena en p1 lo siguiente:</p>
+<pre class="language-javascript"><code class="hljs language-javascript">Promise <span class="token operator">--</span><span class="token operator">></span> <span class="token punctuation">{</span> state<span class="token operator">:</span> <span class="token string">"fulfilled"</span><span class="token punctuation">,</span> value<span class="token operator">:</span> <span class="token keyword">undefined</span> <span class="token punctuation">}</span></code></pre>
+<p>En cambio si tuvieramos un return statment, por ejemplo algo así:</p>
+<pre class="language-javascript"><code class="hljs language-javascript"><span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">asyncCall</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Iniciando asyncCall'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token keyword">const</span> result <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">resolveAfter2Seconds</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token keyword">return</span> <span class="token string">"Franco"</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><br><br><span class="token keyword">var</span> p2 <span class="token operator">=</span> <span class="token function">asyncCall</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Ahora p2 será una promesa cuyo valor de resolución será “Franco”:</p>
+<pre class="language-javascript"><code class="hljs language-javascript">Promise <span class="token operator">--</span><span class="token operator">></span> <span class="token punctuation">{</span> state<span class="token operator">:</span> <span class="token string">"fulfilled"</span><span class="token punctuation">,</span> value<span class="token operator">:</span> <span class="token string">"Franco"</span> <span class="token punctuation">}</span></code></pre>
+<p>Como ya sabíamos de cuando estudiamos promesas, las mismas pueden resolverse o rechazarse por lo que en caso de <code>success</code> como vimos en el ejemplo de arriba, la promesa retornada se va a resolver al valor retornado por la función asíncrona y en el caso de <code>error</code>, la promesa retornada se va a rechazar con la excepción lanzada por la función asíncrona.</p>
+<p>Para más ejemplos que incluyen todos los distintos casos posibles ver la demo <code>demoRetunValue.js</code></p>
+<h3 id="yielding-control" tabindex="-1">Yielding Control <a class="anchor-link" href="#yielding-control"></a></h3>
+<p>Algo importante de comprender es como continua el flow del resto del programa/aplicación una vez que se encuentra con un <code>await</code> dentro de una async function. Como ya hemos mencionado antes, lo que sucede es que en ese instante se le retorna el control a la función o punto del programa desde donde se había invocado a la async function y va a continuar su flow normalmente.</p>
+<p>Para terminar de comprenderlo analicemos el siguiente ejemplo:</p>
+<pre class="language-javascript"><code class="hljs language-javascript"><span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">showInstructors</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  <span class="token keyword">const</span> instructor1 <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">'Franco'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>instructor1<span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token keyword">const</span> instructor2 <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">'Toni'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>instructor2<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><br><br><span class="token keyword">function</span> <span class="token function">henryAwait</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"¿Quienes son los intstructores de Henry?"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token function">showInstructors</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Gracias vuelvan pronto"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><br><br><span class="token function">henryAwait</span><span class="token punctuation">(</span><span class="token punctuation">)</span><br>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"FIN"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>¿Cuál será el orden de ejecución de el código de arriba?</p>
+<p>Luego de definir tanto ambas funciones, una asíncrona y la otra no, se ejecuta henryAwait que no es asíncrona. Hasta ahí todo normal:</p>
+<pre class="language-javascript"><code class="hljs language-javascript"><span class="token keyword">function</span> <span class="token function">henryAwait</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"¿Quienes son los intstructores de Henry?"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &lt;-- Loguea "¿Quienes son los intstructores de Henry?"</span><br>  <span class="token function">showInstructors</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &lt;-- Invoca a showInstructors (Cede el control)</span><br>  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Gracias vuelvan pronto"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &lt;-- Aún no se invocó...</span><br><span class="token punctuation">}</span></code></pre>
+<p>Veamos ahora que sucede al ingresar a showInstructors:</p>
+<pre class="language-javascript"><code class="hljs language-javascript"><span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">showInstructors</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  <span class="token keyword">const</span> instructor1 <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">'Franco'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &lt;-- Pausa la ejecución y retorna el control a quien se lo había cedido (henryAwait) hasta completar la promesa y poder avanzar con las siguientes instrucciones</span><br>  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>instructor1<span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token keyword">const</span> instructor2 <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">'Toni'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>instructor2<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+<p>Como ahora nuevamente el control lo tiene henryAwait, continua con su flow normal:</p>
+<pre class="language-javascript"><code class="hljs language-javascript"><span class="token keyword">function</span> <span class="token function">henryAwait</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"¿Quienes son los intstructores de Henry?"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token function">showInstructors</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &lt;-- Se había quedado acá, ahora avanza a la siguiente...</span><br>  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Gracias vuelvan pronto"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &lt;-- Loguea "Gracias vuelvan pronto"</span><br><span class="token punctuation">}</span></code></pre>
+<p>Y ahora como henryAwait finalizo continua hacía:</p>
+<pre class="language-javascript"><code class="hljs language-javascript"><span class="token function">henryAwait</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// &lt;-- Ya finalizó, avanza...</span><br>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"FIN"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &lt;-- Logua "FIN"</span></code></pre>
+<p>Luego de todo esto recién ahí, y si la promesa donde se había pausado showInstructors ya finalizó, vuelve a tomar el control y continua con las sentencias que quedaron sin ejecutarse:</p>
+<pre class="language-javascript"><code class="hljs language-javascript"><span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">showInstructors</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  <span class="token keyword">const</span> instructor1 <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">'Franco'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>instructor1<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &lt;-- Loguea "Franco"</span><br>  <span class="token keyword">const</span> instructor2 <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">'Toni'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &lt;-- Pausa hasta finalizar la promesa</span><br>  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>instructor2<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &lt;-- Una vez finalizada loguea "Toni"</span><br><span class="token punctuation">}</span></code></pre>
+<p>Si quisieramos que el orden de ejecución seá:</p>
+<ol>
+<li>¿Quienes son los intstructores de Henry?</li>
+<li>Franco</li>
+<li>Toni</li>
+<li>Gracias vuelvan pronto</li>
+<li>FIN</li>
+</ol>
+<p>¿Cómo deberíamos modificar el código previo?</p>
+<p align="center">
+  <img src="./img/Spoiler-Alert.png" />
+</p>
+<pre class="language-javascript"><code class="hljs language-javascript"><span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">showInstructors</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  <span class="token keyword">const</span> instructor1 <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">'Franco'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>instructor1<span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token keyword">const</span> instructor2 <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">'Toni'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>instructor2<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><br><br><span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">henryAwait</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"¿Quienes son los intstructores de Henry?"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token keyword">await</span> <span class="token function">showInstructors</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Gracias vuelvan pronto"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><br><br><span class="token keyword">await</span> <span class="token function">henryAwait</span><span class="token punctuation">(</span><span class="token punctuation">)</span><br>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"FIN"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h3 id="ventajas" tabindex="-1">Ventajas <a class="anchor-link" href="#ventajas"></a></h3>
+<ul>
+<li>El código suele ser más prolijo y similar a código sincrónico:</li>
+</ul>
+<pre class="language-javascript"><code class="hljs language-javascript"><span class="token keyword">const</span> <span class="token function-variable function">readFilePromise</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">archivo</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>  <span class="token function">promisifiedReadFile</span><span class="token punctuation">(</span>archivo<span class="token punctuation">)</span><br>    <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">file</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Log promise file: "</span><span class="token punctuation">,</span> file<span class="token punctuation">)</span><span class="token punctuation">;</span><br>      <span class="token keyword">return</span> <span class="token string">"Lectura exitosa"</span><span class="token punctuation">;</span><br>    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><br><br><span class="token keyword">const</span> <span class="token function-variable function">readFileAsync</span> <span class="token operator">=</span> <span class="token keyword">async</span><span class="token punctuation">(</span><span class="token parameter">archivo</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Log async file: "</span><span class="token punctuation">,</span> <span class="token keyword">await</span> <span class="token function">promisifiedReadFile</span><span class="token punctuation">(</span>archivo<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token keyword">return</span> <span class="token string">"Lectura exitosa"</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+<p>Para más detalle ver la demo <code>demoCleanCode.js</code></p>
+<ul>
+<li>Permite manejar tanto errores de código sincrónico como asincrónico en un mismo lugar (try/catch)</li>
+</ul>
+<pre class="language-javascript"><code class="hljs language-javascript"><span class="token keyword">const</span> <span class="token function-variable function">readFileAsync</span> <span class="token operator">=</span> <span class="token keyword">async</span><span class="token punctuation">(</span><span class="token parameter">archivo</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>  <span class="token keyword">try</span> <span class="token punctuation">{</span><br>    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Log async file: "</span><span class="token punctuation">,</span> <span class="token keyword">await</span> <span class="token function">promisifiedReadFile</span><span class="token punctuation">(</span>archivo<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token keyword">return</span> <span class="token string">"Lectura exitosa"</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Error unificado: "</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><br><span class="token punctuation">}</span></code></pre>
+<p>Para más detalle ver la demo <code>demoErrorHandler.js</code></p>
+<h3 id="desventajas" tabindex="-1">Desventajas <a class="anchor-link" href="#desventajas"></a></h3>
+<ul>
+<li>El código suele ser más prolijo y similar a código sincrónico. ¿¿¿Qué??? ¿No les habíamos dicho hace un par de líneas que era una ventaja esto?</li>
+</ul>
+<p>Si, no estamos locos, esto puede ser un arma de doble filo, porque al maquillar código asíncrono haciendolo parecer como sincrónico muchas veces solemos utilizarlo de forma incorrecta y terminando sin entender el flow del programa. Recuerden el ejemplo que hicimos más arriba de showInstructors y verán que si no se comprende bien como funcionan <code>async</code> y <code>await</code> puede llevar a grandes confusiones.</p>
+<p>Por eso mismo, ustedes que ya entienden a la perfección el funcionamiento de promesas si comprender en el fondo que es lo que está ocurriendo y no pensar que es simplemente ‘magia’.</p>
+<p>Por último podríamos pensar que Async/Await tomo y combinó las ideas de Generators junto con Promesas:</p>
+<center><h3>Async/Await = Generators + Promises</h3></center>
+
+          </div>
+        </div>
+
+      </main>
+
+      <div class="feedback">
+        <a href='https://airtable.com/shrBpWkYV4K12PPNZ?prefill_clase=' target="_blank">
+          Dejanos tu feedback!👍
+        </a>
+      </div>
+
+      <div class="footerContainer">
+        <div class="footerContained">
+          <p>Hecho con 💛 por alumnos de Henry</p>
+        </div>
+      </div>
+
+      <div class="readerBarDiv">
+        
+  <!-- up button -->
+  <div>
+    <button
+      id="upBtn"
+      style="position:fixed; width:32px; height:32px; border-radius:50%; border:none; background-color:black; right:20px; bottom:55px; color:white; z-index:999; focus:outline-none; cursor:pointer; transition-duration:500ms; opacity:0; pointer-events:none;"
+    ><i class="arrow up"></i></button>
+  </div>
+  
+  <style>
+  .arrow {
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+  }
+
+  .up {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+  }
+  </style>
+
+  <script>
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 250) {
+      upBtn.style.opacity = 1;
+      upBtn.style.pointerEvents = 'auto';     
+    }
+    else {
+      upBtn.style.opacity = 0;
+      upBtn.style.pointerEvents = 'none';
+    }
+  })
+
+  upBtn.addEventListener('click', () => {
+    let start = document.querySelector('.reader-bar-start')
+    start.scrollIntoView({behavior: "smooth"})
+  })
+  </script>
+
+  <!-- reader bar -->
+  <div id="readerBarContainer" style="height:3px;width:100%;background-color:black;position:fixed;top:66px;left:0;z-index:1099;transition:0.2s;">
+    <div id="readerBar" style="height:3px;width:0;background-color:yellow;position:fixed;top:66px;left:0;z-index:1099;transition:0.2s;"></div>
+  </div>
+
+  <script>
+    let winH = window.innerHeight;
+    const content = document.querySelector('.reader-bar-start');
+
+    let contentH = content.offsetHeight;
+    let contentS = contentH - winH;
+    let readerBar = document.getElementById('readerBar');
+    window.addEventListener('load', () => {
+      document.addEventListener ('scroll', updateBar);
+    })
+    window.addEventListener('resize', redefine)
+
+    function redefine() {
+      winH = window.innerHeight;
+      contentH = content.offsetHeight;
+      contentS = contentH - winH;
+      updateBar();
+    }
+
+    function updateBar() {
+      const pagePos = window.scrollY; 
+      const updatedBar = pagePos * 100 / contentS;
+      readerBar.style.width = updatedBar + "%";
+    }
+  </script>
+  
+      </div>
+
+    </body>
+  </html>

@@ -1,6 +1,16 @@
-# Henry
+---
+title: Node
+permalink: "/Node/"
+feedbackID: 01-Node
+eleventyNavigation:
+  key: Node
+  order: 1
+---
 
-<table width="100%" style='table-layout:fixed;'>
+![HenryLogo](/_src/assets/logo.png)
+
+
+<table class="hide" width="100%" style='table-layout:fixed;'>
   <tr>
 	  <td>
 	  	<a href="https://airtable.com/shrBpWkYV4K12PPNZ?prefill_clase=01-Node">
@@ -19,9 +29,9 @@
   </tr>
 </table>
 
-# Introducción a Nodejs
+# Introducción a Node.JS
 
-![nodelogo](./img/logo.png)
+![logo](/_src/assets/01-Node//logo.png)
 
 ## ¿Qué es Nodejs?
 
@@ -42,13 +52,13 @@ Podemos pensar a procesador (microprocesador) como una pequeña máquina que rec
 
 Para pasarle intrucciones al procesador, no escribimos 1's y 0's, sino que usamos un lenguaje que se traduce directamente a esa secuencia, llamado [__assembler__](https://es.wikipedia.org/wiki/Lenguaje_ensamblador). 
 
-![assembler](./img/asembler.png)
+![assembler](/_src/assets/01-Node//asembler.png)
 
 Hoy en día no se programa en assembler ([__lenguaje de bajo nivel__](https://es.wikipedia.org/wiki/Lenguaje_de_bajo_nivel)), ya que es muy complejo y hacer un simple 'Hello World' podría llevar muchas líneas de código: Simplemente no escala. Para solucionar esto, se crearon lenguajes más fáciles y rápidos de programar y que compilan a lenguaje de máquina, estos son los conocidos _lenguajes de alto nivel_, JAVA, C++, Javascript son ejemplos de estos lenguajes. Es importante notar, que no importa que lenguaje usemos, en algún momento el código será _traducido_ o _compilado_ a lenguaje de máquina, que es el único lenguaje que entiende verdaderamente la computadora.
 
 Como pueden pensar mientras nos alejamos del lenguaje de máquina (lenguajes de más alto nivel) y nos abstraemos vamos ganando velocidad para codear, pero también vamos perdiendo performance. Piensen que si codeamos en lenguaje de máquina, podemos controlar cada slot de memoria nosotros mismos y hacerlo de la mejor forma posible. Cuando subimos de nivel, alguien hace ese trabajo por nosotros, y como tiene que ser genérico no puede lograr ser tan óptimo. Es por eso que según la performance y los recursos que se necesite o tengamos vamos a elegir lenguajes de altisimo o bajísimo nivel. 
 
-![low-high](./img/lowh.png)
+![low-high](/_src/assets/01-Node//lowh.png)
 
 _Por ejemplo, los microcontroladores embebidos en lavaropas están programados en C compilado a lenguaje de máquina, esto es porque tienen muy poca memoria y tienen que optimizarla al máximo_
 
@@ -157,7 +167,7 @@ __Require__ recibe como argumento, un string que es el path en donde encontrará
 
 Ahora, si corremos el archivo `app.js` usando `node app.js` en la terminal vamos a ver que se ejecutó el código que escribimos en `hola.js`:
 
-![require](./img/require.png)
+![require](/_src/assets/01-Node//require.png)
 
 Hagamos algo más interesante, vamos a `hola.js` y creemos una función y luego la usemos para saludar:
 
@@ -170,7 +180,7 @@ saludar();
 
 Corramos de nuevo `app.js`:
 
-![require](./img/require2.png)
+![require](/_src/assets/01-Node//require2.png)
 
 El resultado es el mismo!
 Ahora, si no invocamos `saludar()` dentro de `hola.ja`, creen que la podremos invocar (usar) en `app.js`? Hagamos la prueba!
@@ -190,7 +200,7 @@ saludar();
 
 saludar no está definido! recibimos un error. De hecho, esto está bien que suceda. Se acuerdan que dijimos que un módulo no debería afectar otro código accidentalmente? Eso quiere decir que el código está protegido y que no podemos simplemente usarlo y acceder a los objetos fuera de ese módulo.
 
-![simply](./img/simply.jpg)
+![simply](/_src/assets/01-Node//simply.jpg)
 
 Para usarlo afuera, vamos a tener que explicitarlo, veamos como hacer que podamos usar `saludar()` desde `app.js`.
 
@@ -213,7 +223,7 @@ hola();
 
 Ahora voy a poder invocar `hola()`, porque lo hemos pasado a través de `module.exports`. Si ejecuto `app.js`:
 
-![require](./img/require3.png)
+![require](/_src/assets/01-Node//require3.png)
 
 Ahora pudimos acceder al código de `hola.js`, porque lo expusimos a propósito.
 
@@ -288,7 +298,7 @@ y en greetings.json vamos a tener los saludos per se:
 
 Si ejecutamos nuestra `app.js`:
 
-![patron](./img/patron.png)
+![patron](/_src/assets/01-Node//patron.png)
 
 ##### Más Patrones
 
@@ -337,7 +347,7 @@ Dijimos que cuando ocurre un evento, queremos capturarlo y responder de alguna f
 
 Repasemos como funcionaba V8 internamente y veamos qué es exactamente el __event loop__:
 
-![event-loop](./img/eventloop.png)
+![event-loop](/_src/assets/01-Node//eventloop.png)
 
 Los componentes que vemos en la figura son:
 
@@ -349,7 +359,7 @@ Los componentes que vemos en la figura son:
 
 Toda esta interacción con el SO, el manejo del Task Queue y el Event loop está implementado en la libreria [__libuv__](http://docs.libuv.org/en/v1.x/) que es la piedra angular de Nodejs. De hecho, su logo es un Unicornio T-rex, es demasiado copada:
 
-![libuv](./img/libuv.png)
+![logo](/_src/assets/01-Node//libuv.png)
 
 # ¿Qué es un gestor de paquetes?
 
@@ -425,7 +435,7 @@ Luego de ejecutar el comando, vemos que en `package.json` hay una nueva propieda
 
 Ahora creamos un archivo llamado `index.js` (el entry point de nuesta app), y dentro de él vamos a incorporar el nuevo módulo instalado.
 
-```jasvascript
+```javascript
 var moment = require('moment');
 console.log(moment().format("ddd/MM/YYYY, hA"));
 ```
@@ -478,7 +488,7 @@ console.log('Salgo en la consola!!');
 console.log(moment().format("ddd/MM/YYYY, hA"));
 ```
 
-![Npm-Init](./img/npmnodemon.png)
+![Npm-Init](/_src/assets/01-Node//npmnodemon.png)
 
 Como vemos, no fue necesario volver a correr el archivo `index.js` a mano para ver los cambios, Nodemon hizo todo el trabajo por nosotros!
 
@@ -523,7 +533,7 @@ Como podemos ver en la [documentación](https://nodejs.org/dist/latest-v6.x/docs
 
 Por lo tanto le estamos diciendo que lea el archivo  greet que creamos _DE MANERA SINCRONICA_ (esto quiere decir que no va avanzar hasta que no lea de manera completa) y que guarde el resultado en la variable `saludo`, luego que muestre el contenido de saludo por consola. Como vemos, el resultado es que en `saludo` se guarda el contenido del archivo `greet.txt`!!
 
-![fs](./img/fs.png)
+![fs](/_src/assets/01-Node//fs.png)
 
 Al hacerlo sincronico, el programa se _bloquea_ hasta que no termine de leer el archivo completo, si el archivo fuera muy grande, veriamos que el programa queda _trabado_ y causa una mala experiencia de uso.
 
@@ -544,7 +554,7 @@ __Es super importante que comprendan el porqué del orden en el que aparecen los
 
 Otra cosa a notar es que la función anónima que le pasamos tiene dos parámetros: _err_ y _data_. Esto se debe a que existe un standard llamado __error-first callback__ que dice que cada vez que escribas una función que ejecute un callback, le pases a ese _cb_ como __primer__ parámetro una variable de _Error_. En el caso que no haya habido errores en la ejecución, entonces esa variable tendrá _null_, en caso contrario tendrá algo que informe el error.
 
-![fs-2](./img/fs2.png)
+![fs-2](/_src/assets/01-Node//fs2.png)
 
 Como vemos, primero se ejecutó el segundo console log, luego el console log del _callback_. 
 

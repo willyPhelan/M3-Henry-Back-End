@@ -1,6 +1,15 @@
-# Henry
+---
+title: Async/Await
+permalink: "/AsyncAwait/"
+feedbackID: 06-AsyncAwait
+eleventyNavigation:
+  key: Async/Await
+  order: 7
+---
 
-<table width="100%" style='table-layout:fixed;'>
+![HenryLogo](/_src/assets/logo.png)
+
+<table class='hide' width="100%" style='table-layout:fixed;'>
   <tr>
 	  <td>
 	  	<a href="https://airtable.com/shrBpWkYV4K12PPNZ?prefill_clase=03-WebServer">
@@ -19,6 +28,7 @@
   </tr>
 </table>
 
+# Async/Await y Generators
 ## Generators
 
 > "Generator Functions are functions that can be exited and later re-entered. Their context (variable bindings) will be saved across re-entrances"
@@ -31,25 +41,23 @@ Podrían hacer la analogía de este tipo de funciones con un control remoto en e
 
 Lo que usualmente conocemos como "Run-to-completion Model" es el paradigma sobre el cual se basan todas las funciones de JS, a excepción de los generators. La idea principal consiste en que toda función va a ejecutarse por completo hasta llegar a su última instrucción o punto de salida, ya sea por:
 
-  - Return statement
-  - Error thrown
-  - Fin de instrucciones (implicit undefined return)
+- Return statement
+- Error thrown
+- Fin de instrucciones (implicit undefined return)
 
 ### Generators Model
 
 Por su parte el modelo en que se basan los generators previamente explicado consta de
 
-  - __Ejecución inical__: retorna un "generator object" que va a ser nuestro iterador
-  - __Comienzo__: comienza a ejecutarse el generator cuando se invoca la instrucción `next` o a través de algún ciclo de iteración
-  - __"Pausas"__: puede tener una cantidad infinita de puntos de pausa en los cuales se guarda su contexto y se cede nuevamente el control a la función o programa que invocó al generator
-  - __Resume__: luego de cada pausa es posible que el generator tome nuevamente el control para continuar con sus operaciones
-  - __Fin__: una vez completadas o pasados todos los puntos de pausa el generator llega a su fin
+- __Ejecución inical__: retorna un "generator object" que va a ser nuestro iterador
+- __Comienzo__: comienza a ejecutarse el generator cuando se invoca la instrucción `next` o a través de algún ciclo de iteración
+- __"Pausas"__: puede tener una cantidad infinita de puntos de pausa en los cuales se guarda su contexto y se cede nuevamente el control a la función o programa que invocó al generator
+- __Resume__: luego de cada pausa es posible que el generator tome nuevamente el control para continuar con sus operaciones
+- __Fin__: una vez completadas o pasados todos los puntos de pausa el generator llega a su fin
 
 La siguiente imagen muestra en detalle las diferencias entre ambos modelos recién expuestas:
 
-<p align="center">
-  <img src="./img/flow.png" />
-</p>
+![Flow](/_src/assets/07-AsyncAwait/flow.png)
 
 ### Generators Syntax
 
@@ -361,9 +369,7 @@ Si quisieramos que el orden de ejecución seá:
 
 ¿Cómo deberíamos modificar el código previo?
 
-<p align="center">
-  <img src="./img/Spoiler-Alert.png" />
-</p>
+![logo](/_src/assets/07-AsyncAwait/Spoiler-Alert.png)
 
 ```javascript
 async function showInstructors() {

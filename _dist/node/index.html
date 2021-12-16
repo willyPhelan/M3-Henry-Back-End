@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="/_src/styles/fonts.css">
+    <link rel="stylesheet" href="/_src/styles/header.css">
+    <link rel="stylesheet" href="/_src/styles/main.css">
+    <link rel="stylesheet" href="/_src/styles/topbar.css">
+    <link rel="stylesheet" href="/_src/styles/sidebar.css">
+    <link rel="stylesheet" href="/_src/styles/lesson.css">
+    <link rel="stylesheet" href="/_src/styles/code.css">
+    <link rel="stylesheet" href="/_src/styles/footer.css">
+    <link rel="stylesheet" href="/_src/styles/responsive.css">
+    <script src="https://kit.fontawesome.com/2c38f3d850.js" crossorigin="anonymous"></script>
+
+    <title>Node | Módulo 3 - Backend </title>
+  </head>
+
+  <body>
+    <div class="reader-bar-start">
+
+      <div class="headerResponsive">
+        <div class="leftContent">
+          <span><img src="/_src/assets/logo-white.png" alt='logo Henry' height=22px class="d-inline-block align-text-top"></span><span>Node</span>
+        </div>
+        <div class="menuDiv">
+          <input type="checkbox">
+          <i class="fas fa-bars"></i>
+          <i class="fas fa-times"></i>
+          <nav>
+            <ul><li><a href="/">Intro</a></li>
+<li><a href="/Node/">Node</a></li>
+<li><a href="/Promises/">Promises</a></li>
+<li><a href="/WebServer/">Web Server</a></li>
+<li><a href="/AdvancedPromises/">Advanced Promises</a></li>
+<li><a href="/Express/">Express</a></li>
+<li><a href="/Testing/">Testing</a></li>
+<li><a href="/AsyncAwait/">Async/Await</a></li></ul>
+          </nav>
+        </div>
+      </div>
+
+      <div class="headerContainer">
+        <div class="headerContained">
+          <img src="/_src/assets/logo-white.png" alt='logo Henry' height=27px class="d-inline-block align-text-top">
+          <div>
+            <span class="lessonTitle">Node</span> | <span>Módulo 3 - Backend</span>
+          </div>
+        </div>
+      </div>
+
+      <main>
+        <div class="topnav" id='myTopnav' >
+          
+          <ul class="nav">
+      
+      <li class="link">
+        <a href="/" class="nav-link" role="menuitem">Intro</a>
+      </li>
+<li class="link">
+        <span class="nav-link activeLink" tabindex="-1" aria-current="true">Node</span>
+      </li>
+<li class="link">
+        <a href="/Promises/" class="nav-link" role="menuitem">Promises</a>
+      </li>
+<li class="link">
+        <a href="/WebServer/" class="nav-link" role="menuitem">Web Server</a>
+      </li>
+<li class="link">
+        <a href="/AdvancedPromises/" class="nav-link" role="menuitem">Advanced Promises</a>
+      </li>
+<li class="link">
+        <a href="/Express/" class="nav-link" role="menuitem">Express</a>
+      </li>
+<li class="link">
+        <a href="/Testing/" class="nav-link" role="menuitem">Testing</a>
+      </li>
+<li class="link">
+        <a href="/AsyncAwait/" class="nav-link" role="menuitem">Async/Await</a>
+      </li>
+    </ul>
+        </div>
+
+        <div class='sidebar'>
+          <div class="tocTitle">
+            Contenido de la clase
+            </div>
+          <div class="tocBox">
+            
+            <nav class="toc" >
+        <ul><li><a href="#%C2%BFqu%C3%A9-es-nodejs%3F">¿Qué es Nodejs? </a><ul><li><a href="#conceptos">Conceptos </a></li></ul></li><li><a href="#motor-de-javascript">Motor de Javascript </a></li><li><a href="#instalar-nodejs">Instalar Nodejs </a></li><li><a href="#core-libraries">Core libraries </a><ul><li><a href="#c%2B%2B-1">C++ </a></li><li><a href="#javascript">Javascript </a></li></ul></li><li><a href="#organizando-nuestro-c%C3%B3digo-en-nodejs">Organizando nuestro código en Nodejs </a><ul><li><a href="#m%C3%B3dulos">Módulos </a></li><li><a href="#c%C3%B3mo-funciona-commonjs-modules%3F">Cómo funciona CommonJs Modules? </a></li><li><a href="#require-con-modulos-core-o-nativos">Require con modulos Core o nativos </a></li><li><a href="#eventos%3A-events-emitter">Eventos: Events emitter </a></li><li><a href="#event-loop">Event Loop </a></li></ul></li><li><a href="#npm%3A-node-package-manager">NPM: Node Package Manager </a><ul><li><a href="#npm-paquete-globales">NPM paquete globales </a></li><li><a href="#nodemon">Nodemon </a></li></ul></li><li><a href="#actualizar-paquetes">Actualizar paquetes </a><ul><li><a href="#leyendo-un-archivo-con-node">Leyendo un archivo con Node </a></li><li><a href="#combinando-todo">Combinando Todo </a></li></ul></li></ul>
+      </nav>
+          </div>
+        </div>
+
+        <div class='lesson'>
+          <div style="display:flex; justify-content: right; right: 0; width: 100%;">
+            <div class="readingTime">
+                    Tiempo de lectura 43 min
+            </div>
+          </div>
+          <div>
+            
+            <p><img src="/_src/assets/logo.png" alt="HenryLogo"></p>
+<table class="hide" width="100%" style='table-layout:fixed;'>
+  <tr>
+	  <td>
+	  	<a href="https://airtable.com/shrBpWkYV4K12PPNZ?prefill_clase=01-Node">
+			<img src="https://static.thenounproject.com/png/204643-200.png" width="100"/>
+			<br>
+			Hacé click acá para dejar tu feedback sobre esta clase.
+	  	</a>
+	  </td>
+    <td>
+	          <a href="https://quiz.soyhenry.com/evaluation/new/6057d0a5656c8d23c2e60e3e">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/HSQuiz.svg/768px-HSQuiz.svg.png" width="100" height="100"/>
+        <br>
+        Hacé click acá completar el quizz teórico de esta lecture.
+      </a>
+		</td>
+  </tr>
+</table>
+<h1 id="introducci%C3%B3n-a-node.js" tabindex="-1">Introducción a Node.JS <a class="anchor-link" href="#introducci%C3%B3n-a-node.js"></a></h1>
+<p><img src="/_src/assets/01-Node//logo.png" alt="logo"></p>
+<h2 id="%C2%BFqu%C3%A9-es-nodejs%3F" tabindex="-1">¿Qué es Nodejs? <a class="anchor-link" href="#%C2%BFqu%C3%A9-es-nodejs%3F"></a></h2>
+<h3 id="conceptos" tabindex="-1">Conceptos <a class="anchor-link" href="#conceptos"></a></h3>
+<p>Para poder entender el concepto de node, primero vamos a tener que conocer otros conceptos más básicos sobre estos temas:</p>
+<ul>
+<li>Procesadores</li>
+<li>Lenguaje de máquina</li>
+<li>C++</li>
+</ul>
+<p>Podemos pensar a procesador (microprocesador) como una pequeña máquina que recibe impulsos eléctricos como entrada y genera salidas al que nosotros le pasamos <em>instrucciones</em>. Pero el procesador no entiende cualquier lenguaje, sólo habla <em>lenguaje de máquina</em> (es un lenguaje binario, secuencia de unos y ceros) y que está detallado en lo que se conoce como set de instrucciones. Como se imaginarán cada fabricante tiene set de instrucciones distintos y por lo tanto distintos lenguajes, mencionemos algunos:</p>
+<ul>
+<li>IA-32</li>
+<li>x86, x86-64</li>
+<li>ARM</li>
+<li>MIPS</li>
+</ul>
+<p>Para pasarle intrucciones al procesador, no escribimos 1’s y 0’s, sino que usamos un lenguaje que se traduce directamente a esa secuencia, llamado <a href="https://es.wikipedia.org/wiki/Lenguaje_ensamblador"><strong>assembler</strong></a>.</p>
+<p><img src="/_src/assets/01-Node//asembler.png" alt="assembler"></p>
+<p>Hoy en día no se programa en assembler (<a href="https://es.wikipedia.org/wiki/Lenguaje_de_bajo_nivel"><strong>lenguaje de bajo nivel</strong></a>), ya que es muy complejo y hacer un simple ‘Hello World’ podría llevar muchas líneas de código: Simplemente no escala. Para solucionar esto, se crearon lenguajes más fáciles y rápidos de programar y que compilan a lenguaje de máquina, estos son los conocidos <em>lenguajes de alto nivel</em>, JAVA, C++, Javascript son ejemplos de estos lenguajes. Es importante notar, que no importa que lenguaje usemos, en algún momento el código será <em>traducido</em> o <em>compilado</em> a lenguaje de máquina, que es el único lenguaje que entiende verdaderamente la computadora.</p>
+<p>Como pueden pensar mientras nos alejamos del lenguaje de máquina (lenguajes de más alto nivel) y nos abstraemos vamos ganando velocidad para codear, pero también vamos perdiendo performance. Piensen que si codeamos en lenguaje de máquina, podemos controlar cada slot de memoria nosotros mismos y hacerlo de la mejor forma posible. Cuando subimos de nivel, alguien hace ese trabajo por nosotros, y como tiene que ser genérico no puede lograr ser tan óptimo. Es por eso que según la performance y los recursos que se necesite o tengamos vamos a elegir lenguajes de altisimo o bajísimo nivel.</p>
+<p><img src="/_src/assets/01-Node//lowh.png" alt="low-high"></p>
+<p><em>Por ejemplo, los microcontroladores embebidos en lavaropas están programados en C compilado a lenguaje de máquina, esto es porque tienen muy poca memoria y tienen que optimizarla al máximo</em></p>
+<h4 id="c%2B%2B" tabindex="-1">C++ <a class="anchor-link" href="#c%2B%2B"></a></h4>
+<p><a href="https://es.wikipedia.org/wiki/C%2B%2B">C++</a> es un lenguaje de programación de bajo nivel, estaría justo por arriba de Assembly. Este lenguaje se hizo muy popular porque es fácil para codear, pero a su vez te deja tener bastante control sobre lo que está pasando en nivel hardware. Muchos otros lenguajes se construyeron en base a C++, o siguiendo sus sintaxis o usándolo en su cadena de abstracción.</p>
+<p>Justamente <em>Nodejs</em> está programado en <em>C++</em>!<br>
+La razón por la que nodejs está escrito en <em>C++</em> es porque <strong>V8</strong> está escrito en <em>C++</em>, ahora veamos qué es V8.</p>
+<h2 id="motor-de-javascript" tabindex="-1">Motor de Javascript <a class="anchor-link" href="#motor-de-javascript"></a></h2>
+<p>Antes que nada es importante entender que el lenguaje JavaScript está basado en un standard que se conoce como <strong>ECMASCRIPT</strong>. Este standard setea las bases de qué cosas deberá hacer el lenguaje y cuales no, y de qué manera. Ahora bien, en el mundo real no se respetan los estándares al 100%, es por eso que hay muchas implementaciones distintas de JavaScript, que va a interpretar (convertir el código a lenguaje que pueda ser corrido por la compu) el código de una manera particular, estas implementaciones son los llamados <em>motores javascript</em>.</p>
+<p><a href="https://en.wikipedia.org/wiki/V8_(JavaScript_engine)">Ve ocho</a> es el motor de javascript creado por <strong>Google</strong> para su browser <em>Chrome</em>. Es un proyecto Open Source asi que podemos investigar su <a href="https://chromium.googlesource.com/v8/v8.git">código</a>, en su página Google define a v8 como:</p>
+<ul>
+<li>
+<p>V8 JavaScript Engine: <em>ya sabiamos</em>.</p>
+</li>
+<li>
+<p>V8 is Google’s open source JavaScript engine: <em>really?</em>.</p>
+</li>
+<li>
+<p>V8 implements ECMAScript as specified in ECMA-262: <em>ah!, sigue estándares, bien!.</em></p>
+</li>
+<li>
+<p>V8 is written in C++ and is used in Google Chrome, the open source browser from Google: <em>Alguien conoce ese browser Chrome, es bueno?</em>.</p>
+</li>
+<li>
+<p>V8 can run standalone, or can be embedded into any C++ application: <em>Atención con esto, se puede embeber (usar) en cualquier aplicación C++</em></p>
+</li>
+</ul>
+<p>Releamos el último bullet en detalle: Es Standalone, eso quiere decir que puedo bajar V8 y correrlo en mi compu, no necesariamente dentro del browser, genial!; puede ser embebido, es decir que puedo codear una aplicación en <em>C++</em> y agregarle todas las funciones de <em>V8</em>, copado!! Ya se imaginan donde empezó a nacer <em>Nodejs</em>??</p>
+<p>Sí! Nodejs es justamente una aplicación escrita en <em>C++</em> que embebe el motor <em>V8</em> en su código. Por lo tanto puede interpretar código javascript, ‘traducirlo’ a lenguaje de máquina y finalmente ejecutarlo.<br>
+Pero eso no es lo mejor de Nodejs, lo mejor es que el creador agregó algunos features que no están definidos en el estándar. Javascript originalmente estaba diseñado para correr en el browser, o sea que nadie pensó en que pudiera leer archivos, o conectarse a una base de datos, etc…<br>
+Justamente estas features son las que Nodejs agrega usando código C++. O sea, crea nuevas funciones Javascript que envuelven en realidad funciones de C++, como por ejemplo la función de leer un archivo del filesystem.</p>
+<p>Esto hace que NodeJs sea muy poderoso! De hecho, gracias a esto NodeJs tiene todas las features necesarias para poder manejar un servidor.</p>
+<ul>
+<li>Maneras de organizar nuestro código para que sea reusable</li>
+<li>Poder leer y escribir archivos ( input/output)</li>
+<li>Leer y escribir en Bases de Datos</li>
+<li>Poder enviar y recibir datos de internet</li>
+<li>Poder interpretar los formatos estándares</li>
+<li>Alguna forma de manejar procesos que lleven mucho tiempo</li>
+</ul>
+<h2 id="instalar-nodejs" tabindex="-1">Instalar Nodejs <a class="anchor-link" href="#instalar-nodejs"></a></h2>
+<p>Para instalar node vamos a ir <a href="https://nodejs.org/en/">acá</a> y seguir las instrucciones según el sistema operativo ques estés usando.</p>
+<p>Una vez terminada la instalación, podemos probar si funciona correctamente escribiendo el siguiente comando en la consola:</p>
+<pre><code class="hljs">node -v
+</code></pre>
+<p>Si el resultado es algo de la forma: <code>v6.3.1</code> entonces habremos instalado Node de manera correcta!</p>
+<h2 id="core-libraries" tabindex="-1">Core libraries <a class="anchor-link" href="#core-libraries"></a></h2>
+<p>Nodejs cuenta con un set de librerias (les vamos a llamar módulos) que vienen por defecto en la instalación. Básicamente es código escrito para hacer tareas muy comunes.<br>
+Podemos separar estas librerias en las que están escritas en <em>C++</em> y las que son nativas o están escritas en <em>javascript</em>.</p>
+<h3 id="c%2B%2B-1" tabindex="-1">C++ <a class="anchor-link" href="#c%2B%2B-1"></a></h3>
+<p>Como dijimos antes, usando el motor <em>V8</em> los desarrolladores de Nodejs agregaron funcionalidad que ECMAscript no tenia en el standard. La mayoría de estas funciones tiene que ver con tareas que también involucran al Sistema operativo, como leer archivos, mandar y recibir datos por la red, comprimir y descomprimir archivos y otras de manejo de streams.</p>
+<h3 id="javascript" tabindex="-1">Javascript <a class="anchor-link" href="#javascript"></a></h3>
+<p>Estas librerías están escritas en Javascript, algunas de ellas implementan la funcionalidad usando javascript, pero la mayoría son sólo envoltorios a las funciones escritas en <em>C++</em> para que puedan ser fácilmente utilizadas por los desarrolladores de Nodejs. Éstas son el tipo de librerías que podrías haber escrito vos mismo, por suerte alguien ya se tomó el trabajo!</p>
+<h2 id="organizando-nuestro-c%C3%B3digo-en-nodejs" tabindex="-1">Organizando nuestro código en Nodejs <a class="anchor-link" href="#organizando-nuestro-c%C3%B3digo-en-nodejs"></a></h2>
+<p>Una de las features que hizo que Nodejs creciera tanto, es justamente el ecosistema de librerias desarrolladas por los usuarios, que sumadas a las librerias <em>Core</em> hacen que sea muy potente.<br>
+Ahora vamos a ver cómo poder utilizar módulos en nuestro código, y luego veremos cómo instalar módulos externos.</p>
+<h3 id="m%C3%B3dulos" tabindex="-1">Módulos <a class="anchor-link" href="#m%C3%B3dulos"></a></h3>
+<p>Def: Un bloque de código reusable, cuya existencia no altera accidentalmente el comportamiento de otros bloques de código.<br>
+Este concepto ya existia en otros lenguajes de programación y era muy usado para estructurar proyectos. De todos modos, los módulos no eran parte del standard en ECMAscript (lo agregaron en la última versión), pero Nodejs lo introdujo bajo el nombre de <em>Commonjs Modules</em>, que era básicamente un acuerdo (un standard) sobre cómo deberían estar estructurados los módulos.</p>
+<h3 id="c%C3%B3mo-funciona-commonjs-modules%3F" tabindex="-1">Cómo funciona CommonJs Modules? <a class="anchor-link" href="#c%C3%B3mo-funciona-commonjs-modules%3F"></a></h3>
+<p>Básicamente, el standart dice lo siguiente:</p>
+<ul>
+<li>Cada archivo es un ḿodulo, y cada módulo es un archivo separado.</li>
+<li>Todo lo que queremos exportar va a ser expuesto desde un único punto.</li>
+</ul>
+<p>Para entender el standard tenemos que tener dos conceptos en claro:</p>
+<ul>
+<li>First-Class Functions: Las funciones en javascript son tratadas igual que cualquier otro objeto, es decir que podés guardarlas en variables, pasarlas como argumentos, guardarlas en arreglos, etc…</li>
+<li>Function Expressions: Como las funciones son first-class, al escribir una expresión de funcion estoy creando la misma, eso quiere decir que puedo crear funciones en cualquier parte del código.</li>
+</ul>
+<p>Vamos a empezar construyendo nuestro propio módulo! una vez que lo tengamos, vamos a ver como usarlo. Entendiendo así todo el ciclo.</p>
+<h4 id="construyendo-un-m%C3%B3dulo" tabindex="-1">Construyendo un módulo <a class="anchor-link" href="#construyendo-un-m%C3%B3dulo"></a></h4>
+<p>Empezamos con un un archivo <code>js</code> vacío. Lo llamaremos <code>hola.js</code>, esté será nuestro primer módulo. Lo único que hará este módulo es saludar:</p>
+<pre class="language-javascript"><code class="hljs language-javascript">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Hola!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Tambien vamos a crear un archivo <code>js</code> que se llame <code>app.js</code>, en donde vamos a utilizar el código de <code>hola.js</code>. Dentro de <code>app.js</code> vamos a llamar a la función <strong>require</strong> que es parte de las core libraries de Nodejs:</p>
+<pre class="language-javascript"><code class="hljs language-javascript"><span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./hola.js'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p><strong>Require</strong> recibe como argumento, un string que es el path en donde encontrará el código o el módulo que queremos agregar, en este caso como <code>hola.js</code> está en la misma carpeta el path es: <code>./hola.js</code>.</p>
+<p>Ahora, si corremos el archivo <code>app.js</code> usando <code>node app.js</code> en la terminal vamos a ver que se ejecutó el código que escribimos en <code>hola.js</code>:</p>
+<p><img src="/_src/assets/01-Node//require.png" alt="require"></p>
+<p>Hagamos algo más interesante, vamos a <code>hola.js</code> y creemos una función y luego la usemos para saludar:</p>
+<pre class="language-javascript"><code class="hljs language-javascript"><span class="token keyword">var</span> <span class="token function-variable function">saludar</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>	console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Hola!!!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><br><span class="token function">saludar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Corramos de nuevo <code>app.js</code>:</p>
+<p><img src="/_src/assets/01-Node//require2.png" alt="require"></p>
+<p>El resultado es el mismo!<br>
+Ahora, si no invocamos <code>saludar()</code> dentro de <code>hola.ja</code>, creen que la podremos invocar (usar) en <code>app.js</code>? Hagamos la prueba!</p>
+<p>Comentamos la invocación en <code>hola.js</code>:</p>
+<pre class="language-javascript"><code class="hljs language-javascript"><span class="token keyword">var</span> <span class="token function-variable function">saludar</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>	console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Hola!!!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><br><span class="token comment">//saludar();</span></code></pre>
+<p>Invacamos en <code>app.js</code>:</p>
+<pre class="language-javascript"><code class="hljs language-javascript"><span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./hola.js'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token function">saludar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>saludar no está definido! recibimos un error. De hecho, esto está bien que suceda. Se acuerdan que dijimos que un módulo no debería afectar otro código accidentalmente? Eso quiere decir que el código está protegido y que no podemos simplemente usarlo y acceder a los objetos fuera de ese módulo.</p>
+<p><img src="/_src/assets/01-Node//simply.jpg" alt="simply"></p>
+<p>Para usarlo afuera, vamos a tener que explicitarlo, veamos como hacer que podamos usar <code>saludar()</code> desde <code>app.js</code>.</p>
+<p>Nodejs nos permite hacerlo usando <code>module.exports</code>, que es una variable especial cuyo objetivo es pasar su contenido a otro pedazo de código cuando llamamos a <code>require</code>:</p>
+<pre class="language-javascript"><code class="hljs language-javascript"><span class="token keyword">var</span> <span class="token function-variable function">saludar</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>	console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Hola!!!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">;</span><br><br>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> saludar<span class="token punctuation">;</span></code></pre>
+<p>Ahora este módulo está exponiendo el objeto <code>saludar</code>. Para usarlo en nuestro módulo tenemos que guardar lo que devuelve <code>require</code> en una variable (puedo llamar a la nueva variable como quiera):</p>
+<pre class="language-javascript"><code class="hljs language-javascript"><span class="token keyword">var</span> hola <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./hola.js'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br><span class="token function">hola</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Ahora voy a poder invocar <code>hola()</code>, porque lo hemos pasado a través de <code>module.exports</code>. Si ejecuto <code>app.js</code>:</p>
+<p><img src="/_src/assets/01-Node//require3.png" alt="require"></p>
+<p>Ahora pudimos acceder al código de <code>hola.js</code>, porque lo expusimos a propósito.</p>
+<p>Resumiendo:</p>
+<ul>
+<li><strong>Require</strong> es una función que recibe un <em>path</em>.</li>
+<li><strong>module.exports</strong> es lo que retorna la funcion <em>require</em>.</li>
+</ul>
+<h4 id="algunos-patrones-de-require." tabindex="-1">Algunos patrones de Require. <a class="anchor-link" href="#algunos-patrones-de-require."></a></h4>
+<p>Como siempre en Nodejs, hay muchas formas de hacer lo mismo (esto puede ser bueno o malo - según cómo lo usemos) y crear módulos no es la excepción. Veamos algunos patrones comunes en la creacion de módulos!</p>
+<h5>Múltiples imports</h5>
+<p>La función <em>require</em> busca primero un archivo con el nombre que le pasamos en la carpeta que le pasamos (de hecho no es necesario poner la extensión ‘.js’). Si no encuentra ese archivo, entonces busca una carpeta con ese nombre y busca un archivo <code>index.js</code> el cual importa. Esta funcionalidad la podemos usar como patrón para importar varios archivos: dentro de <code>index.js</code> importamos los demás archivos.</p>
+<p>Imaginemos que queremos hacer una función que salude en distintos idiomas, vamos a tener un <code>app.js</code> de esta forma:</p>
+<pre class="language-javascript"><code class="hljs language-javascript"><span class="token keyword">var</span> saludos <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./saludos'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>saludos<span class="token punctuation">.</span><span class="token function">english</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>saludos<span class="token punctuation">.</span><span class="token function">spanish</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Estamos importanto solamente el path <code>./saludos</code>, como no hay ningún archivo <code>.js</code> con ese nombre, <em>require</em> busca una carpeta, por lo tanto vamos a crear una carpeta <code>saludos</code> con los siguientes archivos:</p>
+<p>index.js</p>
+<pre class="language-javascript"><code class="hljs language-javascript"><span class="token keyword">var</span> english <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./english'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token keyword">var</span> spanish <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./spanish'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span><br>	english<span class="token operator">:</span> english<span class="token punctuation">,</span><br>	spanish<span class="token operator">:</span> spanish	<br><span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>En este archivo estamos importando otros dos módulos, uno por cada idioma en el que queremos saludar. Lo bueno de esto, es que va a ser muy fácil agregar y sacar idiomas de nuestra aplicación, ya que solo debemos agregar o borrar los idiomas que exportamos!</p>
+<p>Ahora veamos como sería cada idioma:</p>
+<p>spanish.js</p>
+<pre class="language-javascript"><code class="hljs language-javascript"><span class="token keyword">var</span> saludos <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./greetings.json'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br><span class="token keyword">var</span> <span class="token function-variable function">greet</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>	console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>saludos<span class="token punctuation">.</span>es<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><br><br>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> greet<span class="token punctuation">;</span></code></pre>
+<p>english.js</p>
+<pre class="language-javascript"><code class="hljs language-javascript"><span class="token keyword">var</span> saludos <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./greetings.json'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br><span class="token keyword">var</span> <span class="token function-variable function">greet</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>	console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>saludos<span class="token punctuation">.</span>en<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><br><br>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> greet<span class="token punctuation">;</span></code></pre>
+<p>y en greetings.json vamos a tener los saludos per se:</p>
+<pre class="language-javascript"><code class="hljs language-javascript"><span class="token punctuation">{</span><br>	<span class="token string">"en"</span><span class="token operator">:</span> <span class="token string">"Hello"</span><span class="token punctuation">,</span><br>	<span class="token string">"es"</span><span class="token operator">:</span> <span class="token string">"Hola"</span><br><span class="token punctuation">}</span></code></pre>
+<p>Si ejecutamos nuestra <code>app.js</code>:</p>
+<p><img src="/_src/assets/01-Node//patron.png" alt="patron"></p>
+<h5>Más Patrones</h5>
+<p>En la carpeta <code>./patrones/otro</code> hemos puesto varios files distintos llamados <code>saludos</code> que van del uno al cinco, y luego los importamos en el archivo <code>app.js</code>. En cada módulo exportamos lo que necesitamos de manera distinta, cada una de esas formas constituye un patrón.</p>
+<p>Dentro de cada archivo en los comentarios está explicado en más detalle el patrón.</p>
+<p>De nuevo, <strong>no hay una mejor forma, prueben todos los patrones y vean cual es el que les gusta y cual los hace felices!</strong></p>
+<h3 id="require-con-modulos-core-o-nativos" tabindex="-1">Require con modulos Core o nativos <a class="anchor-link" href="#require-con-modulos-core-o-nativos"></a></h3>
+<p>También podemos importar módulos CORE (los que hablamos al principio) usando <em>require</em>. Esta función está preparada para que si no encuentra un archivo con el nombre que le pasamos, busca una carpeta, y si no encuentra busca en los módulos nativos.<br>
+Podemos ir a la <a href="https://nodejs.org/dist/latest-v6.x/docs/api/">documentación</a> y ver los módulos que podemos usar.</p>
+<p>Veamos como podemos importar algo de esa funcionalidad. Como ejemplo vamos a importar el módulo llamado <a href="https://nodejs.org/dist/latest-v6.x/docs/api/util.html"><code>utilities</code></a>, en la doc vemos que el módulo se llama <code>util</code>.<br>
+Por lo tanto lo vamos a importar escribiendo</p>
+<pre class="language-javascript"><code class="hljs language-javascript"><span class="token keyword">var</span> util <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'util'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// No usamos ./ porque es un modulo core </span><br><br><span class="token keyword">var</span> nombre <span class="token operator">=</span> <span class="token string">'Toni'</span><span class="token punctuation">;</span><br><span class="token keyword">var</span> saludo <span class="token operator">=</span> util<span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token string">'Hola, %s'</span><span class="token punctuation">,</span> nombre<span class="token punctuation">)</span><span class="token punctuation">;</span><br>util<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>saludo<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>¿Que hace este código? Busquen en la <a href="https://nodejs.org/dist/latest-v6.x/docs/api/util.html#util_util_format_format">documentación</a> por la función <code>format()</code> y <code>log()</code> e intenten predecir que hará ese código.</p>
+<h3 id="eventos%3A-events-emitter" tabindex="-1">Eventos: Events emitter <a class="anchor-link" href="#eventos%3A-events-emitter"></a></h3>
+<p>Una gran porción del core de Nodejs está construida usando como base este concepto.<br>
+Un <em>Evento</em> es algo que ha ocurrido en nuestra aplicación y que dispara una acción. Este concepto no es exclusivo a <em>Nodejs</em>, si no que aparece en muchos lenguajes y arquitecturas de software.<br>
+En Node hay dos tipo de eventos:</p>
+<ul>
+<li>Eventos del sistemas: Estos vienen del código en <em>C++</em>, gracias a una librería llamada <em>libuv</em> y manejan eventos que vienen del sistema operativo como por ejemplo: Terminé de leer una archivo, o recibí datos de la red, etc…</li>
+<li>Eventos Customs: Estos eventos estan dentro de la parte Javascript del Core. Maneja eventos que podemos crear nosotros mismos, para eso vamos a usar el <em>Event Emitter</em>. Varias veces cuando un evento de <em>libuv</em> sucede, genera un evento usando el <em>event emitter</em>.</li>
+</ul>
+<p><em>Ejercicio</em> Crear un forma simple de emitir eventos y capturarlos.</p>
+<h4 id="event-listener" tabindex="-1">Event Listener <a class="anchor-link" href="#event-listener"></a></h4>
+<p>Dijimos que cuando ocurre un evento, queremos capturarlo y responder de alguna forma, para eso vamos a hacer uso de los <em>Events Listeners</em>, básicamente es el código que <em>escucha</em> por un evento y que hace algo (ejecuta código) cuando ese evento sucede. Podemos tener varios listeners escuchando el mismo evento.</p>
+<h3 id="event-loop" tabindex="-1">Event Loop <a class="anchor-link" href="#event-loop"></a></h3>
+<p>Repasemos como funcionaba V8 internamente y veamos qué es exactamente el <strong>event loop</strong>:</p>
+<p><img src="/_src/assets/01-Node//eventloop.png" alt="event-loop"></p>
+<p>Los componentes que vemos en la figura son:</p>
+<ul>
+<li>
+<p>Stack: es el runtime de V8, éste va leyendo el código del programa que esté corriendo y va poniendo cada instrucción en el stack para ejecutarla. <strong>Javascript es Single threaded, o sea que sólo puede ejecutar una instrucción a la vez</strong></p>
+</li>
+<li>
+<p>SO / Webapis: Esta pila es manejada por el sistema Operativo. Básicamente V8 le delega tareas al SO, por ejemplo: Bajame esto de internet, o leeme este archivo, o comprimí esta imagen, etc… <strong>El SO puede hacer estas tareas en un thread o varios, es transparente para nosotros</strong>. Lo único que nos importa es cuando el SO <em>completó</em> la tarea que se le pidió. Cuando lo hizo, nos avisa y pasa el <em>callback</em> al task queue.</p>
+</li>
+<li>
+<p>Task Queue: Cuando el SO nos indica que terminó una tarea, no podemos simplemente pasar el <em>callback</em> al stack de JS (no sabemos que está haciendo y podría correr código en un momento inoportuno), por lo tanto, lo que hace es dejar el callback en el <em>Task Queue</em> ( es una cola tipo FIFO ). Ahora, cuando el Stack JS está vació el TANTAN TATAN… <strong>EVENT LOOP</strong> agarra el <em>callback</em> del Queue y lo pasa al Stack JS para ser ejecutado!</p>
+</li>
+</ul>
+<p>Toda esta interacción con el SO, el manejo del Task Queue y el Event loop está implementado en la libreria <a href="http://docs.libuv.org/en/v1.x/"><strong>libuv</strong></a> que es la piedra angular de Nodejs. De hecho, su logo es un Unicornio T-rex, es demasiado copada:</p>
+<p><img src="/_src/assets/01-Node//libuv.png" alt="logo"></p>
+<h1 id="%C2%BFqu%C3%A9-es-un-gestor-de-paquetes%3F" tabindex="-1">¿Qué es un gestor de paquetes? <a class="anchor-link" href="#%C2%BFqu%C3%A9-es-un-gestor-de-paquetes%3F"></a></h1>
+<p>Primero definamos lo que es un paquete. Básicamente es… <code>código</code>! Es cualquier pieza de <strong>código</strong> manejada y mantenida por un gestor de paquetes.</p>
+<p>Ahora, un gestor de paquetes es un software que automatiza la instalación y actualización de paquetes. Maneja qué versión de los paquetes tenes o necesitas y maneja sus <em>dependencias</em>. Una <strong>dependencia</strong> es código del cual dependen uno o más pedazos de código para funcionar. Por ejemplo, si usás <code>fs</code> en tu servidor, entonces <code>fs</code> es una dependecia de tu server. Sin el código de <code>fs</code> tu servidor no podría ejecutarse. De hecho, cada paquete podría tener sus propias dependecias, es por esto que manejarlos a mano se podría volver un poco engorroso, por suerte tenemos los gestores de paquetes que nos solucionan este problema.</p>
+<h2 id="npm%3A-node-package-manager" tabindex="-1">NPM: Node Package Manager <a class="anchor-link" href="#npm%3A-node-package-manager"></a></h2>
+<p>Npm es el gestor de paquetes que viene con Nodejs y que gestiona los paquetes para este. Para probar si tenés npm podés hacer <code>npm -v</code> en tu consola, y si recibis algo como esto: <code>3.10.5</code> quiere decir que lo tenés instalado.</p>
+<p>Para ver el registro de paquetes podés ir a <a href="https://www.npmjs.com/">esta</a> página. Acá podés buscar paquetes individuales, ver su información y bajarlos. Cualquiera puede subir sus paquetes en npm, así que tenés que tener cuidado con qué paquetes bajar.</p>
+<p>Para instalar un paquete se utiliza el comando <code>npm</code> con el argumento <code>install</code> y el nombre del paquete. Por ejemplo, para instalar el paquete ‘express’ vamos a la consola y tipeamos: <code>npm install express</code>.</p>
+<p>Para poder trackear las dependencias y los paquetes que tenemos instalados, npm hace uso de un archivo de <em>configuración</em> al que llama <strong>package.json</strong>. Este es básicamente un archivo de texto en formato JSON con el listado de dependencias de tu aplicación, de esta forma con sólo compartir ese archivo cualquiera sabrá qué paquetes se deben instalar, e incluso hacerlo de forma automática.</p>
+<p>Para crear este archivo npm nos da el comando <code>npm init</code>, que es una forma interactiva de crear el ‘package.json’.</p>
+<ul>
+<li>entry point: Indica cúal es el archivo javascript que Node debe correr para arrancar la aplicación.</li>
+</ul>
+<p>En la imagen vemos los datos que nos piden y a continuación vemos el archivo <code>package.json</code> que creó el comando:</p>
+<pre class="language-javascript"><code class="hljs language-javascript"><span class="token punctuation">{</span><br>  <span class="token string">"name"</span><span class="token operator">:</span> <span class="token string">"test-app"</span><span class="token punctuation">,</span><br>  <span class="token string">"version"</span><span class="token operator">:</span> <span class="token string">"1.0.0"</span><span class="token punctuation">,</span><br>  <span class="token string">"description"</span><span class="token operator">:</span> <span class="token string">"Esta es una aplicación de prueba"</span><span class="token punctuation">,</span><br>  <span class="token string">"main"</span><span class="token operator">:</span> <span class="token string">"index.js"</span><span class="token punctuation">,</span><br>  <span class="token string">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>    <span class="token string">"test"</span><span class="token operator">:</span> <span class="token string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span><br>  <span class="token punctuation">}</span><span class="token punctuation">,</span><br>  <span class="token string">"keywords"</span><span class="token operator">:</span> <span class="token punctuation">[</span><br>    <span class="token string">"Prueba"</span><br>  <span class="token punctuation">]</span><span class="token punctuation">,</span><br>  <span class="token string">"author"</span><span class="token operator">:</span> <span class="token string">"Toni Tralice"</span><span class="token punctuation">,</span><br>  <span class="token string">"license"</span><span class="token operator">:</span> <span class="token string">"ISC"</span><br><span class="token punctuation">}</span></code></pre>
+<p>Para que veamos como funcionan las dependencias, vamos a instalar algunos paquetes y requerirlos dentro de nuestra aplicación de prueba.</p>
+<p><em>Los paquetes instalados de forma local serán guardados en una carpeta llamada <strong>node_modules</strong> creada dentro de la carpeta donde ejecuté el comando</em></p>
+<h4 id="moment" tabindex="-1"><a href="https://www.npmjs.com/package/moment">moment</a> <a class="anchor-link" href="#moment"></a></h4>
+<p>Es una librería de javascript para manejar fechas.<br>
+Para instalarlo hacemos: <code>npm install moment --save</code>.</p>
+<p><strong>usamos el argumento <code>--save</code> para indicar a npm que además de instalar el paquete, lo agregue a la lista de dependencias en el archivo <code>package.json</code>.</strong></p>
+<p>Luego de ejecutar el comando, vemos que en <code>package.json</code> hay una nueva propiedad llamada ‘dependecies’ que es un objeto que contiene los nombres y las versiones de los paquetes que hemos instalado (siempre que instalemos usando <strong>–save</strong>).</p>
+<pre class="language-javascript"><code class="hljs language-javascript"><span class="token punctuation">{</span><br>  <span class="token string">"name"</span><span class="token operator">:</span> <span class="token string">"test-app"</span><span class="token punctuation">,</span><br>  <span class="token string">"version"</span><span class="token operator">:</span> <span class="token string">"1.0.0"</span><span class="token punctuation">,</span><br>  <span class="token string">"description"</span><span class="token operator">:</span> <span class="token string">"Esta es una aplicación de prueba"</span><span class="token punctuation">,</span><br>  <span class="token string">"main"</span><span class="token operator">:</span> <span class="token string">"index.js"</span><span class="token punctuation">,</span><br>  <span class="token string">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>    <span class="token string">"test"</span><span class="token operator">:</span> <span class="token string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span><br>  <span class="token punctuation">}</span><span class="token punctuation">,</span><br>  <span class="token string">"keywords"</span><span class="token operator">:</span> <span class="token punctuation">[</span><br>    <span class="token string">"Prueba"</span><br>  <span class="token punctuation">]</span><span class="token punctuation">,</span><br>  <span class="token string">"author"</span><span class="token operator">:</span> <span class="token string">"Toni Tralice"</span><span class="token punctuation">,</span><br>  <span class="token string">"license"</span><span class="token operator">:</span> <span class="token string">"ISC"</span><span class="token punctuation">,</span><br>  <span class="token string">"dependencies"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>    <span class="token string">"moment"</span><span class="token operator">:</span> <span class="token string">"^2.14.1"</span><br>  <span class="token punctuation">}</span><br><span class="token punctuation">}</span></code></pre>
+<p>Ahora creamos un archivo llamado <code>index.js</code> (el entry point de nuesta app), y dentro de él vamos a incorporar el nuevo módulo instalado.</p>
+<pre class="language-javascript"><code class="hljs language-javascript"><span class="token keyword">var</span> moment <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'moment'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">moment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token string">"ddd/MM/YYYY, hA"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Como verán, Nodejs ya sabe en qué carpetas buscar el módulo ‘moment’ y no tenemos que explicitarlo diciendo en qué carpeta está, de la forma ‘./node_modulos/moment’.</p>
+<h3 id="npm-paquete-globales" tabindex="-1">NPM paquete globales <a class="anchor-link" href="#npm-paquete-globales"></a></h3>
+<p>Con lo anterior hemos instalado el paquete ‘moment’ al que podremos acceder desde la aplicación test. Ahora vamos a ver que hay paquetes de npm que nos son útiles en todas las aplicaciones que hacemos, por lo tanto los queremos instalar de manera <em>global</em>.<br>
+Para hacerlos usamos el argumento <code>-g</code> en <code>npm install</code>.</p>
+<p><em>Según el sistema operativo pueden llegar a tener algún problema con permisos, si es el caso pueden buscar soluciones en <a href="https://docs.npmjs.com/getting-started/fixing-npm-permissions">esta página</a>. La carpeta donde se instalan los módulo globales también dependen del SO.</em></p>
+<h3 id="nodemon" tabindex="-1">Nodemon <a class="anchor-link" href="#nodemon"></a></h3>
+<p>Se acuerdan cuando hicimos el servidor web con Node? Cada vez que cambiamos algo en el código, teníamos que reiniciar el servidor para que los cambios sean reflejados. Con <em>Nodemon</em> podemos olvidarnos de eso, ya que hace eso por nosotros.</p>
+<pre><code class="hljs">nodemon will watch the files in the directory in which nodemon was
+started, and if any files change, nodemon will automatically
+restart your node application.
+</code></pre>
+<p>Como verán este es un paquete que vamos a usar en casi todos los proyectos de node que hagamos, por lo tanto es un buen ejemplo de algo que instalariamos globalmente. Para hacerlo hacemos:</p>
+<p><code>npm install -g nodemon</code></p>
+<p>o</p>
+<p><code>sudo npm install -g nodemon</code> en Linux o Mac.</p>
+<p>Una vez instalado globalmente, puedo simplemente utilizarlo desde la línea de comandos, ya que viene con una interfaz CLI (<em>command line interface</em>). De hecho, varios paquetes de npm vienen con una interfaz CLI para ser usados desde la consola o terminal.</p>
+<p>En nuestro ejemplo al ejecutar <code>nodemon</code> obtenemos:</p>
+<pre><code class="hljs">[nodemon] 1.10.0
+[nodemon] to restart at any time, enter `rs`
+[nodemon] watching: *.*
+[nodemon] starting `node index.js`
+Sun/07/2016, 11PM
+[nodemon] clean exit - waiting for changes before restart
+</code></pre>
+<p>Para probar si funciona, hagamos un cambio en el archivo <code>index.js</code> y salvemos. Para mi ejemplo voy a agregar un <code>console.log()</code>.</p>
+<pre><code class="hljs">var moment = require('moment');
+console.log('Salgo en la consola!!');
+console.log(moment().format(&quot;ddd/MM/YYYY, hA&quot;));
+</code></pre>
+<p><img src="/_src/assets/01-Node//npmnodemon.png" alt="Npm-Init"></p>
+<p>Como vemos, no fue necesario volver a correr el archivo <code>index.js</code> a mano para ver los cambios, Nodemon hizo todo el trabajo por nosotros!</p>
+<h2 id="actualizar-paquetes" tabindex="-1">Actualizar paquetes <a class="anchor-link" href="#actualizar-paquetes"></a></h2>
+<p>Como dijimos, <code>npm</code> también nos sirve para mantener actualizados los paquetes. Para hacerlo sólo tenemos que escribir el siguiente comando:</p>
+<p><code>npm update</code></p>
+<p>Para mantener la compatibilidad con las aplicaciones, <code>npm</code> sólo actualiza automáticamente los <em>patches</em> y <em>minor changes</em> (<a href="http://semver.org/">Semantic Versioning</a>)de un paquete, por defecto.</p>
+<p>De hecho, el <strong>^</strong> antes del número de versión en ‘dependencies’ indica qué puede actualizar los <em>minors</em> automáticamente, si quisieramos restringir ese comportamiento para que actualize sólo los <em>patches</em> deberíamos usar el carácter <strong>~</strong> antes de la versión:</p>
+<pre class="language-javascript"><code class="hljs language-javascript"><span class="token string">"dependencies"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>    <span class="token string">"moment"</span><span class="token operator">:</span> <span class="token string">"^2.14.1"</span> <span class="token comment">//Actualiza sólo Minors</span><br>  <span class="token punctuation">}</span><br><br><span class="token string">"dependencies"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>    <span class="token string">"moment"</span><span class="token operator">:</span> <span class="token string">"~2.14.1"</span> <span class="token comment">//Actualiza sólo Patches</span><br>  <span class="token punctuation">}</span></code></pre>
+<h3 id="leyendo-un-archivo-con-node" tabindex="-1">Leyendo un archivo con Node <a class="anchor-link" href="#leyendo-un-archivo-con-node"></a></h3>
+<p>Para trabajar con archivos en Node, vamos a usar el módulo <code>fs</code> que tiene la funcionalidad para leer y escribir archivos, como se encuentra en las librerías core de node, vamos a requerirlo usando <code>require('fs')</code>.</p>
+<p>Ahora vamos a crear un archivo llamado <code>greet.txt</code> y vamos a escribir un saludo dentro, lo vamos a dejar en la misma carpeta que nuestro archivo <code>.js</code>.</p>
+<p>Ahora vamos a leer el contenido de ese archivo y mostrarlo por consola:</p>
+<pre class="language-javascript"><code class="hljs language-javascript"><span class="token keyword">var</span> fs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'fs'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br><span class="token keyword">var</span> saludo <span class="token operator">=</span> fs<span class="token punctuation">.</span><span class="token function">readFileSync</span><span class="token punctuation">(</span>__dirname <span class="token operator">+</span> <span class="token string">'/greet.txt'</span><span class="token punctuation">,</span> <span class="token string">'utf8'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>saludo<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Como podemos ver en la <a href="https://nodejs.org/dist/latest-v6.x/docs/api/fs.html#fs_fs_readfilesync_file_options">documentación</a> de <code>fs</code>, la función <code>readFileSync</code>, recibe un path como parametro y el encoding del file.</p>
+<blockquote>
+<p><strong>__dirname: esta variable tiene guardado el path completo del directorio donde está el archivo que está ejecutando el código</strong></p>
+</blockquote>
+<p>Por lo tanto le estamos diciendo que lea el archivo  greet que creamos <em>DE MANERA SINCRONICA</em> (esto quiere decir que no va avanzar hasta que no lea de manera completa) y que guarde el resultado en la variable <code>saludo</code>, luego que muestre el contenido de saludo por consola. Como vemos, el resultado es que en <code>saludo</code> se guarda el contenido del archivo <code>greet.txt</code>!!</p>
+<p><img src="/_src/assets/01-Node//fs.png" alt="fs"></p>
+<p>Al hacerlo sincronico, el programa se <em>bloquea</em> hasta que no termine de leer el archivo completo, si el archivo fuera muy grande, veriamos que el programa queda <em>trabado</em> y causa una mala experiencia de uso.</p>
+<p>Para resolver ese problema, vamos a hacer lo mismo, pero haciendo que la lectura del archivo sea en forma asincrónica.<br>
+Para hacerlo, <code>fs</code> nos da la función <code>readFile</code>, que recibe el path del archivo a leer, el encoding, y además recibe una función, que será el <code>callback</code> para cuando se termine de leer el archivo:</p>
+<pre class="language-javascript"><code class="hljs language-javascript"><span class="token keyword">var</span> fs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'fs'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>fs<span class="token punctuation">.</span><span class="token function">readFile</span><span class="token punctuation">(</span>__dirname <span class="token operator">+</span> <span class="token string">'/greet.txt'</span><span class="token punctuation">,</span> <span class="token string">'utf8'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">err<span class="token punctuation">,</span> data</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>	console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Listo!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Hemos agregado al final el <code>console.log('Listo!')</code> para que vean en qué momento se ejecuta esa linea de código y en qué momento se ejecuta el callback.</p>
+<p><strong>Es super importante que comprendan el porqué del orden en el que aparecen los console.logs, no avances antes de comprenderlo. Pista: Mirá más arriba como funciona el event loop de JS.</strong></p>
+<p>Otra cosa a notar es que la función anónima que le pasamos tiene dos parámetros: <em>err</em> y <em>data</em>. Esto se debe a que existe un standard llamado <strong>error-first callback</strong> que dice que cada vez que escribas una función que ejecute un callback, le pases a ese <em>cb</em> como <strong>primer</strong> parámetro una variable de <em>Error</em>. En el caso que no haya habido errores en la ejecución, entonces esa variable tendrá <em>null</em>, en caso contrario tendrá algo que informe el error.</p>
+<p><img src="/_src/assets/01-Node//fs2.png" alt="fs-2"></p>
+<p>Como vemos, primero se ejecutó el segundo console log, luego el console log del <em>callback</em>.</p>
+<h3 id="combinando-todo" tabindex="-1">Combinando Todo <a class="anchor-link" href="#combinando-todo"></a></h3>
+<p>Bien! Ahora estamos listos para empezar a crear nuestro propio servidor web usando estos conceptos!</p>
+
+          </div>
+        </div>
+
+      </main>
+
+      <div class="feedback">
+        <a href='https://airtable.com/shrBpWkYV4K12PPNZ?prefill_clase=01-Node' target="_blank">
+          Dejanos tu feedback!👍
+        </a>
+      </div>
+
+      <div class="footerContainer">
+        <div class="footerContained">
+          <p>Hecho con 💛 por alumnos de Henry</p>
+        </div>
+      </div>
+
+      <div class="readerBarDiv">
+        
+  <!-- up button -->
+  <div>
+    <button
+      id="upBtn"
+      style="position:fixed; width:32px; height:32px; border-radius:50%; border:none; background-color:black; right:20px; bottom:55px; color:white; z-index:999; focus:outline-none; cursor:pointer; transition-duration:500ms; opacity:0; pointer-events:none;"
+    ><i class="arrow up"></i></button>
+  </div>
+  
+  <style>
+  .arrow {
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+  }
+
+  .up {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+  }
+  </style>
+
+  <script>
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 250) {
+      upBtn.style.opacity = 1;
+      upBtn.style.pointerEvents = 'auto';     
+    }
+    else {
+      upBtn.style.opacity = 0;
+      upBtn.style.pointerEvents = 'none';
+    }
+  })
+
+  upBtn.addEventListener('click', () => {
+    let start = document.querySelector('.reader-bar-start')
+    start.scrollIntoView({behavior: "smooth"})
+  })
+  </script>
+
+  <!-- reader bar -->
+  <div id="readerBarContainer" style="height:3px;width:100%;background-color:black;position:fixed;top:66px;left:0;z-index:1099;transition:0.2s;">
+    <div id="readerBar" style="height:3px;width:0;background-color:yellow;position:fixed;top:66px;left:0;z-index:1099;transition:0.2s;"></div>
+  </div>
+
+  <script>
+    let winH = window.innerHeight;
+    const content = document.querySelector('.reader-bar-start');
+
+    let contentH = content.offsetHeight;
+    let contentS = contentH - winH;
+    let readerBar = document.getElementById('readerBar');
+    window.addEventListener('load', () => {
+      document.addEventListener ('scroll', updateBar);
+    })
+    window.addEventListener('resize', redefine)
+
+    function redefine() {
+      winH = window.innerHeight;
+      contentH = content.offsetHeight;
+      contentS = contentH - winH;
+      updateBar();
+    }
+
+    function updateBar() {
+      const pagePos = window.scrollY; 
+      const updatedBar = pagePos * 100 / contentS;
+      readerBar.style.width = updatedBar + "%";
+    }
+  </script>
+  
+      </div>
+
+    </body>
+  </html>

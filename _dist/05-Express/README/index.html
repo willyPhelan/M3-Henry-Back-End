@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="/_src/styles/fonts.css">
+    <link rel="stylesheet" href="/_src/styles/header.css">
+    <link rel="stylesheet" href="/_src/styles/main.css">
+    <link rel="stylesheet" href="/_src/styles/topbar.css">
+    <link rel="stylesheet" href="/_src/styles/sidebar.css">
+    <link rel="stylesheet" href="/_src/styles/lesson.css">
+    <link rel="stylesheet" href="/_src/styles/code.css">
+    <link rel="stylesheet" href="/_src/styles/footer.css">
+    <link rel="stylesheet" href="/_src/styles/responsive.css">
+    <script src="https://kit.fontawesome.com/2c38f3d850.js" crossorigin="anonymous"></script>
+
+    <title> | Módulo 3 - Backend </title>
+  </head>
+
+  <body>
+    <div class="reader-bar-start">
+
+      <div class="headerResponsive">
+        <div class="leftContent">
+          <span><img src="/_src/assets/logo-white.png" alt='logo Henry' height=22px class="d-inline-block align-text-top"></span><span></span>
+        </div>
+        <div class="menuDiv">
+          <input type="checkbox">
+          <i class="fas fa-bars"></i>
+          <i class="fas fa-times"></i>
+          <nav>
+            <ul><li><a href="/">Intro</a></li>
+<li><a href="/Node/">Node</a></li>
+<li><a href="/Promises/">Promises</a></li>
+<li><a href="/WebServer/">Web Server</a></li>
+<li><a href="/AdvancedPromises/">Advanced Promises</a></li></ul>
+          </nav>
+        </div>
+      </div>
+
+      <div class="headerContainer">
+        <div class="headerContained">
+          <img src="/_src/assets/logo-white.png" alt='logo Henry' height=27px class="d-inline-block align-text-top">
+          <div>
+            <span class="lessonTitle"></span> | <span>Módulo 3 - Backend</span>
+          </div>
+        </div>
+      </div>
+
+      <main>
+        <div class="topnav" id='myTopnav' >
+          
+          <ul class="nav">
+      
+      <li class="link">
+        <a href="/" class="nav-link" role="menuitem">Intro</a>
+      </li>
+<li class="link">
+        <a href="/Node/" class="nav-link" role="menuitem">Node</a>
+      </li>
+<li class="link">
+        <a href="/Promises/" class="nav-link" role="menuitem">Promises</a>
+      </li>
+<li class="link">
+        <a href="/WebServer/" class="nav-link" role="menuitem">Web Server</a>
+      </li>
+<li class="link">
+        <a href="/AdvancedPromises/" class="nav-link" role="menuitem">Advanced Promises</a>
+      </li>
+    </ul>
+        </div>
+
+        <div class='sidebar'>
+          <div class="tocTitle">
+            Contenido de la clase
+            </div>
+          <div class="tocBox">
+            
+            <nav class="toc" >
+        <ul><li><a href="#instalaci%C3%B3n">Instalación </a></li><li><a href="#creando-rutas">Creando rutas </a></li><li><a href="#routing">Routing </a><ul><li><a href="#basadas-en-string-patterns">Basadas en String Patterns </a></li><li><a href="#pasando-par%C3%A1metros-en-las-rutas">Pasando parámetros en las rutas </a></li><li><a href="#archivos-est%C3%A1ticos-y-middleware">Archivos Estáticos y Middleware </a></li></ul></li><li><a href="#nuestro-propio-middleware-con-app.use()">Nuestro propio Middleware con app.use() </a></li><li><a href="#enviado-datos-al-servidor%3A">Enviado datos al servidor: </a><ul><li><a href="#query-string">Query String </a></li><li><a href="#post-y-forms">POST y Forms </a></li><li><a href="#post-y-ajax">POST y Ajax </a></li></ul></li><li><a href="#tomando-los-datos">Tomando los Datos </a><ul><li><a href="#forms">Forms </a></li><li><a href="#ajax">Ajax </a></li><li><a href="#postman">POSTMAN </a></li></ul></li><li><a href="#estructurando-nuestra-app">Estructurando nuestra App </a></li><li><a href="#cross-origin-resource-sharing-(cors)">Cross-Origin Resource Sharing (CORS) </a><ul><li><a href="#access-control-allow-origin">Access-Control-Allow-Origin </a></li></ul></li></ul>
+      </nav>
+          </div>
+        </div>
+
+        <div class='lesson'>
+          <div style="display:flex; justify-content: right; right: 0; width: 100%;">
+            <div class="readingTime">
+                    Tiempo de lectura 36 min
+            </div>
+          </div>
+          <div>
+            
+            <h1 id="henry" tabindex="-1">Henry <a class="anchor-link" href="#henry"></a></h1>
+<table width="100%" style='table-layout:fixed;'>
+  <tr>
+	  <td>
+	  	<a href="https://airtable.com/shrBpWkYV4K12PPNZ?prefill_clase=05-Express">
+			<img src="https://static.thenounproject.com/png/204643-200.png" width="100"/>
+			<br>
+			Hacé click acá para dejar tu feedback sobre esta clase.
+	  	</a>
+	  </td>
+              <td>
+      <a href="https://quiz.soyhenry.com/evaluation/new/606f7234656c8d23c2e60f8b">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/HSQuiz.svg/768px-HSQuiz.svg.png" width="100" height="100"/>
+        <br>
+        Hacé click acá completar el quiz teórico de esta lecture.
+      </a>
+   </td>
+  </tr>
+</table>
+<h1 id="express" tabindex="-1">Express <a class="anchor-link" href="#express"></a></h1>
+<p><em>Express.js</em> o simplemente <em>Express</em> es un framework diseñado para crear aplicaciones web y APIS. Está bajo la licencia <a href="https://en.wikipedia.org/wiki/MIT_License">MIT</a>, y es, tal vez, el framework web más usado en el ecosistema de Nodejs.</p>
+<h2 id="instalaci%C3%B3n" tabindex="-1">Instalación <a class="anchor-link" href="#instalaci%C3%B3n"></a></h2>
+<p>Vamos a iniciar una app nueva con <code>npm init</code> a la que vamos a llamar <em>expresstest</em> y luego vamos a instalar express usando <code>npm</code>:</p>
+<p><code>npm install express --save</code> <em>–save para que se guarde en package.json</em></p>
+<p>Ahora vamos a crear un archivo <code>index.js</code> <em>( o con el nombre que hayan definido como entry point)</em> y vamos a requerir ‘express’.</p>
+<pre class="language-javascript"><code class="hljs language-javascript"><span class="token keyword">var</span> express <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"express"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Cuando requerimos express, lo que nos devuelve la librería es una función, que envuelve toda la funcionalidad de express. Por eso, para inicializar una nueva applicación, vamos a crear una variable (comúnmente llamada <code>app</code>) y guardar en ella la ejecución de express.</p>
+<pre class="language-javascript"><code class="hljs language-javascript"><span class="token keyword">var</span> express <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"express"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token keyword">var</span> app <span class="token operator">=</span> <span class="token function">express</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Dentro de nuestra nueva variable app, vamos a tener varias funciones. Una de ella es <code>listen()</code>, que tiene envuelto adentro a la función <code>http.createServer()</code> que habíamos usado para crear nuestro propio webserver. Ahora en vez de llamar esa función directamente llamamos a <code>listen()</code> y le pasamos un puerto.</p>
+<pre class="language-javascript"><code class="hljs language-javascript">app<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span><span class="token number">3000</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Noten, que todo lo que hace express, lo pueden hacer ustedes también escribiendo el código, sólo es un montón de código preescrito que resuelve problemas muy comunes de una manera muy buena, justamente por eso es que es tan popular.</p>
+<h2 id="creando-rutas" tabindex="-1">Creando rutas <a class="anchor-link" href="#creando-rutas"></a></h2>
+<p>Ahora la variable <code>app</code> tiene asociado varios métodos que mapean a <a href="https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods">métodos HTTP</a>, también llamados ‘verbos Http’. Con esto especificamos qué queremos que haga el servidor según el tipo de método http del request y la URL.</p>
+<p>Agreguemos una ruta para <code>'/'</code> con el método GET. (<em>El método GET es el que hace el broswer por defecto cuando escribimos algo en la barra de direcciones</em>):</p>
+<pre class="language-javascript"><code class="hljs language-javascript">app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  <span class="token comment">//Ruta para un GET a /</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Como vemos, esto reemplaza la serie de <code>if</code>s que habiamos escrito para nuestro webserver antes. Además nos agrega la discriminación del método HTTP. Estos métodos reciben como parámetro un callback, el cual correran cuando llegue un request de este tipo al URL definido ( <code>/</code> en nuestro ejemplo). Noten que ese callback tiene siempre como parámetro dos variables, <code>req</code> por <strong>request</strong> y <code>res</code> por <strong>response</strong>, que envuelven los objetos <code>http.request</code> y <code>http.response</code> respectivamente, agregándole más funcionalidad.</p>
+<pre class="language-javascript"><code class="hljs language-javascript">app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  res<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">"Hola"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Como ejemplo, vamos a usar <code>res.send()</code> para enviar texto como respuesta. No fué necesario explicitar el <code>Content-type</code>, ya que <em>express</em> se encarga de eso por nosotros tambien!</p>
+<p><img src="./img/expressexample.png" alt="Express-Example"></p>
+<p>Podemos ejecutar el server con <code>nodemon</code> y probar la URL <code>'/'</code> en el browser.</p>
+<p>Agreguemos una nueva ruta <code>/api</code> y retornemos un objeto JSON. Para esto, express viene preparado con la función <code>json()</code> que recibe un objeto y lo pasa como response. Noten que no tuvimos que <em>Serializar</em> el objeto! De esta forma <em>express</em> nos ahorra mucho tiempo.</p>
+<pre class="language-javascript"><code class="hljs language-javascript">app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"/api"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  <span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span><br>    nombre<span class="token operator">:</span> <span class="token string">"prueba"</span><span class="token punctuation">,</span><br>    framework<span class="token operator">:</span> <span class="token string">"express"</span><span class="token punctuation">,</span><br>    ventaja<span class="token operator">:</span> <span class="token string">"serializó por nosotros"</span><span class="token punctuation">,</span><br>  <span class="token punctuation">}</span><span class="token punctuation">;</span><br>  res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Probemos el nuevo <em>endpoint</em> en el browser:</p>
+<p><img src="./img/expressapi.png" alt="Express-Api"></p>
+<p>Veamos que más podemos hacer con <em>express</em>!</p>
+<h2 id="routing" tabindex="-1">Routing <a class="anchor-link" href="#routing"></a></h2>
+<p>Express nos ofrece muchísimas soluciones para varios problemas, es por eso que vamos a tener que aprender a leer y buscar en la documentación (que por cierto es muy buena) de <em>express</em>.</p>
+<p>Veamos la documentación sobre <a href="https://expressjs.com/en/guide/routing.html">routing</a>.</p>
+<p>Como vemos, hay varias formas de hacer las rutas usando las URL: Podemos hacerlo con un nombre fijo como veniamos haciendo o de hecho también podemos usar <code>strings patterns</code> y <code>regular expressions</code> tal que matcheen múltiples rutas, por ejemplo:</p>
+<h3 id="basadas-en-string-patterns" tabindex="-1">Basadas en String Patterns <a class="anchor-link" href="#basadas-en-string-patterns"></a></h3>
+<p>Esta ruta matcheará <em>acd</em> y <em>abcd</em>:</p>
+<pre class="language-javascript"><code class="hljs language-javascript">app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"/ab?cd"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  res<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">"ab?cd"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Esta ruta matcheará <em>abcd</em>, <em>abbcd</em>, <em>abbbcd</em>, y así sucesivamente:</p>
+<pre class="language-javascript"><code class="hljs language-javascript">app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"/ab*cd"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  res<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">"ab*cd"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h3 id="pasando-par%C3%A1metros-en-las-rutas" tabindex="-1">Pasando parámetros en las rutas <a class="anchor-link" href="#pasando-par%C3%A1metros-en-las-rutas"></a></h3>
+<p>Veamos como nos ayuda <em>express</em> a capturar parámetros embebidos en la URL.</p>
+<p>Veamos el siguiente ejemplo:</p>
+<pre class="language-javascript"><code class="hljs language-javascript">app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"/api/:id"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">{</span> parametro<span class="token operator">:</span> req<span class="token punctuation">.</span>params<span class="token punctuation">.</span>id <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>A la ruta <code>/api</code> le hemos agregado <code>/:id</code>, ahora <em>express</em> va a parsear esa ruta, y va a tomar como parámetro lo que esté después de la primera <code>/</code> y lo vamos a poder acceder a través del nombre <code>id</code>. Por ejemplo en <code>/api/2</code> id va a tomar el valor <code>2</code>. En <code>/api/hola</code>, id va a tomar el valor <code>hola</code>.</p>
+<p>Para mostrar el comportamiento, esa ruta a va a devolver un objeto json con la propiedad <code>parametro</code> y cuyo valor es el contenido de <code>id</code>. Los parámetros parseados por express los vamos a encontrar en <code>req.params</code> y el nombre que pusimos después de <code>:</code> en la ruta, en este caso <code>req.params.id</code>.</p>
+<p>Probando en el browser:</p>
+<p><img src="./img/params.gif" alt="Params-gif"></p>
+<p>:D</p>
+<p>Podemos agregar más de un parámtro por URL.<br>
+Prueben armar una ruta que maneje la siguiente URL: <em>/api/:id/:nombre/:valor</em>.</p>
+<h3 id="archivos-est%C3%A1ticos-y-middleware" tabindex="-1">Archivos Estáticos y Middleware <a class="anchor-link" href="#archivos-est%C3%A1ticos-y-middleware"></a></h3>
+<p><strong>Middleware</strong>: hace referencia a código que existe entre dos capas de software, en el caso de <em>express</em> a código que este entre el <code>request</code> y el <code>response</code>.</p>
+<p><img src="./img/life.png" alt="Express-Middleware"></p>
+<p>Veamos un ejemplo muy común de middlware en <em>express</em>. En casi todas las aplicaciones web vamos a tener archivos que queremos que se bajen siempre, por ejemplo: imágenes, archivos <code>.css</code> o <code>.js</code>, etc. Como sabemos, para poder acceder a estos archivos vamos a tener que crear para cada archivo una ruta tal que sean accesibles a través de una URL. Esto puede llegar a complicarse fácilmente, no?<br>
+Por suerte, <em>express</em> ya pensó en esto y nos da un middleware para manejar estos <em>static files</em> (se llaman estáticos porque no dependen de ningún input y no deben ser procesados de ninguna manera,siempre son iguales).</p>
+<p>Digamos que queremos tener una carpeta donde guardamos todos los <em>archivo estáticos</em>, comúnmente esta carpeta tiene el nombre de <code>public</code>. Dentro de ella vamos a crear un archivo <code>.css</code> y guardar ahí una imagen.</p>
+<p>__Vamos a crear una ruta que devuelva un html que utilize el archivo <code>.css</code> que acabamos de crear y también que contenga la imagen.</p>
+<pre class="language-javascript"><code class="hljs language-javascript">app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"/static"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  res<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><br>    <span class="token string">'&lt;html>&lt;head> \<br>			&lt;link href="/assets/style.css" rel="stylesheet"> \<br>			&lt;/head>&lt;body> \<br>				&lt;p>Archivos estaticos rapido y facil!!&lt;/p>\<br>				&lt;img src="/assets/imagen.jpg">\<br>			&lt;/body>&lt;/html>'</span><br>  <span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>En el ejemplo requerimos los archivos estáticos en <code>/assets/</code>. Ahora para mapear todos los archivos que estén en esa carpeta a una ruta dentro de <code>/assets</code> (por ejemplo: <code>/assets/image.jpg</code>) de forma automática, vamos a usar el middleware <code>express.static</code> que viene por defecto con <em>express</em>.</p>
+<p>Para agregarlo, vamos a usar la funcion <code>use()</code>, que le indica a <em>express</em> para que use el middleware que le pasamos en el segundo parámetro, en las URL que le pasamos en el primero. Así que con lo siguiente le estamos diciendo que mapee las rutas de <code>/assets/</code> con el middelare <em>static</em>.</p>
+<pre class="language-javascript"><code class="hljs language-javascript">app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token string">"/assets/"</span><span class="token punctuation">,</span> express<span class="token punctuation">.</span><span class="token function">static</span><span class="token punctuation">(</span>__dirname <span class="token operator">+</span> <span class="token string">"/public"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>El único parámetro que recibe <em>static</em> es el nombre del directorio donde están los archivos estáticos, en nuestro ejemplo están en <code>/public</code>.</p>
+<p>Ahora probemos la nueva ruta <code>/static/</code> y probemos si carga los archivos estáticos:</p>
+<p><img src="./img/expresstatic.png" alt="pagina-static"></p>
+<p>Como vemos la imagen, y vemos el párrafo de color rojo, sabemos que se cargaron correctamente los archivos estáticos!</p>
+<p>Si accedemos a cada uno individualmente:</p>
+<p><img src="./img/static.gif" alt="pagina-static"></p>
+<p>Vemos que cada uno tiene su propia ruta dentro de <code>/assets/</code> y que fue mapeada automáticamente por <em>express.static</em> a cada archivo dentro de la carpeta <code>public</code>. Muy potente, no? Such express!</p>
+<h2 id="nuestro-propio-middleware-con-app.use()" tabindex="-1">Nuestro propio Middleware con app.use() <a class="anchor-link" href="#nuestro-propio-middleware-con-app.use()"></a></h2>
+<p>Vimos que los middlewares pueden ser muy potentes. Pero como hacemos para crear uno propio?</p>
+<p><em>Express</em> nos facilita esta tarea, ya que el callback pasamos en <code>app.use</code> tiene tres parámetros: los que ya conociamos <code>req</code> y <code>res</code> y uno nuevo, <code>next</code>. Lo que esto quiere decir es que cuando el request vaya a la ruta que especificamos en el primer argumento, en este caso <code>'/'</code>, <em>express</em> va a ejecutar el callback, cuando encuentre la función <code>next()</code> le estamos indicando que corra el siguiente middleware, podemos pensar que todos los <code>app.get</code> que veniamos programando también son middleware, por lo tanto son esas funciones las que se ejecutaran luego.</p>
+<pre class="language-javascript"><code class="hljs language-javascript">app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Hicieron un Request a "</span> <span class="token operator">+</span> req<span class="token punctuation">.</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>middle<span class="token punctuation">;</span></code></pre>
+<p>Por lo tanto al hacer un request al servidor, primero se pasará por ese middleware (veremos el console log en la terminal) y luego se creará el response según lo que habiamos definido para esa ruta:</p>
+<p><img src="./img/middleware.gif" alt="middleware"></p>
+<p>Como se podrán imaginar, esta forma de trabajar de <em>express</em> hace que sea super potente. Además hay muchísimos middlewares ya creados por otros desarrolladores que podremos usar. ¿Donde buscarlos? Sí, en npm! También pueden empezar por esta <a href="http://expressjs.com/resources/middleware.html">lista de middleware creados por el equipo de <em>express</em></a>.</p>
+<h2 id="enviado-datos-al-servidor%3A" tabindex="-1">Enviado datos al servidor: <a class="anchor-link" href="#enviado-datos-al-servidor%3A"></a></h2>
+<p>Por ahora nos habiamos concentado sólo en obtener contenido de nuestra app usando requests tipo <strong>GET</strong>, sin mandar datos nosotros (de hecho el único dato que enviamos fue como un parámetro en la URL).<br>
+Ahora veremos que hay distintas formas de enviar datos al servidor.</p>
+<h3 id="query-string" tabindex="-1">Query String <a class="anchor-link" href="#query-string"></a></h3>
+<p>Una forma de enviar datos es hacerlo en la URL a la que apuntamos el request. Para ello nos valemos de una serie de parámetros o datos que se incluyen en la URL. Normalmente distinguimos en la URL por un nombre y un valor separados por el signo igual, y se separan del endpoint por el caracter <code>?</code>, y entre cada variable por el signo <code>&amp;</code>. Por ejemplo:</p>
+<p><code>www.com/index?nombredevalor1=valor1&amp;nombredevalor2=valor2</code></p>
+<p>o</p>
+<p><img src="./img/queryString.png" alt="query_string"></p>
+<h3 id="post-y-forms" tabindex="-1">POST y Forms <a class="anchor-link" href="#post-y-forms"></a></h3>
+<p>Otras formas de enviar datos al servidor es a través de Formularios. Ahora usaremos otro verbo HTTP, el <strong>POST</strong>.</p>
+<p><img src="./img/postform.png" alt="query_string"></p>
+<p>En este caso, los datos iran dentro del <code>body</code> del request, y lo que nos indica que es datos de un formulario es el <code>content-type</code> que estará seteado a `x-www-form-urlencoded’.</p>
+<h3 id="post-y-ajax" tabindex="-1">POST y Ajax <a class="anchor-link" href="#post-y-ajax"></a></h3>
+<p>También podemos enviar datos al servidor en formato JSON, donde también usamos POST, pero el <code>content-type</code> es ahora <code>application/json</code>. Por ejemplo en un request generado por AJAX. En este caso los datos también estarán en el <code>body</code> del request.</p>
+<p><img src="./img/postajax.png" alt="ajax-post"></p>
+<p>En fin, como vemos vamos a necesitar middleware para lograr procesar cada una de estas formar de recibir datos (pensando desde el lado del servidor).</p>
+<h2 id="tomando-los-datos" tabindex="-1">Tomando los Datos <a class="anchor-link" href="#tomando-los-datos"></a></h2>
+<p>De las anteriores, la forma más simple es tomar los parámetros enviados por el query string. Esto lo hacemos usando en nuestra ruta el objeto <code>req.query</code>. <em>Express</em> busca y parsea el query string por si sólo y guarda los resultados en ese objeto. Veamos un ejemplo:</p>
+<pre class="language-javascript"><code class="hljs language-javascript">app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"/datos/"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span>req<span class="token punctuation">.</span>query<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Corramos el servidor y probemos nuestra nueva ruta:</p>
+<p><img src="./img/queryString.gif" alt="query-string"></p>
+<p>Como vemos, <em>Express</em> toma las variables del query string y al parsearla las guarda en un objeto cuyas propiedades son el nombre de esas variables junto con sus respectivos valores.</p>
+<h3 id="forms" tabindex="-1">Forms <a class="anchor-link" href="#forms"></a></h3>
+<p>Ahora, si queremos tomar datos que vienen de un formulario vamos a tener que usar un middleware, porque no es algo que <em>express</em> haga <em>out of the box</em>.</p>
+<p>Podríamos escribir el código nosotros mismos, pero ya alguien lo hizo por nosotros! El paquete que antes usábamos era <code>body-parser</code>. Hay muchos otros paquetes que hacen lo mismo, pero este era el más común para usar con <em>Express</em>. Puedes ver su documentación <a href="https://github.com/expressjs/body-parser">aquí</a><br>
+Pero ahora usamos <code>express.json()</code>, el cuál es un método ya incluído en express desde la versión 4.16.0.</p>
+<p>Vamos a encontrar la documentación sobre como usarlo <a href="https://expressjs.com/es/api.html">aquí</a>.<br>
+También vamos a necesitar crear un formulario en html. Haremos que un GET en <code>/form</code> devuelva un formulario HTML simple. También creamos una nueva ruta, que reciba un POST en la misma URL.</p>
+<pre class="language-javascript"><code class="hljs language-javascript">app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"/form"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  res<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><br>    <span class="token string">'&lt;html>&lt;head> \<br>			&lt;link href="/assets/style.css" rel="stylesheet"> \<br>			&lt;/head>&lt;body>\<br>				&lt;form method="POST" action="/form">\<br>				Nombre &lt;input name="nombre" type="text">&lt;br>\<br>				Apellido &lt;input name="apellido" type="text">&lt;br>\<br>				Curso &lt;input name="curso" type="text">&lt;br>\<br>				&lt;input type="submit">\<br>				&lt;/form>\<br>			&lt;/body>&lt;/html>'</span><br>  <span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>express<span class="token punctuation">.</span><span class="token function">urlencoded</span><span class="token punctuation">(</span><span class="token punctuation">{</span> extended<span class="token operator">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>app<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">"/form"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span>req<span class="token punctuation">.</span>body<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Le decimos a app que use el middelware <code>express.ulrencoded</code>.<br>
+Ahora vamos a ir a <code>/form</code> y vamos a probar submitear el formulario. Cuando hacemos el submit, el browser genera un request tipo POST, ese request será <em>capturado</em> en la nueva ruta <code>.post()</code> que definimos y luego enviará como response el objeto <code>req.body</code>, que es donde <code>express.son()</code> guarda los datos procesados.</p>
+<p>Vamos a probarlo:</p>
+<p><img src="./img/form.gif" alt="form-data"></p>
+<p>Excelente! con la ayuda del método <code>express.json()</code> que tiene express vamos a poder trabajar con las variables que recibiamos de un formulario.</p>
+<h3 id="ajax" tabindex="-1">Ajax <a class="anchor-link" href="#ajax"></a></h3>
+<p>Ok, ahora vemos el tercer escenario, en donde el cliente genera un request tipo POST que contenga datos en formato JSON.</p>
+<p>En el escenario anterior le dijimos a app que use el método <code>express.urlconded</code> y ahora vamos a decirle que use el método <code>express.json</code></p>
+<pre class="language-javascript"><code class="hljs language-javascript">app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>express<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>app<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">"/formjson"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span>req<span class="token punctuation">.</span>body<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Ahora, para poder probar este <em>endpoint</em> y enviar datos, vamos a usar una herramienta muy útil: <a href="https://www.getpostman.com/"><strong>POSTMAN</strong></a>, que es una app (viene como extensión de Chrome y una app para Mac) que nos permite generar todo tipos de request HTTP, y nos va a ser de gran ayuda para probar nuestros endpoint y APIs.</p>
+<p><em>También probá usando un request generado desde una página con AJAX</em></p>
+<h3 id="postman" tabindex="-1">POSTMAN <a class="anchor-link" href="#postman"></a></h3>
+<p>Veamos como usarlo para generar un post apuntado a <code>/formjson</code> y que envie data en formato JSON.</p>
+<p><img src="./img/postman.png" alt="Postman"></p>
+<p>Como vemos en la imagen, la interfaz es bastante intuitiva, a la izquierda seleccionamos qué tipo de http request queremos hacer (en el ejemplo hicimos un GET). Especificamos la URL (‘/form’) en este caso, y al apretar el botón SEND se genera el request.<br>
+Abajo podremos ver el resultado del mismo. En este caso, el servidor nos devolvió el html del formulario que habiamos creado en ese endpoint. Estos son los datos que recibe el browser cuando escribimos la URL en la barra de direcciones, pero el broswer al recibir los datos los parsea y los dibujo automáticamente, por eso vemos el formulario directamente.</p>
+<p>Ahora, queremos probar hacer un <strong>POST</strong> a <code>/formjson</code>, por lo tanto vamos a cambiar la URL en postman y el tipo de request. Si probamos veremos el siguiente resultado: <code>{}</code>.</p>
+<p><img src="./img/postmanform.png" alt="Postman"></p>
+<p>Lo primero que queremos saber es si el request fué procesado con éxito, sabemos que sí porque el <code>status</code> que trajo el response es el número <code>200</code>, que significa <strong>‘Todo ok’</strong> en el standart HTTP. También sabemos que ese endpoint nos debería devolver un JSON con los datos que hayamos enviado en el POST, como no había datos en el request, era esperable que recibamos un objeto vacío. Por lo tanto, hasta acá venimos bien.<br>
+Intentemos agregar datos al <strong>POST</strong> a ver que pasa:</p>
+<p><img src="./img/postman.gif" alt="Postman"></p>
+<p>Como vemos en la imagen de arriba, para agregar datos al post tenemos que ir a la pestaña <code>Body</code>, y allí seleccionar <code>raw</code>, y como tipo de datos usar <code>application/json</code>.<br>
+Luego completamos dentro del cuadro de texto con el objeto en formato JSON que queremos enviar (tengan cuidado con el formato, de hecho las dobles comillas con obligatorias para los nombres).<br>
+Luego de cargar los datos, hacemos click en <strong>Send</strong> y abajo vemos la respuesta, qué como habiamos dicho, tiene que ser el mismo objeto que hemos enviado. Todo funciona sin problemas!</p>
+<p><em>Con POSTMAN podemos emular varios request, de hecho podríamos haber emulado el formulario con esto. Intenten hacerlo ustedes: en <code>Body</code> pueden empezar seleccionando ‘x-www-form-urlencoded’. ¿Cúal es la diferencia con ‘form-data’?</em></p>
+<h2 id="estructurando-nuestra-app" tabindex="-1">Estructurando nuestra App <a class="anchor-link" href="#estructurando-nuestra-app"></a></h2>
+<p>Al hacer una app compleja, en donde van a existir muchos endpoints, se puede poner muy engorroso mantener todo en un mismo archivo. Por eso, vamos algunos patrones para mantener la aplicación lo más ordenada posible.</p>
+<p><strong>Esto también es muy personal, cada uno puede estructurar su aplicación de la forma que le resulte más fácil de mantener y entender. <em>Cuando trabajen en equipo tienen que estar de acuerdo en esto!!</em></strong></p>
+<p><em>Express</em> tiene un generador de projectos (parecido al <code>npm init</code> pero más potente) llamado <code>express-generator</code>. Podemos ver su documentación <a href="http://expressjs.com/en/starter/generator.html">aquí</a>. Vamos a instalarlo y crear un proyecto usándolo.</p>
+<p><code>npm install express-generator -g</code><br>
+<code>express myapp -e</code></p>
+<p>Para este ejemplo he creado una app con el nombre ‘myapp’ y le indiqué que el template engine a usar será <code>EJS</code>.<br>
+Veamos todos los archivos que <em>express-generator</em> creó por nosotros:</p>
+<pre><code class="hljs">create : myapp
+create : myapp/package.json
+create : myapp/app.js
+create : myapp/views
+create : myapp/views/index.ejs
+create : myapp/views/error.ejs
+create : myapp/public
+create : myapp/routes
+create : myapp/routes/index.js
+create : myapp/routes/users.js
+create : myapp/bin
+create : myapp/bin/www
+create : myapp/public/javascripts
+create : myapp/public/stylesheets
+create : myapp/public/stylesheets/style.css
+</code></pre>
+<p>Como vemos, se creó un <code>package.json</code> donde están listadas las dependencias de nuestro proyecto, por lo tanto lo primero que deberíamos hacer es entrar a la carpeta del proyecto y hacer un <code>npm install</code>.</p>
+<p>Ahora veamos un el archivo <code>app.js</code>. En ese archivo el generador incluyó a la app varios middleware de uso muy común (entre ellos están <code>express.json</code> y <code>express.static</code>).</p>
+<pre class="language-javascript"><code class="hljs language-javascript"><span class="token keyword">var</span> createError <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"http-errors"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token keyword">var</span> express <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"express"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token keyword">var</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"path"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token keyword">var</span> cookieParser <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"cookie-parser"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token keyword">var</span> logger <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"morgan"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br><span class="token keyword">var</span> indexRouter <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"./routes/index"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token keyword">var</span> usersRouter <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"./routes/users"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br><span class="token keyword">var</span> app <span class="token operator">=</span> <span class="token function">express</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br><span class="token comment">// view engine setup</span><br>app<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">"views"</span><span class="token punctuation">,</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">"views"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>app<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">"view engine"</span><span class="token punctuation">,</span> <span class="token string">"jade"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token function">logger</span><span class="token punctuation">(</span><span class="token string">"dev"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>express<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>express<span class="token punctuation">.</span><span class="token function">urlencoded</span><span class="token punctuation">(</span><span class="token punctuation">{</span> extended<span class="token operator">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token function">cookieParser</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>express<span class="token punctuation">.</span><span class="token function">static</span><span class="token punctuation">(</span>path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">"public"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">,</span> indexRouter<span class="token punctuation">)</span><span class="token punctuation">;</span><br>app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token string">"/users"</span><span class="token punctuation">,</span> usersRouter<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Nos podemos imaginar que la carpeta <code>/public</code> es donde estará todo nuestro ḿaterial estático (images, .css, .js, etc…). En la carpeta <code>/views</code> estarán los templates del projecto. Y también vemos una tercera carpeta de recursos que es la carpeta <code>/routes</code>, en ella guardaremos las rutas de cada endpoint de nuestra aplicación.<br>
+Si investigamos un archivo autogenerados que están dentro de esa carpeta, por ejemplo <code>/routes/index.js</code> veremos que está pensado para se importado ya que tiene el <code>module.exports</code> al final.</p>
+<pre class="language-javascript"><code class="hljs language-javascript"><span class="token keyword">var</span> express <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"express"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token keyword">var</span> router <span class="token operator">=</span> express<span class="token punctuation">.</span><span class="token function">Router</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br><span class="token comment">/* GET home page. */</span><br>router<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  res<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token string">"index"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> title<span class="token operator">:</span> <span class="token string">"Express"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> router<span class="token punctuation">;</span></code></pre>
+<p>De hecho, si volvemos a mirar <code>app.js</code> vemos que importa como módulos a los archivos dentro de <code>/routes</code>.</p>
+<pre class="language-javascript"><code class="hljs language-javascript"><span class="token keyword">var</span> routes <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"./routes/index"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token keyword">var</span> users <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"./routes/users"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Un concepto nuevo que no habiamos visto, es la función <code>express.Router()</code>, que es un middleware de <em>express</em> para facilitarnos el uso de rutas. En vez de poner las rutas directamente en la <code>app</code> vamos a cargarlas de la misma forma pero en el <code>router</code>, luego exportamos el objeto <code>router</code> en cada archivo y dentro de <code>app.js</code> vamos requerirlo y cargalos en nuestra app:</p>
+<pre class="language-javascript"><code class="hljs language-javascript">app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">,</span> routes<span class="token punctuation">)</span><span class="token punctuation">;</span><br>app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token string">"/users"</span><span class="token punctuation">,</span> users<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Hay que notar que cuando usamos <code>app.use</code> y le pasamos un <code>Router</code> también le pasamos un path, esto quiere decir que las rutas definidas dentro del <code>Router</code> que les pasamos serán accesibles desde el path origin que le pasamos. Por ejemplo:</p>
+<p>Como en el archivo <code>routes/users.js</code> tenemos una ruta para el URL <code>/</code>, al cargarlo usando <code>app.use()</code> en <code>/users</code>, ese path será accesible en el path <code>/users/</code>. Para que se entienda mejor, creé una nueva ruta dentro de <code>users.js</code> con la URL <code>/api</code>, esa ruta será accesible desde <code>/users/api/</code>, ya que cargamos ese <code>Router</code> en <code>/users</code>. ;D</p>
+<h2 id="cross-origin-resource-sharing-(cors)" tabindex="-1">Cross-Origin Resource Sharing (CORS) <a class="anchor-link" href="#cross-origin-resource-sharing-(cors)"></a></h2>
+<p>Por razones de seguridad, los navegadores sólo permiten que se carguen recursos que provengan del mismo origen. Dos URL tienen el mismo origen si el protocolo , el puerto y el host son los mismos para ambos. Esto es lo que llamamos Same-Origin Policy (SOP). Esta política ya viene por default en los navegadores y controla las interacciones entre orígenes diferentes ayudando así a aislar documentos potencialmente maliciosos y reduciendo posibles ataques.</p>
+<p>Ejemplos de URL con mismo origen:</p>
+<pre><code class="hljs">http://e-commerce.com/admin/orders   //Mismo origen, Path diferente
+
+http://e-commerce.com/user/me        //Mismo origen, Path diferente
+</code></pre>
+<p>Sin embargo, muchas veces necesitamos cargar en nuestro sitio recursos provenientes de otro origen, por ejemplo, cuando utilizamos una fuente distinta o queremos mostrar una imágen. ¿Qué pasaría si quisiéramos realizar una petición a un servidor con un dominio diferente? En ese caso, veríamos un error como este:</p>
+<p><img src="./img/cors.png" alt="CORS Blocking"></p>
+<p>¿Qué está pasando? Desde ‘<a href="http://localhost:3001">http://localhost:3001</a>’ se realizó una petición a ‘<a href="http://localhost:3004/second-server%E2%80%99">http://localhost:3004/second-server’</a> y el navegador bloqueó la solicitud por política de CORS (Cross-Origin Resource Sharing). A diferencia de la política del mismo origen (SOP) este mecanismo nos permite, mediante el uso de cabeceras HTTP adicionales, acceder a recursos desde un dominio, un protocolo o un puerto diferente al del documento que lo generó. Este tipo de solicitudes se denominan de origen cruzado.</p>
+<p>Ejemplos de URL con distinto origen:</p>
+<pre><code class="hljs">https://e-commerce.com/user/me	     //Diferente protocolo
+
+http://api.e-commerce.com/user/me	//Diferente host
+</code></pre>
+<h3 id="access-control-allow-origin" tabindex="-1">Access-Control-Allow-Origin <a class="anchor-link" href="#access-control-allow-origin"></a></h3>
+<p>Para habilitar una petición de origen cruzado debemos incluir una cabecera denominada Access-Control-Allow-Origin en la respuesta de la petición, donde debe indicarse el dominio al que se le quiere dar permiso. Es decir, en nuestro ejemplo el servidor que está utilizando el puerto 3004 debería incluir en su respuesta  a la solicitud de localhost.3001 un header Access-Control-Allow-Origin donde se indica el dominio al que se le quiere dar permiso.</p>
+<pre><code class="hljs">Access-Control-Allow-Origin: http://localhost:3001
+</code></pre>
+<p>De esta forma, el navegador comprobará dichas cabeceras y si coinciden con el dominio de origen que realizó la petición, ésta se permitirá. En el ejemplo anterior, la cabecera tiene el valor <a href="http://localhost:3001">http://localhost:3001</a>, pero en algunos casos el valor puede ser un “*”. El asterisco indica que se permiten peticiones de origen cruzado a cualquier dominio.</p>
+<p><img src="./img/headers.png" alt="Headers"></p>
+<p>Además de ese, existen otros cors headers. Algunos de ellos son:</p>
+<ul>
+<li>Access-Control-Allow-Origin: ¿qué origen está permitido?</li>
+<li>Access-Control-Allow-Credentials: ¿también se aceptan solicitudes cuando el modo de credenciales es include?</li>
+<li>Access-Control-Allow-Headers: ¿qué cabeceras pueden utilizarse?</li>
+<li>Access-Control-Allow-Methods: ¿qué métodos de petición HTTP están permitidos?</li>
+<li>Access-Control-Expose-Headers: ¿qué cabeceras pueden mostrarse?</li>
+<li>Access-Control-Max-Age: ¿cuándo pierde su validez la solicitud preflight?</li>
+<li>Access-Control-Request-Headers: ¿qué header HTTP se indica en la solicitud preflight?</li>
+<li>Access-Control-Request-Method: ¿qué método de petición HTTP se indica en la solicitud preflight?</li>
+</ul>
+<p>Otra forma que tenemos para habilitar las solicitudes CORS pueden ser librerías que manejen las autorizaciones por nosotros a modo de middleware. Por ejemplo, el módulo <a href="https://www.npmjs.com/package/cors">cors</a>.</p>
+
+          </div>
+        </div>
+
+      </main>
+
+      <div class="feedback">
+        <a href='https://airtable.com/shrBpWkYV4K12PPNZ?prefill_clase=' target="_blank">
+          Dejanos tu feedback!👍
+        </a>
+      </div>
+
+      <div class="footerContainer">
+        <div class="footerContained">
+          <p>Hecho con 💛 por alumnos de Henry</p>
+        </div>
+      </div>
+
+      <div class="readerBarDiv">
+        
+  <!-- up button -->
+  <div>
+    <button
+      id="upBtn"
+      style="position:fixed; width:32px; height:32px; border-radius:50%; border:none; background-color:black; right:20px; bottom:55px; color:white; z-index:999; focus:outline-none; cursor:pointer; transition-duration:500ms; opacity:0; pointer-events:none;"
+    ><i class="arrow up"></i></button>
+  </div>
+  
+  <style>
+  .arrow {
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+  }
+
+  .up {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+  }
+  </style>
+
+  <script>
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 250) {
+      upBtn.style.opacity = 1;
+      upBtn.style.pointerEvents = 'auto';     
+    }
+    else {
+      upBtn.style.opacity = 0;
+      upBtn.style.pointerEvents = 'none';
+    }
+  })
+
+  upBtn.addEventListener('click', () => {
+    let start = document.querySelector('.reader-bar-start')
+    start.scrollIntoView({behavior: "smooth"})
+  })
+  </script>
+
+  <!-- reader bar -->
+  <div id="readerBarContainer" style="height:3px;width:100%;background-color:black;position:fixed;top:66px;left:0;z-index:1099;transition:0.2s;">
+    <div id="readerBar" style="height:3px;width:0;background-color:yellow;position:fixed;top:66px;left:0;z-index:1099;transition:0.2s;"></div>
+  </div>
+
+  <script>
+    let winH = window.innerHeight;
+    const content = document.querySelector('.reader-bar-start');
+
+    let contentH = content.offsetHeight;
+    let contentS = contentH - winH;
+    let readerBar = document.getElementById('readerBar');
+    window.addEventListener('load', () => {
+      document.addEventListener ('scroll', updateBar);
+    })
+    window.addEventListener('resize', redefine)
+
+    function redefine() {
+      winH = window.innerHeight;
+      contentH = content.offsetHeight;
+      contentS = contentH - winH;
+      updateBar();
+    }
+
+    function updateBar() {
+      const pagePos = window.scrollY; 
+      const updatedBar = pagePos * 100 / contentS;
+      readerBar.style.width = updatedBar + "%";
+    }
+  </script>
+  
+      </div>
+
+    </body>
+  </html>

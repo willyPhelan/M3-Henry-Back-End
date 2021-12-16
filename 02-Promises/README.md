@@ -1,6 +1,15 @@
-# Henry
+---
+title: Promises
+permalink: "/Promises/"
+feedbackID: 02-Promises
+eleventyNavigation:
+  key: Promises
+  order: 2
+---
 
-<table width="100%" style='table-layout:fixed;'>
+![HenryLogo](/_src/assets/logo.png)
+
+<table class="hide" width="100%" style='table-layout:fixed;'>
   <tr>
 	  <td>
 	  	<a href="https://airtable.com/shrBpWkYV4K12PPNZ?prefill_clase=02-Promises">
@@ -24,11 +33,11 @@
 Javascript es muy potente a la hora de trabajar con tareas asincrónicas, de hecho, ya venimos programando funciones y código que hacen uso de `callbacks` para ejecutar código en el futuro cercano, cuando un evento sucede o cuando se termina la ejecución de un proceso (escribir en la bd, o escribir en el disco, hacer un request http, etc...).
 Esto es genial, pero a veces nos sucede que tenemos callbacks anidadas, es decir, que dentro de un callback tenemos otro callback y así sucesivamente ( inception de callbacks ), y tambien tenemos problemas donde tenemos que esperar que _dos o más_ eventos terminen para continuar la ejecución de nuestro código. Si bien podemos resolverlo sin problemas con callbacks, vamos a ver que nuestro código empieza a hacerce díficil de leer, muy díficil de controlar si hay errores (no sabemos qué función es la que realmente produjo el error ), y si tenemos que buscar un bug dentro del código nos daremos cuenta que, sin querer, hemos terminado dentro del :japanese_goblin: __Callback Hell__:
 
-![callbackHell](./img/callback_hell.gif)
+![callbackHell](/_src/assets/02-Promises/callback_hell.gif)
 
 También conocido como __Pyramid of Doom__ :scream::
 
-![PyramidOfDoom](./img/pyr-1.png)
+![PyramidOfDoom](/_src/assets/02-Promises/pyr-1.png)
 
 Se pueden imaginar, por los nombres que eligieron para esto, que no es una situación deseada en nuestro código. También van a pensar, que es un mal necesario, ya que de esta forma puedo lograr que mi aplicación se comporte de acuerdo a los requerimientos asincrónicos que hay en el medio. 
 
@@ -36,7 +45,7 @@ Se pueden imaginar, por los nombres que eligieron para esto, que no es una situa
 
 Cuando programamos en lenguajes que son bloqueantes, como `C++` o `python`, perdemos el poder del asincronismo, pero ganamos legibilidad, ya que una línea de código se ejecuta exactamente cuando termina al anterior (si la anterior tarda 3 horas, vamos a esperar a que termine), esto hace que el código sea fácil de leer ya que siguiendo la línea de ejecución vamos a ver que cosas suceden antes o después, esto mismo no lo podemos hacer con callbacks (o por lo menos sin entrar al _Callback hell_.):
 
-![SyncVsAsync](./img/software-architecture-introduction-3.png)
+![SyncVsAsync](/_src/assets/02-Promises/software-architecture-introduction-3.png)
 
 ¿No sería genial si pudieras escribir código como si fuera sincrónico, pero que la ejecución fuera asincrónica? Esta pregunta seguramente se hicieron los inventores de las __Promises__ de javascript!
 Justamente las __Promises__ en Js intentan solucionar el problema del _callback hell_ y lograr que el código sea más legible, más fácil de debuggear y que tengamos mayor control sobre los errores. Veamos como funcionan las promises.
