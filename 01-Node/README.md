@@ -9,23 +9,22 @@ eleventyNavigation:
 
 ![HenryLogo](https://static.wixstatic.com/media/85087f_0d84cbeaeb824fca8f7ff18d7c9eaafd~mv2.png/v1/fill/w_160,h_30,al_c,q_85,usm_0.66_1.00_0.01/Logo_completo_Color_1PNG.webp)
 
-
 <table class="hide" width="100%" style='table-layout:fixed;'>
   <tr>
-	  <td>
-	  	<a href="https://airtable.com/shrBpWkYV4K12PPNZ?prefill_clase=01-Node">
-			<img src="https://static.thenounproject.com/png/204643-200.png" width="100"/>
-			<br>
-			Hacé click acá para dejar tu feedback sobre esta clase.
-	  	</a>
-	  </td>
+   <td>
+    <a href="https://airtable.com/shrBpWkYV4K12PPNZ?prefill_clase=01-Node">
+   <img src="https://static.thenounproject.com/png/204643-200.png" width="100"/>
+   <br>
+   Hacé click acá para dejar tu feedback sobre esta clase.
+    </a>
+   </td>
     <td>
-	          <a href="https://quiz.soyhenry.com/evaluation/new/6057d0a5656c8d23c2e60e3e">
+           <a href="https://quiz.soyhenry.com/evaluation/new/6057d0a5656c8d23c2e60e3e">
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/HSQuiz.svg/768px-HSQuiz.svg.png" width="100" height="100"/>
         <br>
         Hacé click acá completar el quizz teórico de esta lecture.
       </a>
-		</td>
+  </td>
   </tr>
 </table>
 
@@ -50,13 +49,13 @@ Podemos pensar a procesador (microprocesador) como una pequeña máquina que rec
 * ARM
 * MIPS
 
-Para pasarle intrucciones al procesador, no escribimos 1's y 0's, sino que usamos un lenguaje que se traduce directamente a esa secuencia, llamado [__assembler__](https://es.wikipedia.org/wiki/Lenguaje_ensamblador). 
+Para pasarle intrucciones al procesador, no escribimos 1's y 0's, sino que usamos un lenguaje que se traduce directamente a esa secuencia, llamado [__assembler__](https://es.wikipedia.org/wiki/Lenguaje_ensamblador).
 
 ![assembler](/_src/assets/01-Node//asembler.png)
 
 Hoy en día no se programa en assembler ([__lenguaje de bajo nivel__](https://es.wikipedia.org/wiki/Lenguaje_de_bajo_nivel)), ya que es muy complejo y hacer un simple 'Hello World' podría llevar muchas líneas de código: Simplemente no escala. Para solucionar esto, se crearon lenguajes más fáciles y rápidos de programar y que compilan a lenguaje de máquina, estos son los conocidos _lenguajes de alto nivel_, JAVA, C++, Javascript son ejemplos de estos lenguajes. Es importante notar, que no importa que lenguaje usemos, en algún momento el código será _traducido_ o _compilado_ a lenguaje de máquina, que es el único lenguaje que entiende verdaderamente la computadora.
 
-Como pueden pensar mientras nos alejamos del lenguaje de máquina (lenguajes de más alto nivel) y nos abstraemos vamos ganando velocidad para codear, pero también vamos perdiendo performance. Piensen que si codeamos en lenguaje de máquina, podemos controlar cada slot de memoria nosotros mismos y hacerlo de la mejor forma posible. Cuando subimos de nivel, alguien hace ese trabajo por nosotros, y como tiene que ser genérico no puede lograr ser tan óptimo. Es por eso que según la performance y los recursos que se necesite o tengamos vamos a elegir lenguajes de altisimo o bajísimo nivel. 
+Como pueden pensar mientras nos alejamos del lenguaje de máquina (lenguajes de más alto nivel) y nos abstraemos vamos ganando velocidad para codear, pero también vamos perdiendo performance. Piensen que si codeamos en lenguaje de máquina, podemos controlar cada slot de memoria nosotros mismos y hacerlo de la mejor forma posible. Cuando subimos de nivel, alguien hace ese trabajo por nosotros, y como tiene que ser genérico no puede lograr ser tan óptimo. Es por eso que según la performance y los recursos que se necesite o tengamos vamos a elegir lenguajes de altisimo o bajísimo nivel.
 
 ![low-high](/_src/assets/01-Node//lowh.png)
 
@@ -139,13 +138,13 @@ Este concepto ya existia en otros lenguajes de programación y era muy usado par
 
 Básicamente, el standart dice lo siguiente:
 
-- Cada archivo es un ḿodulo, y cada módulo es un archivo separado.
-- Todo lo que queremos exportar va a ser expuesto desde un único punto.
+* Cada archivo es un ḿodulo, y cada módulo es un archivo separado.
+* Todo lo que queremos exportar va a ser expuesto desde un único punto.
 
 Para entender el standard tenemos que tener dos conceptos en claro:
 
 * First-Class Functions: Las funciones en javascript son tratadas igual que cualquier otro objeto, es decir que podés guardarlas en variables, pasarlas como argumentos, guardarlas en arreglos, etc...
-* Function Expressions: Como las funciones son first-class, al escribir una expresión de funcion estoy creando la misma, eso quiere decir que puedo crear funciones en cualquier parte del código. 
+* Function Expressions: Como las funciones son first-class, al escribir una expresión de funcion estoy creando la misma, eso quiere decir que puedo crear funciones en cualquier parte del código.
 
 Vamos a empezar construyendo nuestro propio módulo! una vez que lo tengamos, vamos a ver como usarlo. Entendiendo así todo el ciclo.
 
@@ -173,7 +172,7 @@ Hagamos algo más interesante, vamos a `hola.js` y creemos una función y luego 
 
 ```javascript
 var saludar = function() {
-	console.log('Hola!!!');
+ console.log('Hola!!!');
 }
 saludar();
 ```
@@ -186,13 +185,16 @@ El resultado es el mismo!
 Ahora, si no invocamos `saludar()` dentro de `hola.ja`, creen que la podremos invocar (usar) en `app.js`? Hagamos la prueba!
 
 Comentamos la invocación en `hola.js`:
+
 ```javascript
 var saludar = function() {
-	console.log('Hola!!!');
+ console.log('Hola!!!');
 }
 //saludar();
 ```
+
 Invacamos en `app.js`:
+
 ```javascript
 require('./hola.js');
 saludar();
@@ -208,11 +210,12 @@ Nodejs nos permite hacerlo usando `module.exports`, que es una variable especial
 
 ```javascript
 var saludar = function() {
-	console.log('Hola!!!');
+ console.log('Hola!!!');
 };
 
 module.exports = saludar;
 ```
+
 Ahora este módulo está exponiendo el objeto `saludar`. Para usarlo en nuestro módulo tenemos que guardar lo que devuelve `require` en una variable (puedo llamar a la nueva variable como quiera):
 
 ```javascript
@@ -229,10 +232,10 @@ Ahora pudimos acceder al código de `hola.js`, porque lo expusimos a propósito.
 
 Resumiendo:
 
-- __Require__ es una función que recibe un _path_.
-- __module.exports__ es lo que retorna la funcion _require_.
+* __Require__ es una función que recibe un _path_.
+* __module.exports__ es lo que retorna la funcion _require_.
 
-#### Algunos patrones de Require.
+#### Algunos patrones de Require
 
 Como siempre en Nodejs, hay muchas formas de hacer lo mismo (esto puede ser bueno o malo - según cómo lo usemos) y crear módulos no es la excepción. Veamos algunos patrones comunes en la creacion de módulos!
 
@@ -252,13 +255,14 @@ saludos.spanish();
 Estamos importanto solamente el path `./saludos`, como no hay ningún archivo `.js` con ese nombre, _require_ busca una carpeta, por lo tanto vamos a crear una carpeta `saludos` con los siguientes archivos:
 
 index.js
+
 ```javascript
 var english = require('./english');
 var spanish = require('./spanish');
 
 module.exports = {
-	english: english,
-	spanish: spanish	
+ english: english,
+ spanish: spanish 
 };
 ```
 
@@ -267,21 +271,24 @@ En este archivo estamos importando otros dos módulos, uno por cada idioma en el
 Ahora veamos como sería cada idioma:
 
 spanish.js
+
 ```javascript
 var saludos = require('./greetings.json');
 
 var greet = function() {
-	console.log(saludos.es);
+ console.log(saludos.es);
 }
 
 module.exports = greet;
 ```
+
 english.js
+
 ```javascript
 var saludos = require('./greetings.json');
 
 var greet = function() {
-	console.log(saludos.en);
+ console.log(saludos.en);
 }
 
 module.exports = greet;
@@ -291,8 +298,8 @@ y en greetings.json vamos a tener los saludos per se:
 
 ```javascript
 {
-	"en": "Hello",
-	"es": "Hola"
+ "en": "Hello",
+ "es": "Hola"
 }
 ```
 
@@ -307,7 +314,6 @@ En la carpeta `./patrones/otro` hemos puesto varios files distintos llamados `sa
 Dentro de cada archivo en los comentarios está explicado en más detalle el patrón.
 
 De nuevo, __no hay una mejor forma, prueben todos los patrones y vean cual es el que les gusta y cual los hace felices!__
-
 
 ### Require con modulos Core o nativos
 
@@ -327,15 +333,14 @@ util.log(saludo);
 
 ¿Que hace este código? Busquen en la [documentación](https://nodejs.org/dist/latest-v6.x/docs/api/util.html#util_util_format_format) por la función `format()` y `log()` e intenten predecir que hará ese código.
 
-
 ### Eventos: Events emitter
 
 Una gran porción del core de Nodejs está construida usando como base este concepto.
 Un _Evento_ es algo que ha ocurrido en nuestra aplicación y que dispara una acción. Este concepto no es exclusivo a _Nodejs_, si no que aparece en muchos lenguajes y arquitecturas de software.
 En Node hay dos tipo de eventos:
 
-- Eventos del sistemas: Estos vienen del código en _C++_, gracias a una librería llamada _libuv_ y manejan eventos que vienen del sistema operativo como por ejemplo: Terminé de leer una archivo, o recibí datos de la red, etc...
-- Eventos Customs: Estos eventos estan dentro de la parte Javascript del Core. Maneja eventos que podemos crear nosotros mismos, para eso vamos a usar el _Event Emitter_. Varias veces cuando un evento de _libuv_ sucede, genera un evento usando el _event emitter_.
+* Eventos del sistemas: Estos vienen del código en _C++_, gracias a una librería llamada _libuv_ y manejan eventos que vienen del sistema operativo como por ejemplo: Terminé de leer una archivo, o recibí datos de la red, etc...
+* Eventos Customs: Estos eventos estan dentro de la parte Javascript del Core. Maneja eventos que podemos crear nosotros mismos, para eso vamos a usar el _Event Emitter_. Varias veces cuando un evento de _libuv_ sucede, genera un evento usando el _event emitter_.
 
 _Ejercicio_ Crear un forma simple de emitir eventos y capturarlos.
 
@@ -463,7 +468,7 @@ Como verán este es un paquete que vamos a usar en casi todos los proyectos de n
 
 `npm install -g nodemon`
 
-o 
+o
 
 `sudo npm install -g nodemon` en Linux o Mac.
 
@@ -500,7 +505,7 @@ Como dijimos, `npm` también nos sirve para mantener actualizados los paquetes. 
 
 Para mantener la compatibilidad con las aplicaciones, `npm` sólo actualiza automáticamente los _patches_ y _minor changes_ ([Semantic Versioning](http://semver.org/))de un paquete, por defecto.
 
-De hecho, el **^** antes del número de versión en 'dependencies' indica qué puede actualizar los _minors_ automáticamente, si quisieramos restringir ese comportamiento para que actualize sólo los _patches_ deberíamos usar el carácter **~** antes de la versión: 
+De hecho, el **^** antes del número de versión en 'dependencies' indica qué puede actualizar los _minors_ automáticamente, si quisieramos restringir ese comportamiento para que actualize sólo los _patches_ deberíamos usar el carácter **~** antes de la versión:
 
 ```javascript
 "dependencies": {
@@ -527,7 +532,7 @@ var saludo = fs.readFileSync(__dirname + '/greet.txt', 'utf8');
 console.log(saludo);
 ```
 
-Como podemos ver en la [documentación](https://nodejs.org/dist/latest-v6.x/docs/api/fs.html#fs_fs_readfilesync_file_options) de `fs`, la función `readFileSync`, recibe un path como parametro y el encoding del file. 
+Como podemos ver en la [documentación](https://nodejs.org/dist/latest-v6.x/docs/api/fs.html#fs_fs_readfilesync_file_options) de `fs`, la función `readFileSync`, recibe un path como parametro y el encoding del file.
 
 >__\_\_dirname: esta variable tiene guardado el path completo del directorio donde está el archivo que está ejecutando el código__
 
@@ -543,7 +548,7 @@ Para hacerlo, `fs` nos da la función `readFile`, que recibe el path del archivo
 ```javascript
 var fs = require('fs');
 fs.readFile(__dirname + '/greet.txt', 'utf8', function(err, data) {
-	console.log(data);
+ console.log(data);
 });
 console.log('Listo!');
 ```

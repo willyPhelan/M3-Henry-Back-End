@@ -1,5 +1,6 @@
 ---
 title: Introducción
+layout: intro
 permalink: "/index.html"
 eleventyNavigation:
   key: Intro
