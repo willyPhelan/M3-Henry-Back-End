@@ -114,7 +114,7 @@
 
 .lesson img[alt~='logo'] {
   box-shadow: none;
-  width: 350px;
+  max-width: 350px;
 }
 
 .lesson ul {
