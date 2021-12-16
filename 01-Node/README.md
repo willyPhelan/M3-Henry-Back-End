@@ -105,7 +105,7 @@ Para instalar node vamos a ir [acá](https://nodejs.org/en/) y seguir las instru
 
 Una vez terminada la instalación, podemos probar si funciona correctamente escribiendo el siguiente comando en la consola:
 
-```
+```bash
 node -v
 ```
 

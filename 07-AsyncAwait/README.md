@@ -373,7 +373,7 @@ Si quisieramos que el orden de ejecución seá:
 
 ¿Cómo deberíamos modificar el código previo?
 
-![logo](/_src/assets/07-AsyncAwait/Spoiler-Alert.png)
+![no-box](/_src/assets/07-AsyncAwait/Spoiler-Alert.png)
 
 ```javascript
 async function showInstructors() {

@@ -117,6 +117,10 @@
   max-width: 350px;
 }
 
+.lesson img[alt~='no-box'] {
+  box-shadow: none;
+}
+
 .lesson ul {
   list-style: square;
 }
