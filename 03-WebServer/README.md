@@ -11,20 +11,20 @@ eleventyNavigation:
 
 <table class="hide" width="100%" style='table-layout:fixed;'>
   <tr>
-	  <td>
-	  	<a href="https://airtable.com/shrBpWkYV4K12PPNZ?prefill_clase=03-WebServer">
-			<img src="https://static.thenounproject.com/png/204643-200.png" width="100"/>
-			<br>
-			Hacé click acá para dejar tu feedback sobre esta clase.
-	  	</a>
-	  </td>
+   <td>
+    <a href="https://airtable.com/shrBpWkYV4K12PPNZ?prefill_clase=03-WebServer">
+   <img src="https://static.thenounproject.com/png/204643-200.png" width="100"/>
+   <br>
+   Hacé click acá para dejar tu feedback sobre esta clase.
+    </a>
+   </td>
               <td>
-	    <a href="https://quiz.soyhenry.com/evaluation/new/606e31b2656c8d23c2e60ecb">
-	    	<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/HSQuiz.svg/768px-HSQuiz.svg.png" width="100" height="100"/>
-	    	<br>
-	    	Hacé click acá completar el quiz teórico de esta lecture.
-	    </a>
-	 </td>
+     <a href="https://quiz.soyhenry.com/evaluation/new/606e31b2656c8d23c2e60ecb">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/HSQuiz.svg/768px-HSQuiz.svg.png" width="100" height="100"/>
+      <br>
+      Hacé click acá completar el quiz teórico de esta lecture.
+     </a>
+  </td>
   </tr>
 </table>
 
@@ -61,7 +61,7 @@ El cliente pide un recurso o servicio a un servidor, usando un mensaje en un for
 
 Nodejs viene preparado para poder leer e interpretar el contenido de un mensaje HTTP. Lo logra con la librería [http_parser](https://github.com/nodejs/http-parser), qué es un programa hecho en C y que está embebido en Node.
 
-Usando esta librería de C, Nodejs tiene módulos que nos ayudan a manejar de manera fácil request y reponses HTTP. 
+Usando esta librería de C, Nodejs tiene módulos que nos ayudan a manejar de manera fácil request y reponses HTTP.
 
 # Empezemos a construir un server básico
 
@@ -69,9 +69,9 @@ Usando esta librería de C, Nodejs tiene módulos que nos ayudan a manejar de ma
 var http = require('http'); // importamos el módulo http para poder trabajar con el protocolo
 
 http.createServer( function(req, res){ // Creamos una serie de events listener, que van a escuchar por requests que ocurren en este socket
-	//Para crear un response empezamos escribiendo el header
-	res.writeHead(200, { 'Content-Type':'text/plain' }) //Le ponemos el status code y algunos pair-values en el header
-	res.end('Hola, Mundo!\n');
+ //Para crear un response empezamos escribiendo el header
+ res.writeHead(200, { 'Content-Type':'text/plain' }) //Le ponemos el status code y algunos pair-values en el header
+ res.end('Hola, Mundo!\n');
 
 
 }).listen(1337, '127.0.0.1'); //Por último tenemos que especificar en que puerto y en qué dirección va a estar escuchando nuestro servidor
@@ -89,7 +89,6 @@ De hecho, usando las developer tools, podemos ver el request HTTP que hizo el se
 
 ![Server-Network](/_src/assets/03-WebServer/serverNetwork.png)
 
-
 ## ¿Qué más podemos hacer, ahora que tenemos un server corriendo?
 
 ### Enviando HTML
@@ -103,11 +102,11 @@ Por lo que vamos a crear un nuevo archivo HTML muy simple llamado `index.html` a
  <!DOCTYPE html>
  <html>
  <head>
- 	<title>Prueba!</title>
+  <title>Prueba!</title>
  </head>
  <body>
- 	<h1>Hola, Mundo!</h1>
- 	<p>Bienvenidos!</p>
+  <h1>Hola, Mundo!</h1>
+  <p>Bienvenidos!</p>
  </body>
  </html>
  ```
@@ -131,10 +130,10 @@ var http = require('http');
 var fs   = require('fs'); //Importamos el módulo fs que nos permite leer y escribir archivos del file system
 
 http.createServer( function(req, res){ 
-	
-	res.writeHead(200, { 'Content-Type':'text/html' })
-	var html = fs.readFileSync(__dirname +'/html/index.html');
-	res.end(html);
+ 
+ res.writeHead(200, { 'Content-Type':'text/html' })
+ var html = fs.readFileSync(__dirname +'/html/index.html');
+ res.end(html);
 
 
 }).listen(1337, '127.0.0.1');
@@ -146,7 +145,6 @@ Corremos el servidor con `node` y vemos el nuevo resultado:
 
 Como vemos, cuando le llegó el request al server, este leyó el archivo html y lo envió. El browser interpretó que el contenido era `text/html` y lo renderizó como tal.
 
-
 ### Contenido Dinámico: **Templates**
 
 Si quisieramos que el contenido del html no sea estático podriamos, por ejemplo, hacer que el html varie según una variable. Veamos como podemos lograr eso.
@@ -157,17 +155,18 @@ Primero vamos a crear un nuevo html al que llamaremos `template.html`. Y vamos a
  <!DOCTYPE html>
  <html>
  <head>
- 	<title>Prueba!</title>
+  <title>Prueba!</title>
  </head>
  <body>
- 	<h1>Hola, {nombre}!</h1>
- 	<p>Bienvenidos!</p>
+  <h1>Hola, {nombre}!</h1>
+  <p>Bienvenidos!</p>
  </body>
  </html>
  ```
+
 Esta idea, de tener placeholders que luego serán reemplazados por contenido que esté en una variable es conocido como **Templates**. Existen varios _lenguajes_ de templating que trabajan con este concepto. Más adelante veremos algunos de ellos.
 
-Ahora volvamos al código del servidor. Ahora, antes de enviar el html leído del archivo lo vamos a tener que parsear, por eso vamos a tener que tratar el archivo como una `String` y no como un `Buffer`, por lo que agregaremos el argumento `'utf-8' a la función `readFileSync`, para que el buffer sea codificado a una String.
+Ahora volvamos al código del servidor. Ahora, antes de enviar el html leído del archivo lo vamos a tener que parsear, por eso vamos a tener que tratar el archivo como una `String` y no como un `Buffer`, por lo que agregaremos el argumento `'utf-8' a la función`readFileSync`, para que el buffer sea codificado a una String.
 
 Luego, vamos a crear la variable que va a tener el texto que queremos que se reemplaze en nuestro template. Por ejemplo: `var nombre = 'Soy Henry'`.
 
@@ -180,12 +179,12 @@ var http = require('http');
 var fs   = require('fs'); //Importamos el módulo fs que nos permite leer y escribir archivos del file system
 
 http.createServer( function(req, res){ 
-	
-	res.writeHead(200, { 'Content-Type':'text/html' })
-	var html = fs.readFileSync(__dirname +'/html/template.html', 'utf8'); //Codificamos el buffer para que sea una String
-	var nombre = 'Soy Henry'; //Esta es la variable con la que vamos a reemplazar el template
-	html = html.replace('{nombre}', nombre); // Usamos el método replace es del objeto String
-	res.end(html);
+ 
+ res.writeHead(200, { 'Content-Type':'text/html' })
+ var html = fs.readFileSync(__dirname +'/html/template.html', 'utf8'); //Codificamos el buffer para que sea una String
+ var nombre = 'Soy Henry'; //Esta es la variable con la que vamos a reemplazar el template
+ html = html.replace('{nombre}', nombre); // Usamos el método replace es del objeto String
+ res.end(html);
 
 
 }).listen(1337, '127.0.0.1');
@@ -207,8 +206,8 @@ Ahora, en vez de leer de un archivo, vamos a crear algo de datos. Por ejemplo, p
 
 ```javascript
 var obj = {
-	nombre: 'Juan',
-	apellido: 'Perez'
+ nombre: 'Juan',
+ apellido: 'Perez'
 };
 ```
 
@@ -222,17 +221,18 @@ var http = require('http');
 var fs   = require('fs');
 
 http.createServer( function(req, res){ 
-	
-	res.writeHead(200, { 'Content-Type':'application/json' }) //Vamos a devolver texto en formato JSON
-	var obj = {
-		nombre: 'Juan',
-		apellido: 'Perez'
-	}; //Creamos un objeto de ejemplo para enviar como response
-	
-	res.end( JSON.stringify(obj) ); //Antes de enviar el objeto, debemos parsearlo y transformarlo a un string JSON
+ 
+ res.writeHead(200, { 'Content-Type':'application/json' }) //Vamos a devolver texto en formato JSON
+ var obj = {
+  nombre: 'Juan',
+  apellido: 'Perez'
+ }; //Creamos un objeto de ejemplo para enviar como response
+ 
+ res.end( JSON.stringify(obj) ); //Antes de enviar el objeto, debemos parsearlo y transformarlo a un string JSON
 
 }).listen(1337, '127.0.0.1');
 ```
+
 De nuevo, corremos el servidor y vamos al browser a probar nuestro nuevo endpoint.
 
 ![Server-Template](/_src/assets/03-WebServer/jsonServer.png)
@@ -256,19 +256,19 @@ var http = require('http');
 var fs   = require('fs');
 
 http.createServer( function(req, res){ 
-	if( req.url === '/'){ //Si la URL es / devolvemos el HTML
-		res.writeHead(200, { 'Content-Type':'text/html' })
-		var html = fs.readFileSync(__dirname +'/html/index.html');
-		res.end(html);
-	}
-	if(req.url === '/api'){ //Si la URL es /api devolvemos el objeto
-		res.writeHead(200, { 'Content-Type':'application/json' })
-		var obj = {
-			nombre: 'Juan',
-			apellido: 'Perez'
-		};	
-		res.end( JSON.stringify(obj) );
-	} 
+ if( req.url === '/'){ //Si la URL es / devolvemos el HTML
+  res.writeHead(200, { 'Content-Type':'text/html' })
+  var html = fs.readFileSync(__dirname +'/html/index.html');
+  res.end(html);
+ }
+ if(req.url === '/api'){ //Si la URL es /api devolvemos el objeto
+  res.writeHead(200, { 'Content-Type':'application/json' })
+  var obj = {
+   nombre: 'Juan',
+   apellido: 'Perez'
+  }; 
+  res.end( JSON.stringify(obj) );
+ } 
 }).listen(1337, '127.0.0.1');
 ```
 
@@ -299,22 +299,22 @@ var http = require('http');
 var fs   = require('fs');
 
 http.createServer( function(req, res){ 
-	if( req.url === '/'){
-		res.writeHead(200, { 'Content-Type':'text/html' })
-		var html = fs.readFileSync(__dirname +'/html/index.html');
-		res.end(html);
-	}else if(req.url === '/api'){
-		res.writeHead(200, { 'Content-Type':'application/json' })
-		var obj = {
-			nombre: 'Juan',
-			apellido: 'Perez'
-		};	
-		res.end( JSON.stringify(obj) );
-	} else{
-		res.writeHead(404); //Ponemos el status del response a 404: Not Found
-		res.end(); //No devolvemos nada más que el estado.
-	}
-	
+ if( req.url === '/'){
+  res.writeHead(200, { 'Content-Type':'text/html' })
+  var html = fs.readFileSync(__dirname +'/html/index.html');
+  res.end(html);
+ }else if(req.url === '/api'){
+  res.writeHead(200, { 'Content-Type':'application/json' })
+  var obj = {
+   nombre: 'Juan',
+   apellido: 'Perez'
+  }; 
+  res.end( JSON.stringify(obj) );
+ } else{
+  res.writeHead(404); //Ponemos el status del response a 404: Not Found
+  res.end(); //No devolvemos nada más que el estado.
+ }
+ 
 }).listen(1337, '127.0.0.1');
 ```
 
@@ -336,7 +336,7 @@ Ahora están de moda las API webs, pero existen de todo tipo y en casi todos los
 
 ### En Librerías y Frameworks
 
-Cada vez que usemos una librería o un framework y vamos a su documentación es muy probable que nos encontremos un link a su API (si la librería o framework está bien documentado). En ella vamos a encontrar la descripción, la forma de usar y el comportamiento esperado de las tareas que realiza esa librería. 
+Cada vez que usemos una librería o un framework y vamos a su documentación es muy probable que nos encontremos un link a su API (si la librería o framework está bien documentado). En ella vamos a encontrar la descripción, la forma de usar y el comportamiento esperado de las tareas que realiza esa librería.
 Según el tipo de lenguaje que usemos, la documentación de las API puede variar, por ejemplo: para lenguajes de scripting como `Lua` las api pueden consistir en describir funciones y rutinas con fines específicos, pero en lenguajes orientas a objetos como `java`, la api puede describir una serie de _clases_ y sus respectivos _métodos_.
 
 ### Sistemas Operativos
@@ -349,7 +349,7 @@ Una API remota les permite a los desarrolladores manipular recursos remotos a tr
 
 ### Web APIS
 
-Cuando la usamos en la web, van a estar montadas sobre el protocolo `http`, por lo tanto podríamos decir que una API web es un set de tipos de mensajes HTTPs posibles, junto con la descripción el formato de la eventual respuesta de esos mensajes ( en general la respuesta es en JSON o XML ). Históricamente el término Web api es similar a _web services_. La forma de implementar y de usar estos web services fue cambiando de paradigma, actualmente se usa el diseño tipo REST, y en general en una web se consumen más de un API y se combinan sus resultados en una sóla página. 
+Cuando la usamos en la web, van a estar montadas sobre el protocolo `http`, por lo tanto podríamos decir que una API web es un set de tipos de mensajes HTTPs posibles, junto con la descripción el formato de la eventual respuesta de esos mensajes ( en general la respuesta es en JSON o XML ). Históricamente el término Web api es similar a _web services_. La forma de implementar y de usar estos web services fue cambiando de paradigma, actualmente se usa el diseño tipo REST, y en general en una web se consumen más de un API y se combinan sus resultados en una sóla página.
 
 #### Endpoints
 
@@ -359,7 +359,7 @@ Un endpoint en un web api especifica donde están los recursos que pueden ser ac
 
 ## REST
 
-Rest es una estilo arquitectura o forma de diseñar el backend de una aplicación que viva en internet. REST viene de "REpresentational State Transfer" y está basado fuertemente en cómo trabaja HTTP, que es el protocolo que usamos comunmente en la web. 
+Rest es una estilo arquitectura o forma de diseñar el backend de una aplicación que viva en internet. REST viene de "REpresentational State Transfer" y está basado fuertemente en cómo trabaja HTTP, que es el protocolo que usamos comunmente en la web.
 
 Como sabemos, HTTP es un protocolo basado en el modelo cliente servidor, quienes intercambian mensajes basados en ciertas acciones. Por ejemplo, un mensaje HTTP tipo GET realizado a la URL `http://example.com/`.
 
@@ -369,7 +369,6 @@ Vamos a ver
 
 # Concepto
 
-
 # Características
 
 ## Cliente - Servidor
@@ -378,11 +377,11 @@ La arquitectura REST utiliza los conceptos del modelo cliente servidor en el sen
 
 ## Stateless
 
-La comunicación entre el cliente y el servidor se logra sin que el servidor tenga guardado ningún contexto del cliente entre requests. Cada request del cliente contiene toda la información necesaria para que el servidor pueda contestar correctamente al request. 
+La comunicación entre el cliente y el servidor se logra sin que el servidor tenga guardado ningún contexto del cliente entre requests. Cada request del cliente contiene toda la información necesaria para que el servidor pueda contestar correctamente al request.
 
 ## Cacheable
 
-En esta arquitectura, cada recurso tiene que estar marcado como cacheable o no. En el primer caso para ayudar al servidor a realizar menos trabajo y aumentar la performance y en el segundo para que no lleguen al cliente recursos con datos inapropiados. 
+En esta arquitectura, cada recurso tiene que estar marcado como cacheable o no. En el primer caso para ayudar al servidor a realizar menos trabajo y aumentar la performance y en el segundo para que no lleguen al cliente recursos con datos inapropiados.
 
 ## Sistema de capas
 
@@ -395,11 +394,15 @@ El diseño de una interfaz uniforme es fundamental para la arquitectura, hacerlo
 * __Identificación de recursos__: Cada recurso tiene que ser identificado en el request, por ejemplo a través de un _URI_. El recurse per se también está separado de su representación, la que es enviada al cliente; esta puede ser, por ejemplo, el mismo recurso representado en: JSON, XML, HTML, etc...
 * __Manipulación de recursos a través de representaciones__: Cuando un cliente tiene la _representación_ de un recursos, deberá tener la suficiente información para _modificar_ o _eliminar_ ese __recurso__.
 * __Mensajes descriptivos__: Cada mensaje deberá contener suficiente información para describir cómo procesar el mensaje. En una API web, esto se traduce a mapear rutas con los verbos _HTTP_.
-* __Hypermedia as the engine of application state(HATEOAS_)__: Un cliente REST debería ser capaz de _navegar_ y _descubrir_ todas las acciones posibles de hacer a un recurso luego de interactuar con él. Es similar a cuando entramos a una web desde una _URL_ y la web misma nos provee los _links_ para que sigamos navegando. En la arquitectura REST debería ocurrir lo mismo, cada respuesta debería contener _links_  o información a las siguientes acciones que se pueden tomar.
+* __Hypermedia as the engine of application state(HATEOAS_)__: Un cliente REST debería ser capaz de_navegar_y_descubrir_todas las acciones posibles de hacer a un recurso luego de interactuar con él. Es similar a cuando entramos a una web desde una_URL_y la web misma nos provee los_links_para que sigamos navegando. En la arquitectura REST debería ocurrir lo mismo, cada respuesta debería contener_links_  o información a las siguientes acciones que se pueden tomar.
 
 ## Otras Arquitecturas
 
 REST no es la única forma de diseñar tu API, existen otras. Cada una será mejor o peor según el problema a resolver y un poco por el gusto del programador. Veamos algunas que están pisando fuerte pero todavía no son las más usadas:
 
-* __[JSON API](http://jsonapi.org/)__: Es una especificación, al igual que REST. Está pensada para minimizar el número de requests y la cantidad de datos que se transmiten por la red. 
+* __[JSON API](http://jsonapi.org/)__: Es una especificación, al igual que REST. Está pensada para minimizar el número de requests y la cantidad de datos que se transmiten por la red.
 * __[GraphQL](http://graphql.org/)__: Es en realidad una librería que ofrece un nuevo __lenguaje__ para hacer consultas a nuestra API. Cambia un poco el concepto de endpoints, y los embebe en esta nueva forma de hacer queries. Todavía es nuevo, pero está tomando tracción rápidamente.
+
+## Homework
+
+Completa la tarea descrita en el archivo [README](https://github.com/soyHenry/FT-M3/tree/master/03-WebServer/homework/Beatles)

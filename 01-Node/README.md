@@ -556,9 +556,12 @@ Otra cosa a notar es que la función anónima que le pasamos tiene dos parámetr
 
 ![fs-2](/_src/assets/01-Node//fs2.png)
 
-Como vemos, primero se ejecutó el segundo console log, luego el console log del _callback_. 
-
+Como vemos, primero se ejecutó el segundo console log, luego el console log del _callback_.
 
 ### Combinando Todo
 
 Bien! Ahora estamos listos para empezar a crear nuestro propio servidor web usando estos conceptos!
+
+## Homework
+
+Completa la tarea descrita en el archivo [README](https://github.com/soyHenry/FT-M3/tree/master/01-Node/homework)

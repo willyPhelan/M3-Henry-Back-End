@@ -9,13 +9,13 @@ eleventyNavigation:
 
 <table class="hide" width="100%" style='table-layout:fixed;'>
   <tr>
-	  <td>
-	  	<a href="https://airtable.com/shrBpWkYV4K12PPNZ?prefill_clase=05-Express">
-			<img src="https://static.thenounproject.com/png/204643-200.png" width="100"/>
-			<br>
-			Hacé click acá para dejar tu feedback sobre esta clase.
-	  	</a>
-	  </td>
+   <td>
+    <a href="https://airtable.com/shrBpWkYV4K12PPNZ?prefill_clase=05-Express">
+   <img src="https://static.thenounproject.com/png/204643-200.png" width="100"/>
+   <br>
+   Hacé click acá para dejar tu feedback sobre esta clase.
+    </a>
+   </td>
               <td>
       <a href="https://quiz.soyhenry.com/evaluation/new/606f7234656c8d23c2e60f8b">
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/HSQuiz.svg/768px-HSQuiz.svg.png" width="100" height="100"/>
@@ -170,11 +170,11 @@ Digamos que queremos tener una carpeta donde guardamos todos los _archivo estát
 app.get("/static", function (req, res) {
   res.send(
     '<html><head> \
-			<link href="/assets/style.css" rel="stylesheet"> \
-			</head><body> \
-				<p>Archivos estaticos rapido y facil!!</p>\
-				<img src="/assets/imagen.jpg">\
-			</body></html>'
+      <link href="/assets/style.css" rel="stylesheet"> \
+      </head><body> \
+      <p>Archivos estaticos rapido y facil!!</p>\
+      <img src="/assets/imagen.jpg">\
+      </body></html>'
   );
 });
 ```
@@ -221,7 +221,7 @@ Por lo tanto al hacer un request al servidor, primero se pasará por ese middlew
 
 Como se podrán imaginar, esta forma de trabajar de _express_ hace que sea super potente. Además hay muchísimos middlewares ya creados por otros desarrolladores que podremos usar. ¿Donde buscarlos? Sí, en npm! También pueden empezar por esta [lista de middleware creados por el equipo de _express_](http://expressjs.com/resources/middleware.html).
 
-## Enviado datos al servidor:
+## Enviado datos al servidor
 
 Por ahora nos habiamos concentado sólo en obtener contenido de nuestra app usando requests tipo **GET**, sin mandar datos nosotros (de hecho el único dato que enviamos fue como un parámetro en la URL).
 Ahora veremos que hay distintas formas de enviar datos al servidor.
@@ -282,15 +282,15 @@ También vamos a necesitar crear un formulario en html. Haremos que un GET en `/
 app.get("/form", function (req, res) {
   res.send(
     '<html><head> \
-			<link href="/assets/style.css" rel="stylesheet"> \
-			</head><body>\
-				<form method="POST" action="/form">\
-				Nombre <input name="nombre" type="text"><br>\
-				Apellido <input name="apellido" type="text"><br>\
-				Curso <input name="curso" type="text"><br>\
-				<input type="submit">\
-				</form>\
-			</body></html>'
+   <link href="/assets/style.css" rel="stylesheet"> \
+   </head><body>\
+    <form method="POST" action="/form">\
+    Nombre <input name="nombre" type="text"><br>\
+    Apellido <input name="apellido" type="text"><br>\
+    Curso <input name="curso" type="text"><br>\
+    <input type="submit">\
+    </form>\
+   </body></html>'
   );
 });
 
@@ -443,15 +443,13 @@ app.use("/users", users);
 
 Hay que notar que cuando usamos `app.use` y le pasamos un `Router` también le pasamos un path, esto quiere decir que las rutas definidas dentro del `Router` que les pasamos serán accesibles desde el path origin que le pasamos. Por ejemplo:
 
+Como en el archivo `routes/users.js` tenemos una ruta para el URL `/`, al cargarlo usando `app.use()` en `/users`, ese path será accesible en el path `/users/`. Para que se entienda mejor, creé una nueva ruta dentro de `users.js` con la URL `/api`, esa ruta será accesible desde `/users/api/`, ya que cargamos ese `Router` en `/users`. ;D
 
-Como en el archivo `routes/users.js` tenemos una ruta para el URL `/`, al cargarlo usando `app.use()` en `/users`, ese path será accesible en el path `/users/`. Para que se entienda mejor, creé una nueva ruta dentro de `users.js` con la URL `/api`, esa ruta será accesible desde `/users/api/`, ya que cargamos ese `Router` en `/users`. ;D 
+## Cross-Origin Resource Sharing (CORS)
 
+Por razones de seguridad, los navegadores sólo permiten que se carguen recursos que provengan del mismo origen. Dos URL tienen el mismo origen si el protocolo , el puerto y el host son los mismos para ambos. Esto es lo que llamamos Same-Origin Policy (SOP). Esta política ya viene por default en los navegadores y controla las interacciones entre orígenes diferentes ayudando así a aislar documentos potencialmente maliciosos y reduciendo posibles ataques.
 
-## Cross-Origin Resource Sharing (CORS) 
-
-Por razones de seguridad, los navegadores sólo permiten que se carguen recursos que provengan del mismo origen. Dos URL tienen el mismo origen si el protocolo , el puerto y el host son los mismos para ambos. Esto es lo que llamamos Same-Origin Policy (SOP). Esta política ya viene por default en los navegadores y controla las interacciones entre orígenes diferentes ayudando así a aislar documentos potencialmente maliciosos y reduciendo posibles ataques. 
-
-Ejemplos de URL con mismo origen: 
+Ejemplos de URL con mismo origen:
 
 ```bash
 http://e-commerce.com/admin/orders   //Mismo origen, Path diferente
@@ -459,35 +457,33 @@ http://e-commerce.com/admin/orders   //Mismo origen, Path diferente
 http://e-commerce.com/user/me        //Mismo origen, Path diferente
 ```
 
-Sin embargo, muchas veces necesitamos cargar en nuestro sitio recursos provenientes de otro origen, por ejemplo, cuando utilizamos una fuente distinta o queremos mostrar una imágen. ¿Qué pasaría si quisiéramos realizar una petición a un servidor con un dominio diferente? En ese caso, veríamos un error como este: 
+Sin embargo, muchas veces necesitamos cargar en nuestro sitio recursos provenientes de otro origen, por ejemplo, cuando utilizamos una fuente distinta o queremos mostrar una imágen. ¿Qué pasaría si quisiéramos realizar una petición a un servidor con un dominio diferente? En ese caso, veríamos un error como este:
 
 ![CORS Blocking](/_src/assets/05-Express/cors.png)
 
-¿Qué está pasando? Desde ‘http://localhost:3001’ se realizó una petición a ‘http://localhost:3004/second-server’ y el navegador bloqueó la solicitud por política de CORS (Cross-Origin Resource Sharing). A diferencia de la política del mismo origen (SOP) este mecanismo nos permite, mediante el uso de cabeceras HTTP adicionales, acceder a recursos desde un dominio, un protocolo o un puerto diferente al del documento que lo generó. Este tipo de solicitudes se denominan de origen cruzado.
+¿Qué está pasando? Desde ‘<http://localhost:3001>’ se realizó una petición a ‘<http://localhost:3004/second-server>’ y el navegador bloqueó la solicitud por política de CORS (Cross-Origin Resource Sharing). A diferencia de la política del mismo origen (SOP) este mecanismo nos permite, mediante el uso de cabeceras HTTP adicionales, acceder a recursos desde un dominio, un protocolo o un puerto diferente al del documento que lo generó. Este tipo de solicitudes se denominan de origen cruzado.
 
-Ejemplos de URL con distinto origen: 
+Ejemplos de URL con distinto origen:
 
 ```bash
-https://e-commerce.com/user/me	     //Diferente protocolo
+https://e-commerce.com/user/me      //Diferente protocolo
 
-http://api.e-commerce.com/user/me	//Diferente host
+http://api.e-commerce.com/user/me //Diferente host
 ```
 
 ### Access-Control-Allow-Origin
 
-Para habilitar una petición de origen cruzado debemos incluir una cabecera denominada Access-Control-Allow-Origin en la respuesta de la petición, donde debe indicarse el dominio al que se le quiere dar permiso. Es decir, en nuestro ejemplo el servidor que está utilizando el puerto 3004 debería incluir en su respuesta  a la solicitud de localhost.3001 un header Access-Control-Allow-Origin donde se indica el dominio al que se le quiere dar permiso. 
+Para habilitar una petición de origen cruzado debemos incluir una cabecera denominada Access-Control-Allow-Origin en la respuesta de la petición, donde debe indicarse el dominio al que se le quiere dar permiso. Es decir, en nuestro ejemplo el servidor que está utilizando el puerto 3004 debería incluir en su respuesta  a la solicitud de localhost.3001 un header Access-Control-Allow-Origin donde se indica el dominio al que se le quiere dar permiso.
 
 ```bash
 Access-Control-Allow-Origin: http://localhost:3001
 ```
 
-De esta forma, el navegador comprobará dichas cabeceras y si coinciden con el dominio de origen que realizó la petición, ésta se permitirá. En el ejemplo anterior, la cabecera tiene el valor http://localhost:3001, pero en algunos casos el valor puede ser un "*". El asterisco indica que se permiten peticiones de origen cruzado a cualquier dominio.
-
+De esta forma, el navegador comprobará dichas cabeceras y si coinciden con el dominio de origen que realizó la petición, ésta se permitirá. En el ejemplo anterior, la cabecera tiene el valor <http://localhost:3001>, pero en algunos casos el valor puede ser un "*". El asterisco indica que se permiten peticiones de origen cruzado a cualquier dominio.
 
 ![Headers](/_src/assets/05-Express/headers.png)
 
-
-Además de ese, existen otros cors headers. Algunos de ellos son: 
+Además de ese, existen otros cors headers. Algunos de ellos son:
 
 - Access-Control-Allow-Origin: ¿qué origen está permitido?
 - Access-Control-Allow-Credentials: ¿también se aceptan solicitudes cuando el modo de credenciales es include?
@@ -498,6 +494,8 @@ Además de ese, existen otros cors headers. Algunos de ellos son:
 - Access-Control-Request-Headers: ¿qué header HTTP se indica en la solicitud preflight?
 - Access-Control-Request-Method: ¿qué método de petición HTTP se indica en la solicitud preflight?
 
+Otra forma que tenemos para habilitar las solicitudes CORS pueden ser librerías que manejen las autorizaciones por nosotros a modo de middleware. Por ejemplo, el módulo [cors](https://www.npmjs.com/package/cors).
 
-Otra forma que tenemos para habilitar las solicitudes CORS pueden ser librerías que manejen las autorizaciones por nosotros a modo de middleware. Por ejemplo, el módulo [cors](https://www.npmjs.com/package/cors). 
+## Homework
 
+Completa la tarea descrita en el archivo [README](https://github.com/soyHenry/FT-M3/tree/master/05-Express/homework/)

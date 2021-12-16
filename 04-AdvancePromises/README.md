@@ -48,7 +48,7 @@ doSomething().then(doSomethingElse)
   .then(finalHandler);
 ```
 
-### Caso I
+## Caso I
 
 Código:
 
@@ -70,7 +70,7 @@ doSomething
 
 ```
 
-### Caso II
+## Caso II
 
 Código:
 
@@ -92,7 +92,7 @@ doSomething
 
 ```
 
-### Caso III
+## Caso III
 
 Código:
 
@@ -112,13 +112,17 @@ doSomethingElse(undefined)
                   |------------------|
 ```
 
-### Caso IV
+## Caso IV
+
 Código:
+
 ```javascript
 doSomething().then(doSomethingElse)
   .then(finalHandler);
 ```
+
 Solución:
+
 ```javascript
 doSomething
 |-----------------|
@@ -130,5 +134,8 @@ doSomething
 
 Material Recomendado:
 
-
 - [We have a problem with promises](https://pouchdb.com/2015/05/18/we-have-a-problem-with-promises.html)
+
+## Homework
+
+Completa la tarea descrita en el archivo [README](https://github.com/soyHenry/FT-M3/tree/master/04-AdvancePromises/homework/)

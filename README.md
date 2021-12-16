@@ -14,13 +14,13 @@ eleventyNavigation:
 
 <div class="hide">
 
-- [01-NodeJs](./01-Node)
+- [01-NodeJS](./01-Node)
 - [02-Promises](./02-Promises)
 - [03-Web Server](./03-WebServer)
-- [04-Advance Promises](./04-AdvancePromises)
+- [04-Advanced Promises](./04-AdvancedPromises)
 - [05-Express](./05-Express)
 - [06-Testing](./06-Testing)
-- [07-AsyncAwait](./07-AsyncAwait)
+- [07-Async/Await](./07-AsyncAwait)
 - Checkpoint
 
 </div>

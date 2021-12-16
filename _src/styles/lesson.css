@@ -62,18 +62,6 @@
   line-height: 32px;
 }
 
-.lesson #homework {
-  display: inline-block;
-  font-family: 'Avenir-Black';
-  font-size: 48px;
-  line-height: 66px;
-  color: #24b124;
-  /* border-bottom-style: solid;
-  border-bottom-width: 25px;
-  border-bottom-color: #f5bc38; */
-  height: 64px;
-}
-
 .lesson h1 + h2 {
   margin-top: 0;
 }

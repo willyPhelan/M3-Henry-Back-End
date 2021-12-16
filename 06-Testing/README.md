@@ -11,13 +11,13 @@ eleventyNavigation:
 
 <table class="hide" width="100%" style='table-layout:fixed;'>
   <tr>
-	  <td>
-	  	<a href="https://airtable.com/shrBpWkYV4K12PPNZ?prefill_clase=06-Testing">
-			<img src="https://static.thenounproject.com/png/204643-200.png" width="100"/>
-			<br>
-			Hacé click acá para dejar tu feedback sobre esta clase.
-	  	</a>
-	  </td>
+   <td>
+    <a href="https://airtable.com/shrBpWkYV4K12PPNZ?prefill_clase=06-Testing">
+   <img src="https://static.thenounproject.com/png/204643-200.png" width="100"/>
+   <br>
+   Hacé click acá para dejar tu feedback sobre esta clase.
+    </a>
+   </td>
               <td>
       <a href="https://quiz.soyhenry.com/evaluation/new/6070a351656c8d23c2e6105c">
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/HSQuiz.svg/768px-HSQuiz.svg.png" width="100" height="100"/>
@@ -58,7 +58,7 @@ Un buen test unitario debería ser:
 * Es fácil de entender al leerlo
 * Es fácil de mantener
 
-> Si cuando estamos escribiendo los tests nos damos cuenta que tenemos que crear muchos [mockups](http://stackoverflow.com/questions/2665812/what-is-mocking), es una señal que nuestro diseño no es muy modular, y que tal vez se puede mejorar. 
+> Si cuando estamos escribiendo los tests nos damos cuenta que tenemos que crear muchos [mockups](http://stackoverflow.com/questions/2665812/what-is-mocking), es una señal que nuestro diseño no es muy modular, y que tal vez se puede mejorar.
 
 ### Ventajas
 
@@ -77,7 +77,7 @@ Si el proyecto es chico, entonces podemos probar todo a mano y darnos cuenta rá
 
 ## Integration Test
 
-Estos tests prueban el funcionamiento de distintas unidades combinadas, por ejemplo la interacción entre un módulo y sus dependencias. 
+Estos tests prueban el funcionamiento de distintas unidades combinadas, por ejemplo la interacción entre un módulo y sus dependencias.
 
 ## End to End Tests
 
@@ -96,7 +96,7 @@ Test Driven Development (TDD) es una técnica para construir software que se bas
 * __Refactoreá el código__: Una vez que hayamos pasado el test, vamos a refactorear el código para que sean lo más legibles y performantes posibles, y que mantengan la convención de nombres y patrones que todo el proyecto.
 * __Repetí__: Ahora pasamos a un nuevo test, es decir vamos a agregar un nuevo feature o funcionalidad y vamos a empezar desde el primer paso!
 
-Como siempre, existen variaciones sobre este _standart_, de hecho hay dos grandes concepciones, la de codear primero y escribir los test despues, o al reves. Si escribimos los  _units tests_ primero y una vez que terminamos empezamos a codear el nuevo feature  nos aseguramos que entendemos bien el problema antes de empezar a codear la solución. 
+Como siempre, existen variaciones sobre este _standart_, de hecho hay dos grandes concepciones, la de codear primero y escribir los test despues, o al reves. Si escribimos los  _units tests_ primero y una vez que terminamos empezamos a codear el nuevo feature  nos aseguramos que entendemos bien el problema antes de empezar a codear la solución.
 
 ## Testing Frameworks
 
@@ -113,8 +113,9 @@ JEST es un framework de testing de fácil uso pero a la vez con muchisimas posib
 ### Configuración
 
 Para comenzar a utilizar JEST basta con:
-  - Instalar la dependencia: `npm install --save-dev jest`
-  - Ejecutar `jest` o sino agregar script al package.json:
+
+* Instalar la dependencia: `npm install --save-dev jest`
+* Ejecutar `jest` o sino agregar script al package.json:
 
   ```js
   "scripts": {
@@ -124,11 +125,11 @@ Para comenzar a utilizar JEST basta con:
 
 Luego ejecutamos `npm test` y ya estaríamos corriendo los tests, como inicialmente no vamos a tener ninguno por consola nos dirá que no ha encontrado tests. En breve explicaremos como armar nuestro primer archivo de test pero antes, el comando jest admite muchas opciones o flags entre los cuales vamos a mencionar los siguientes:
 
-- Correr solo los archivos de tests que matcheen con determinado patron dentro de su nombre: `jest test-pattern`
-- Correr un determinado archivo de test mediante su path: `jest path/to/test.js`
-- Correr solo UN test mediante su nombre (Ya veremos como definir nombre para los tests): `jest -t name-spec`
-- Correr en modo 'watcher': `jest --watch` o `jest --watchAll` (El primero solo correra los tests que fueron afectados por alguna modificación desde la última vez que hicimos cambio en el código)
-- Agregar un resumen de cada archivo de test: `jest --verbose` (En el caso de ser un único archivo automáticamente lo hace sin necesidad del flag)	
+* Correr solo los archivos de tests que matcheen con determinado patron dentro de su nombre: `jest test-pattern`
+* Correr un determinado archivo de test mediante su path: `jest path/to/test.js`
+* Correr solo UN test mediante su nombre (Ya veremos como definir nombre para los tests): `jest -t name-spec`
+* Correr en modo 'watcher': `jest --watch` o `jest --watchAll` (El primero solo correra los tests que fueron afectados por alguna modificación desde la última vez que hicimos cambio en el código)
+* Agregar un resumen de cada archivo de test: `jest --verbose` (En el caso de ser un único archivo automáticamente lo hace sin necesidad del flag) 
 
 ### Ejemplo (Está dentro de la carpeta demo)
 
@@ -163,33 +164,33 @@ Si ahora ejecutamos `npm test` (Configurar previamente el package.json como most
 
 ![Demo Test](/_src/assets/06-Testing/demo-test.png)
 
-Si analizamos la estructura del ejemplo anterior usamos algunas palabras que hasta hoy no conociamos, como por ejemplo `it`, `expect` y `toBe`. 
+Si analizamos la estructura del ejemplo anterior usamos algunas palabras que hasta hoy no conociamos, como por ejemplo `it`, `expect` y `toBe`.
 
 Entendamos para que sirve cada uno de ellas:
 
-- `it` o `test`: nos permiten definir un nuevo test
-- `expect`: función de JEST que va a devolver un "expectatio" object sobre el cual luego podremos invocar algunos `matchers`. Explicado más sencillo es lo que estamos ejecutando para probar, por ejemplo `sum(3,5)` arriba estariamos probando la función que creamos pasandole esos dos parámetros y sobre la respuesta vemos si se cumple la condición que queremos o no.
-- `toBe`: es un matcher propio de JEST (no es el único de hecho ahora vamos a ver otros) que nos permite hacer una comparación exacta, en este ejemplo entre lo que devolvió la funcion `sum(3,5)` y el valor numérico 8. Si coinciden el test va a pasar y sino no.
+* `it` o `test`: nos permiten definir un nuevo test
+* `expect`: función de JEST que va a devolver un "expectatio" object sobre el cual luego podremos invocar algunos `matchers`. Explicado más sencillo es lo que estamos ejecutando para probar, por ejemplo `sum(3,5)` arriba estariamos probando la función que creamos pasandole esos dos parámetros y sobre la respuesta vemos si se cumple la condición que queremos o no.
+* `toBe`: es un matcher propio de JEST (no es el único de hecho ahora vamos a ver otros) que nos permite hacer una comparación exacta, en este ejemplo entre lo que devolvió la funcion `sum(3,5)` y el valor numérico 8. Si coinciden el test va a pasar y sino no.
 
 ### Matchers
 
 JEST tiene distintos matchers para realizar distintas validaciones sobre las funcionalidades que queremos probar:
 
-- `toBe`: igualdad exacta
-- `toEqual`: verificación recursiva de cada propiedad del objeto o elemento del arreglo
-- `toBeNull`: verifica que el valor sea null
-- `toBeUndefined`: verifica que el valor sea undefined
-- `toBeDefined`: verifica que el valor sea distinto de undefined
-- `toBeTruthy`: verifica que el valor de veracidad sea verdadero sin necesariamente ser literalmente `true`
-- `toBeFalse`: verifica que el valor de veracidad sea falso sin necesariamente ser literalmente `false`
-- `toBeGreaterThan`: verifica que el valor sea mayor al de referencia
-- `toBeGreaterThanOrEqual`: verifica que el valor sea mayor o igual al de referencia
-- `toBeLessThan`: verifica que el valor sea menor al de referencia
-- `toBeLessThanOrEqual`: verifica que el valor sea menor o igual al de referencia
-- `toBeCloseTo`: verifica que el número este a pocos decimales de diferencia del valor de referencia
-- `toMatch`: compara contra una expresión regular
-- `toContain`: verifica si dentro de un arreglo existe determinado elemento
-- `toThrow`: verifica si la función arroja un error
+* `toBe`: igualdad exacta
+* `toEqual`: verificación recursiva de cada propiedad del objeto o elemento del arreglo
+* `toBeNull`: verifica que el valor sea null
+* `toBeUndefined`: verifica que el valor sea undefined
+* `toBeDefined`: verifica que el valor sea distinto de undefined
+* `toBeTruthy`: verifica que el valor de veracidad sea verdadero sin necesariamente ser literalmente `true`
+* `toBeFalse`: verifica que el valor de veracidad sea falso sin necesariamente ser literalmente `false`
+* `toBeGreaterThan`: verifica que el valor sea mayor al de referencia
+* `toBeGreaterThanOrEqual`: verifica que el valor sea mayor o igual al de referencia
+* `toBeLessThan`: verifica que el valor sea menor al de referencia
+* `toBeLessThanOrEqual`: verifica que el valor sea menor o igual al de referencia
+* `toBeCloseTo`: verifica que el número este a pocos decimales de diferencia del valor de referencia
+* `toMatch`: compara contra una expresión regular
+* `toContain`: verifica si dentro de un arreglo existe determinado elemento
+* `toThrow`: verifica si la función arroja un error
 
 No son los únicos, existen más que pueden consultar en la [documentación oficial de JEST](https://jestjs.io/docs/expect).
 Adicionalmente algunos de estos matchers mencionados arriba se encuentran en la demo `matchers.test.js` para que puedan ver como utilizarlos con ejemplos.
@@ -275,3 +276,7 @@ describe.only('Invalid inputs', () => {
 ```
 
 ![describe only](/_src/assets/06-Testing/describe-only.png)
+
+## Homework
+
+Completa la tarea descrita en el archivo [README](https://github.com/soyHenry/FT-M3/tree/master/06-Testing/homework/)
