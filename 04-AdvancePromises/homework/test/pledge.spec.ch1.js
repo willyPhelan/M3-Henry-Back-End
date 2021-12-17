@@ -103,7 +103,7 @@ describe('Una instancia de promesa', function() {
     expect( typeof promise._internalResolve ).toBe( 'function' );
   });
 
-  xit('tiene un métido de instancia `._internalReject`', function () {
+  xit('tiene un método de instancia `._internalReject`', function () {
     expect( typeof promise._internalReject ).toBe( 'function' );
     expect( promise._internalReject ).not.toBe( promise._internalResolve );
   });
