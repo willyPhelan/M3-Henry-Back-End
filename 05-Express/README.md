@@ -36,7 +36,9 @@ _Express.js_ o simplemente _Express_ es un framework diseñado para crear aplica
 
 Vamos a iniciar una app nueva con `npm init` a la que vamos a llamar _expresstest_ y luego vamos a instalar express usando `npm`:
 
-`npm install express --save` _--save para que se guarde en package.json_
+```bash
+npm install express
+```
 
 Ahora vamos a crear un archivo `index.js` _( o con el nombre que hayan definido como entry point)_ y vamos a requerir 'express'.
 
@@ -467,18 +469,18 @@ Sin embargo, muchas veces necesitamos cargar en nuestro sitio recursos provenien
 
 Ejemplos de URL con distinto origen:
 
-```bash
+```js
 https://e-commerce.com/user/me      //Diferente protocolo
 
-http://api.e-commerce.com/user/me //Diferente host
+http://api.e-commerce.com/user/me   //Diferente host
 ```
 
 ### Access-Control-Allow-Origin
 
 Para habilitar una petición de origen cruzado debemos incluir una cabecera denominada Access-Control-Allow-Origin en la respuesta de la petición, donde debe indicarse el dominio al que se le quiere dar permiso. Es decir, en nuestro ejemplo el servidor que está utilizando el puerto 3004 debería incluir en su respuesta  a la solicitud de localhost.3001 un header Access-Control-Allow-Origin donde se indica el dominio al que se le quiere dar permiso.
 
-```bash
-Access-Control-Allow-Origin: http://localhost:3001
+```js
+Access-Control-Allow-Origin: 'http://localhost:3001'
 ```
 
 De esta forma, el navegador comprobará dichas cabeceras y si coinciden con el dominio de origen que realizó la petición, ésta se permitirá. En el ejemplo anterior, la cabecera tiene el valor <http://localhost:3001>, pero en algunos casos el valor puede ser un "*". El asterisco indica que se permiten peticiones de origen cruzado a cualquier dominio.
