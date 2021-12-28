@@ -296,7 +296,7 @@ module.exports = greet;
 
 y en greetings.json vamos a tener los saludos per se:
 
-```javascript
+```json
 {
  "en": "Hello",
  "es": "Hola"
@@ -366,7 +366,7 @@ Toda esta interacción con el SO, el manejo del Task Queue y el Event loop está
 
 ![logo](/_src/assets/01-Node//libuv.png)
 
-# ¿Qué es un gestor de paquetes?
+## ¿Qué es un gestor de paquetes?
 
 Primero definamos lo que es un paquete. Básicamente es.. `código`! Es cualquier pieza de **código** manejada y mantenida por un gestor de paquetes.
 
@@ -388,7 +388,7 @@ Para crear este archivo npm nos da el comando `npm init`, que es una forma inter
 
 En la imagen vemos los datos que nos piden y a continuación vemos el archivo `package.json` que creó el comando:
 
-```javascript
+```json
 {
   "name": "test-app",
   "version": "1.0.0",
@@ -418,7 +418,7 @@ __usamos el argumento `--save` para indicar a npm que además de instalar el paq
 
 Luego de ejecutar el comando, vemos que en `package.json` hay una nueva propiedad llamada 'dependecies' que es un objeto que contiene los nombres y las versiones de los paquetes que hemos instalado (siempre que instalemos usando __--save__).
 
-```javascript
+```json
 {
   "name": "test-app",
   "version": "1.0.0",
@@ -458,7 +458,7 @@ _Según el sistema operativo pueden llegar a tener algún problema con permisos,
 
 Se acuerdan cuando hicimos el servidor web con Node? Cada vez que cambiamos algo en el código, teníamos que reiniciar el servidor para que los cambios sean reflejados. Con _Nodemon_ podemos olvidarnos de eso, ya que hace eso por nosotros.
 
-```
+```txt
 nodemon will watch the files in the directory in which nodemon was
 started, and if any files change, nodemon will automatically
 restart your node application.
@@ -466,17 +466,21 @@ restart your node application.
 
 Como verán este es un paquete que vamos a usar en casi todos los proyectos de node que hagamos, por lo tanto es un buen ejemplo de algo que instalariamos globalmente. Para hacerlo hacemos:
 
-`npm install -g nodemon`
+```bash
+npm install -g nodemon
+```
 
-o
+o en Linux o Mac:
 
-`sudo npm install -g nodemon` en Linux o Mac.
+```bash
+sudo npm install -g nodemon 
+```
 
 Una vez instalado globalmente, puedo simplemente utilizarlo desde la línea de comandos, ya que viene con una interfaz CLI (_command line interface_). De hecho, varios paquetes de npm vienen con una interfaz CLI para ser usados desde la consola o terminal.
 
 En nuestro ejemplo al ejecutar `nodemon` obtenemos:
 
-```
+```bash
 [nodemon] 1.10.0
 [nodemon] to restart at any time, enter `rs`
 [nodemon] watching: *.*
@@ -487,7 +491,7 @@ Sun/07/2016, 11PM
 
 Para probar si funciona, hagamos un cambio en el archivo `index.js` y salvemos. Para mi ejemplo voy a agregar un `console.log()`.
 
-```
+```js
 var moment = require('moment');
 console.log('Salgo en la consola!!');
 console.log(moment().format("ddd/MM/YYYY, hA"));
@@ -501,7 +505,9 @@ Como vemos, no fue necesario volver a correr el archivo `index.js` a mano para v
 
 Como dijimos, `npm` también nos sirve para mantener actualizados los paquetes. Para hacerlo sólo tenemos que escribir el siguiente comando:
 
-`npm update`
+```bash
+npm update
+```
 
 Para mantener la compatibilidad con las aplicaciones, `npm` sólo actualiza automáticamente los _patches_ y _minor changes_ ([Semantic Versioning](http://semver.org/))de un paquete, por defecto.
 
