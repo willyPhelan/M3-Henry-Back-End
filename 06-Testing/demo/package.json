@@ -9,10 +9,10 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "jest": "^27.0.6"
+    "jest": "^27.5.1"
   },
   "dependencies": {
-    "express": "^4.17.1",
-    "supertest": "^6.1.4"
+    "express": "^4.17.3",
+    "supertest": "^6.2.2"
   }
 }
