@@ -1,15 +1,15 @@
-# Henry
+![HenryLogo](https://d31uz8lwfmyn8g.cloudfront.net/Assets/logo-henry-white-lg.png)
 
-<table width="100%" style='table-layout:fixed;'>
+<table class="hide" width="100%" style='table-layout:fixed;'>
   <tr>
-	  <td>
-	  	<a href="https://airtable.com/shrBpWkYV4K12PPNZ?prefill_clase=02-Promises">
-			<img src="https://static.thenounproject.com/png/204643-200.png" width="100"/>
-			<br>
-			Hacé click acá para dejar tu feedback sobre esta clase.
-	  	</a>
-	  </td>
-    	      <td>
+   <td>
+    <a href="https://airtable.com/shrBpWkYV4K12PPNZ?prefill_clase=02-Promises">
+   <img src="https://static.thenounproject.com/png/204643-200.png" width="100"/>
+   <br>
+   Hacé click acá para dejar tu feedback sobre esta clase.
+    </a>
+   </td>
+           <td>
       <a href="https://quiz.soyhenry.com/evaluation/new/60931e4456b4056ff032a73f">
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/HSQuiz.svg/768px-HSQuiz.svg.png" width="100" height="100"/>
         <br>
@@ -24,19 +24,19 @@
 Javascript es muy potente a la hora de trabajar con tareas asincrónicas, de hecho, ya venimos programando funciones y código que hacen uso de `callbacks` para ejecutar código en el futuro cercano, cuando un evento sucede o cuando se termina la ejecución de un proceso (escribir en la bd, o escribir en el disco, hacer un request http, etc...).
 Esto es genial, pero a veces nos sucede que tenemos callbacks anidadas, es decir, que dentro de un callback tenemos otro callback y así sucesivamente ( inception de callbacks ), y tambien tenemos problemas donde tenemos que esperar que _dos o más_ eventos terminen para continuar la ejecución de nuestro código. Si bien podemos resolverlo sin problemas con callbacks, vamos a ver que nuestro código empieza a hacerce díficil de leer, muy díficil de controlar si hay errores (no sabemos qué función es la que realmente produjo el error ), y si tenemos que buscar un bug dentro del código nos daremos cuenta que, sin querer, hemos terminado dentro del :japanese_goblin: __Callback Hell__:
 
-![callbackHell](./img/callback_hell.gif)
+![callbackHell](/_src/assets/02-Promises/callback_hell.gif)
 
 También conocido como __Pyramid of Doom__ :scream::
 
-![PyramidOfDoom](./img/pyr-1.png)
+![PyramidOfDoom](/_src/assets/02-Promises/pyr-1.png)
 
-Se pueden imaginar, por los nombres que eligieron para esto, que no es una situación deseada en nuestro código. También van a pensar, que es un mal necesario, ya que de esta forma puedo lograr que mi aplicación se comporte de acuerdo a los requerimientos asincrónicos que hay en el medio. 
+Se pueden imaginar, por los nombres que eligieron para esto, que no es una situación deseada en nuestro código. También van a pensar, que es un mal necesario, ya que de esta forma puedo lograr que mi aplicación se comporte de acuerdo a los requerimientos asincrónicos que hay en el medio.
 
 ## Promises al rescate
 
 Cuando programamos en lenguajes que son bloqueantes, como `C++` o `python`, perdemos el poder del asincronismo, pero ganamos legibilidad, ya que una línea de código se ejecuta exactamente cuando termina al anterior (si la anterior tarda 3 horas, vamos a esperar a que termine), esto hace que el código sea fácil de leer ya que siguiendo la línea de ejecución vamos a ver que cosas suceden antes o después, esto mismo no lo podemos hacer con callbacks (o por lo menos sin entrar al _Callback hell_.):
 
-![SyncVsAsync](./img/software-architecture-introduction-3.png)
+![SyncVsAsync](/_src/assets/02-Promises/software-architecture-introduction-3.png)
 
 ¿No sería genial si pudieras escribir código como si fuera sincrónico, pero que la ejecución fuera asincrónica? Esta pregunta seguramente se hicieron los inventores de las __Promises__ de javascript!
 Justamente las __Promises__ en Js intentan solucionar el problema del _callback hell_ y lograr que el código sea más legible, más fácil de debuggear y que tengamos mayor control sobre los errores. Veamos como funcionan las promises.
@@ -46,7 +46,7 @@ Justamente las __Promises__ en Js intentan solucionar el problema del _callback 
 Una _promesa_ representa el resultado eventual (en un futuro incierto) de una operación asincrónica, como por ejemplo: un registro de una db, una página que pedimos por http, un objeto JSON que es respuesta de un request a un API. Es decir, que representa un _placeholder_ (un lugar reservado) donde vamos a guardar la respuesta del método asincrónico ( o un posible error en caso que no sea existosa ).
 Como nos podemos imaginar, una promesa puede ser exitosa o no, y una misma promesa no se puede ejecutar dos veces, una vez que termina se convierte en __inmutable__ (no puede cambiar). Además si a una promesa le agregamos un callback (le podemos agregar en cualquier momento), este será ejecutará cuando esta termine. Esto es genial, porque ya no nos interesa en qué momento se producen las cosas, si no en reaccionar al resultado de esas cosas.
 
-### Terminología de promises:
+### Terminología de promises
 
 Una promesa puede estar:
 
@@ -101,6 +101,7 @@ promise.then(function(data) {
     // Siguiendo el ejemplo de arriba, error tendría adentro el string: 'Algo se rompió'
   });
 ```
+
 La función `then` de las _promises_ recibe dos argumentos, un callback de `sucess` y un callback de `failure`, que van a ser llamadas según si el promise terminó en un `resolve` o un `reject` respectivamente. Los parámetros que le llegan a esta funcion (en el ejemplo `data` y `error`) son los mismos parámetros con los que llamamos a las funciones `resolve` y `reject`.
 Podemos escribir los mismo que arriba, pero en vez de pasar dos callbacks a `then`, vamos a usar otro método similar llamado `catch`. Básicamente, al separarlos de este modo, con el `then` vamos a llamar un callback cuando el Promise termina en éxito, y con `catch` vamos a llamar un callback cuando termina en error:
 
@@ -113,6 +114,7 @@ promise.then(function(data) {
   // Siguiendo el ejemplo de arriba, error tendría adentro el string: 'Algo se rompió'
 });
 ```
+
 > Este último pedazo de código con `then-catch` es equivalente (hace lo mismo) que el anterior donde `then` recibe dos callbacks. Es simplemente una forma más simple de escribir código.
 
 ### Encadenando Promesas
@@ -156,13 +158,13 @@ primerMetodo()
    .then(segundoMetodo)
    .then(tercerMetodo)
    .then(function(datos){
-   		console.log(datos); //debería ser el 'hola' que pasamos en tercerMetodo
+     console.log(datos); //debería ser el 'hola' que pasamos en tercerMetodo
    });
 ```
 
 En el ejemplo hemos creado tres métodos donde simulamos algo asincrónico, o sea que no sabemos cuando se va a terminar de ejecutar y como vemos, todos crean una _Promise_ nueva dentro de ellos y la __retornan__. Para llamarlos, invocamos al primer métodos y le decimos con `then` que si termina éxitosamente ejecute la función `segundoMetodo`, esta también devuelve una _Promise_, por lo tanto también podemos llamar a `then` sobre ella, con esto invocamos tercerMetodo (que tambien retorna una _Promise_) y a este última le pasamos una función anónima pidiendo que imprima por consola los _datos_ que recibió como argumento en `resolve`. Si lo ejecutan en su browser verán cómo es el flujo de datos y en qué orden se imprimen los `console.log`s.
 
-> Intenten hacer el mismo ejemplo, pero sin usar Promises. Haciendólo van a notar la diferencia y vean cuan inentendible puede ser el  :japanese_goblin: _Callback Hell_ 
+> Intenten hacer el mismo ejemplo, pero sin usar Promises. Haciendólo van a notar la diferencia y vean cuan inentendible puede ser el  :japanese_goblin:_Callback Hell_
 
 ### Esperando que varias Promesas se cumplan para hacer algo
 
@@ -209,9 +211,9 @@ var tercerMetodo = function(datos) {
 };
 
 Promise.all([primerMetodo(), segundoMetodo(), tercerMetodo()])
-	.then(function(resultado){
-		console.log(resultado); //un arreglo con los valores pasamos a resolve en cada metodo
-	});
+ .then(function(resultado){
+  console.log(resultado); //un arreglo con los valores pasamos a resolve en cada metodo
+ });
 ```
 
 Genial, como vemos las promesas se completaron según cuanto tardaba cada una, en el ejemplo pusimos a propósito que el segundo método tarde menos que los demás. Lo importante a notar es que en el arreglo que recibimos al final los resultados vienen ordenados __en el mismo orden en el que pasamos las _promises_ a `all` y _no_ en el orden en que se resuelven__.
@@ -252,12 +254,12 @@ var tercerMetodo = function(datos) {
 };
 
 Promise.all([primerMetodo(), segundoMetodo(), tercerMetodo()])
-	.then(function(resultado){
-		console.log(resultado); //un arreglo con los valores pasamos a resolve en cada metodo
-	})
-	.catch( function(err){
-		console.warn(err); //mostramos el error por consola. Veremos que es el que falló primero, o sea el del primer metodo
-	});
+ .then(function(resultado){
+  console.log(resultado); //un arreglo con los valores pasamos a resolve en cada metodo
+ })
+ .catch( function(err){
+  console.warn(err); //mostramos el error por consola. Veremos que es el que falló primero, o sea el del primer metodo
+ });
 ```
 
 > Noten que la Promise retorna y ejecuta el `catch` inclusive antes que termine el tercer método, esto se debe a que el primer método falla antes que se ejecute el tercero.
@@ -272,4 +274,8 @@ var Promise = require("bluebird");
 
 Listo! ahora podemos usar las Promesas de Bluebierd mejorando la performance de nuestra aplicación!
 
-> :pineapple: Para ver todo lo que se puede hacer con _Promises_ podemos ir a leer la [documentación](http://bluebirdjs.com/docs/api-reference.html) de Bluebird.
+Para ver todo lo que se puede hacer con _Promises_ podemos ir a leer la [documentación](http://bluebirdjs.com/docs/api-reference.html) de Bluebird.
+
+## Homework
+
+Completa la tarea descrita en el archivo [README](https://github.com/soyHenry/FT-M3/tree/master/02-Promises/homework)

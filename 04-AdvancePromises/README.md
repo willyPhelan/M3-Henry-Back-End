@@ -1,6 +1,6 @@
-# Henry
+![HenryLogo](https://d31uz8lwfmyn8g.cloudfront.net/Assets/logo-henry-white-lg.png)
 
-<table width="100%" style='table-layout:fixed;'>
+<table class="hide" width="100%" style='table-layout:fixed;'>
   <tr>
 	  <td>
 	  	<a href="https://airtable.com/shrBpWkYV4K12PPNZ?prefill_clase=04-AdvancePromises">
@@ -19,10 +19,9 @@
   </tr>
 </table>
 
-## Advanced Promises
+# Advanced Promises
 
 Las promesas pueden ser algo complejas, sobre todo cuando queremos hacer _chaining_ de promesas. Veamos los siguientes casos y qué sucede en cada uno de ellos:
-
 
 ```javascript
 doSomething().then(function () {
@@ -40,15 +39,19 @@ doSomething().then(doSomethingElse)
   .then(finalHandler);
 ```
 
-### Caso I
+## Caso I
+
 Código:
-```javascript
+
+```js
 doSomething().then(function () {
   return doSomethingElse();
 }).then(finalHandler);
 ```
+
 Solución:
-```javascript
+
+```js
 doSomething
 |-----------------|
                   doSomethingElse(undefined)
@@ -58,16 +61,19 @@ doSomething
 
 ```
 
-### Caso II
+## Caso II
 
 Código:
-```javascript
+
+```js
 doSomething().then(function () {
   doSomethingElse();
 }).then(finalHandler);
 ```
+
 Solución:
-```javascript
+
+```js
 doSomething
 |-----------------|
                   doSomethingElse(undefined)
@@ -76,14 +82,19 @@ doSomething
                   |------------------|
 
 ```
-### Caso III
+
+## Caso III
+
 Código:
-```javascript
+
+```js
 doSomething().then(doSomethingElse())
   .then(finalHandler);
 ```
+
 Solución:
-```javascript
+
+```js
 doSomething
 |-----------------|
 doSomethingElse(undefined)
@@ -92,13 +103,17 @@ doSomethingElse(undefined)
                   |------------------|
 ```
 
-### Caso IV
+## Caso IV
+
 Código:
+
 ```javascript
 doSomething().then(doSomethingElse)
   .then(finalHandler);
 ```
+
 Solución:
+
 ```javascript
 doSomething
 |-----------------|
@@ -110,5 +125,8 @@ doSomething
 
 Material Recomendado:
 
-
 - [We have a problem with promises](https://pouchdb.com/2015/05/18/we-have-a-problem-with-promises.html)
+
+## Homework
+
+Completa la tarea descrita en el archivo [README](https://github.com/soyHenry/FT-M3/tree/master/04-AdvancePromises/homework/)

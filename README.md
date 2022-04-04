@@ -1,17 +1,27 @@
-<p align='left'>
-    <img src='https://static.wixstatic.com/media/85087f_0d84cbeaeb824fca8f7ff18d7c9eaafd~mv2.png/v1/fill/w_160,h_30,al_c,q_85,usm_0.66_1.00_0.01/Logo_completo_Color_1PNG.webp' </img>
-</p>
+![HenryLogo](https://d31uz8lwfmyn8g.cloudfront.net/Assets/logo-henry-white-lg.png)
 
-# Modulo 3 - Back End
+---
 
-- [01-NodeJs](./01-Node)
+### Podes ver el contenido de todo el repositorio en formato web tipeando `npm install` y `npm start` e ingresando luego a <http://localhost:8080>
+
+---
+
+# Módulo 3
+
+#### Back End
+
+<div class="hide">
+
+- [01-NodeJS](./01-Node)
 - [02-Promises](./02-Promises)
 - [03-Web Server](./03-WebServer)
-- [04-Advance Promises](./04-AdvancePromises)
+- [04-Advanced Promises](./04-AdvancedPromises)
 - [05-Express](./05-Express)
 - [06-Testing](./06-Testing)
-- [07-AsyncAwait](./07-AsyncAwait)
+- [07-Async/Await](./07-AsyncAwait)
 - Checkpoint
+
+</div>
 
 ## Proceso de subida de homeworks
 

@@ -1,0 +1,10 @@
+{
+  "lessonTitle": "Async/Await",
+  "permalink": "/AsyncAwait/",
+  "feedbackID": "06-AsyncAwait",
+  "homeworkUrl": "https://github.com/soyHenry/FT-M3/tree/master/07-AsyncAwait",
+  "eleventyNavigation": {
+    "key": "Async/Await",
+    "order": 7
+  }
+}

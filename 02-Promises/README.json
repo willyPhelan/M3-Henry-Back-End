@@ -1,0 +1,10 @@
+{
+  "lessonTitle": "Promises",
+  "permalink": "/Promises/",
+  "feedbackID": "02-Promises",
+  "homeworkUrl": "https://github.com/soyHenry/FT-M3/tree/master/02-Promises/homework",
+  "eleventyNavigation": {
+    "key": "Promises",
+    "order": 2
+  }
+}

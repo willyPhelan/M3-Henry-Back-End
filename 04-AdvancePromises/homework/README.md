@@ -32,7 +32,7 @@ Este workshop esta basado en un test spec de [Jasmine 2](https://jasmine.github.
 
 Vas a necesitar Node.js y su package manager npm instalado. Asumiendo que eso es verdad, podes instalar las dependencias del repo con:
 
-```sh
+```bash
 $ npm install # va a abrir la documentación también
 ```
 
@@ -41,7 +41,7 @@ $ npm install # va a abrir la documentación también
 
 Para ejecutrar los specs, simplemente ingresa en la terminal el comando:
 
-```sh
+```bash
 $ npm test
 ```
 

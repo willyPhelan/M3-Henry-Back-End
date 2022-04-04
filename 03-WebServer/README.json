@@ -1,0 +1,10 @@
+{
+  "lessonTitle": " Web Server",
+  "permalink": "/WebServer/",
+  "feedbackID": "03-WebServer",
+  "homeworkUrl": "https://github.com/soyHenry/FT-M3/tree/master/03-WebServer/homework/Beatles",
+  "eleventyNavigation": {
+    "key": "Web Server",
+    "order": 3
+  }
+}
