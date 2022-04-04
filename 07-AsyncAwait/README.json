@@ -1,4 +1,5 @@
 {
+  "layout": "lesson",
   "lessonTitle": "Async/Await",
   "permalink": "/AsyncAwait/",
   "feedbackID": "06-AsyncAwait",
