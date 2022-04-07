@@ -1,27 +1,27 @@
-# Henry
+![HenryLogo](https://d31uz8lwfmyn8g.cloudfront.net/Assets/logo-henry-white-lg.png)
 
-<table width="100%" style='table-layout:fixed;'>
+<table class="hide" width="100%" style='table-layout:fixed;'>
   <tr>
-	  <td>
-	  	<a href="https://airtable.com/shrBpWkYV4K12PPNZ?prefill_clase=01-Node">
-			<img src="https://static.thenounproject.com/png/204643-200.png" width="100"/>
-			<br>
-			Hacé click acá para dejar tu feedback sobre esta clase.
-	  	</a>
-	  </td>
+   <td>
+    <a href="https://airtable.com/shrBpWkYV4K12PPNZ?prefill_clase=01-Node">
+   <img src="https://static.thenounproject.com/png/204643-200.png" width="100"/>
+   <br>
+   Hacé click acá para dejar tu feedback sobre esta clase.
+    </a>
+   </td>
     <td>
-	          <a href="https://quiz.soyhenry.com/evaluation/new/6057d0a5656c8d23c2e60e3e">
+           <a href="https://quiz.soyhenry.com/evaluation/new/6057d0a5656c8d23c2e60e3e">
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/HSQuiz.svg/768px-HSQuiz.svg.png" width="100" height="100"/>
         <br>
         Hacé click acá completar el quizz teórico de esta lecture.
       </a>
-		</td>
+  </td>
   </tr>
 </table>
 
-# Introducción a Nodejs
+# Introducción a Node.JS
 
-![nodelogo](./img/logo.png)
+![logo](/_src/assets/01-Node//logo.png)
 
 ## ¿Qué es Nodejs?
 
@@ -40,15 +40,15 @@ Podemos pensar a procesador (microprocesador) como una pequeña máquina que rec
 * ARM
 * MIPS
 
-Para pasarle intrucciones al procesador, no escribimos 1's y 0's, sino que usamos un lenguaje que se traduce directamente a esa secuencia, llamado [__assembler__](https://es.wikipedia.org/wiki/Lenguaje_ensamblador). 
+Para pasarle intrucciones al procesador, no escribimos 1's y 0's, sino que usamos un lenguaje que se traduce directamente a esa secuencia, llamado [__assembler__](https://es.wikipedia.org/wiki/Lenguaje_ensamblador).
 
-![assembler](./img/asembler.png)
+![assembler](/_src/assets/01-Node//asembler.png)
 
 Hoy en día no se programa en assembler ([__lenguaje de bajo nivel__](https://es.wikipedia.org/wiki/Lenguaje_de_bajo_nivel)), ya que es muy complejo y hacer un simple 'Hello World' podría llevar muchas líneas de código: Simplemente no escala. Para solucionar esto, se crearon lenguajes más fáciles y rápidos de programar y que compilan a lenguaje de máquina, estos son los conocidos _lenguajes de alto nivel_, JAVA, C++, Javascript son ejemplos de estos lenguajes. Es importante notar, que no importa que lenguaje usemos, en algún momento el código será _traducido_ o _compilado_ a lenguaje de máquina, que es el único lenguaje que entiende verdaderamente la computadora.
 
-Como pueden pensar mientras nos alejamos del lenguaje de máquina (lenguajes de más alto nivel) y nos abstraemos vamos ganando velocidad para codear, pero también vamos perdiendo performance. Piensen que si codeamos en lenguaje de máquina, podemos controlar cada slot de memoria nosotros mismos y hacerlo de la mejor forma posible. Cuando subimos de nivel, alguien hace ese trabajo por nosotros, y como tiene que ser genérico no puede lograr ser tan óptimo. Es por eso que según la performance y los recursos que se necesite o tengamos vamos a elegir lenguajes de altisimo o bajísimo nivel. 
+Como pueden pensar mientras nos alejamos del lenguaje de máquina (lenguajes de más alto nivel) y nos abstraemos vamos ganando velocidad para codear, pero también vamos perdiendo performance. Piensen que si codeamos en lenguaje de máquina, podemos controlar cada slot de memoria nosotros mismos y hacerlo de la mejor forma posible. Cuando subimos de nivel, alguien hace ese trabajo por nosotros, y como tiene que ser genérico no puede lograr ser tan óptimo. Es por eso que según la performance y los recursos que se necesite o tengamos vamos a elegir lenguajes de altisimo o bajísimo nivel.
 
-![low-high](./img/lowh.png)
+![low-high](/_src/assets/01-Node//lowh.png)
 
 _Por ejemplo, los microcontroladores embebidos en lavaropas están programados en C compilado a lenguaje de máquina, esto es porque tienen muy poca memoria y tienen que optimizarla al máximo_
 
@@ -96,7 +96,7 @@ Para instalar node vamos a ir [acá](https://nodejs.org/en/) y seguir las instru
 
 Una vez terminada la instalación, podemos probar si funciona correctamente escribiendo el siguiente comando en la consola:
 
-```
+```bash
 node -v
 ```
 
@@ -129,13 +129,13 @@ Este concepto ya existia en otros lenguajes de programación y era muy usado par
 
 Básicamente, el standart dice lo siguiente:
 
-- Cada archivo es un ḿodulo, y cada módulo es un archivo separado.
-- Todo lo que queremos exportar va a ser expuesto desde un único punto.
+* Cada archivo es un ḿodulo, y cada módulo es un archivo separado.
+* Todo lo que queremos exportar va a ser expuesto desde un único punto.
 
 Para entender el standard tenemos que tener dos conceptos en claro:
 
 * First-Class Functions: Las funciones en javascript son tratadas igual que cualquier otro objeto, es decir que podés guardarlas en variables, pasarlas como argumentos, guardarlas en arreglos, etc...
-* Function Expressions: Como las funciones son first-class, al escribir una expresión de funcion estoy creando la misma, eso quiere decir que puedo crear funciones en cualquier parte del código. 
+* Function Expressions: Como las funciones son first-class, al escribir una expresión de funcion estoy creando la misma, eso quiere decir que puedo crear funciones en cualquier parte del código.
 
 Vamos a empezar construyendo nuestro propio módulo! una vez que lo tengamos, vamos a ver como usarlo. Entendiendo así todo el ciclo.
 
@@ -157,32 +157,35 @@ __Require__ recibe como argumento, un string que es el path en donde encontrará
 
 Ahora, si corremos el archivo `app.js` usando `node app.js` en la terminal vamos a ver que se ejecutó el código que escribimos en `hola.js`:
 
-![require](./img/require.png)
+![require](/_src/assets/01-Node//require.png)
 
 Hagamos algo más interesante, vamos a `hola.js` y creemos una función y luego la usemos para saludar:
 
 ```javascript
 var saludar = function() {
-	console.log('Hola!!!');
+ console.log('Hola!!!');
 }
 saludar();
 ```
 
 Corramos de nuevo `app.js`:
 
-![require](./img/require2.png)
+![require](/_src/assets/01-Node//require2.png)
 
 El resultado es el mismo!
 Ahora, si no invocamos `saludar()` dentro de `hola.ja`, creen que la podremos invocar (usar) en `app.js`? Hagamos la prueba!
 
 Comentamos la invocación en `hola.js`:
+
 ```javascript
 var saludar = function() {
-	console.log('Hola!!!');
+ console.log('Hola!!!');
 }
 //saludar();
 ```
+
 Invacamos en `app.js`:
+
 ```javascript
 require('./hola.js');
 saludar();
@@ -190,7 +193,7 @@ saludar();
 
 saludar no está definido! recibimos un error. De hecho, esto está bien que suceda. Se acuerdan que dijimos que un módulo no debería afectar otro código accidentalmente? Eso quiere decir que el código está protegido y que no podemos simplemente usarlo y acceder a los objetos fuera de ese módulo.
 
-![simply](./img/simply.jpg)
+![simply](/_src/assets/01-Node//simply.jpg)
 
 Para usarlo afuera, vamos a tener que explicitarlo, veamos como hacer que podamos usar `saludar()` desde `app.js`.
 
@@ -198,11 +201,12 @@ Nodejs nos permite hacerlo usando `module.exports`, que es una variable especial
 
 ```javascript
 var saludar = function() {
-	console.log('Hola!!!');
+ console.log('Hola!!!');
 };
 
 module.exports = saludar;
 ```
+
 Ahora este módulo está exponiendo el objeto `saludar`. Para usarlo en nuestro módulo tenemos que guardar lo que devuelve `require` en una variable (puedo llamar a la nueva variable como quiera):
 
 ```javascript
@@ -213,16 +217,16 @@ hola();
 
 Ahora voy a poder invocar `hola()`, porque lo hemos pasado a través de `module.exports`. Si ejecuto `app.js`:
 
-![require](./img/require3.png)
+![require](/_src/assets/01-Node//require3.png)
 
 Ahora pudimos acceder al código de `hola.js`, porque lo expusimos a propósito.
 
 Resumiendo:
 
-- __Require__ es una función que recibe un _path_.
-- __module.exports__ es lo que retorna la funcion _require_.
+* __Require__ es una función que recibe un _path_.
+* __module.exports__ es lo que retorna la funcion _require_.
 
-#### Algunos patrones de Require.
+#### Algunos patrones de Require
 
 Como siempre en Nodejs, hay muchas formas de hacer lo mismo (esto puede ser bueno o malo - según cómo lo usemos) y crear módulos no es la excepción. Veamos algunos patrones comunes en la creacion de módulos!
 
@@ -242,13 +246,14 @@ saludos.spanish();
 Estamos importanto solamente el path `./saludos`, como no hay ningún archivo `.js` con ese nombre, _require_ busca una carpeta, por lo tanto vamos a crear una carpeta `saludos` con los siguientes archivos:
 
 index.js
+
 ```javascript
 var english = require('./english');
 var spanish = require('./spanish');
 
 module.exports = {
-	english: english,
-	spanish: spanish	
+ english: english,
+ spanish: spanish 
 };
 ```
 
@@ -257,21 +262,24 @@ En este archivo estamos importando otros dos módulos, uno por cada idioma en el
 Ahora veamos como sería cada idioma:
 
 spanish.js
+
 ```javascript
 var saludos = require('./greetings.json');
 
 var greet = function() {
-	console.log(saludos.es);
+ console.log(saludos.es);
 }
 
 module.exports = greet;
 ```
+
 english.js
+
 ```javascript
 var saludos = require('./greetings.json');
 
 var greet = function() {
-	console.log(saludos.en);
+ console.log(saludos.en);
 }
 
 module.exports = greet;
@@ -279,16 +287,16 @@ module.exports = greet;
 
 y en greetings.json vamos a tener los saludos per se:
 
-```javascript
+```json
 {
-	"en": "Hello",
-	"es": "Hola"
+ "en": "Hello",
+ "es": "Hola"
 }
 ```
 
 Si ejecutamos nuestra `app.js`:
 
-![patron](./img/patron.png)
+![patron](/_src/assets/01-Node//patron.png)
 
 ##### Más Patrones
 
@@ -297,7 +305,6 @@ En la carpeta `./patrones/otro` hemos puesto varios files distintos llamados `sa
 Dentro de cada archivo en los comentarios está explicado en más detalle el patrón.
 
 De nuevo, __no hay una mejor forma, prueben todos los patrones y vean cual es el que les gusta y cual los hace felices!__
-
 
 ### Require con modulos Core o nativos
 
@@ -317,15 +324,14 @@ util.log(saludo);
 
 ¿Que hace este código? Busquen en la [documentación](https://nodejs.org/dist/latest-v6.x/docs/api/util.html#util_util_format_format) por la función `format()` y `log()` e intenten predecir que hará ese código.
 
-
 ### Eventos: Events emitter
 
 Una gran porción del core de Nodejs está construida usando como base este concepto.
 Un _Evento_ es algo que ha ocurrido en nuestra aplicación y que dispara una acción. Este concepto no es exclusivo a _Nodejs_, si no que aparece en muchos lenguajes y arquitecturas de software.
 En Node hay dos tipo de eventos:
 
-- Eventos del sistemas: Estos vienen del código en _C++_, gracias a una librería llamada _libuv_ y manejan eventos que vienen del sistema operativo como por ejemplo: Terminé de leer una archivo, o recibí datos de la red, etc...
-- Eventos Customs: Estos eventos estan dentro de la parte Javascript del Core. Maneja eventos que podemos crear nosotros mismos, para eso vamos a usar el _Event Emitter_. Varias veces cuando un evento de _libuv_ sucede, genera un evento usando el _event emitter_.
+* Eventos del sistemas: Estos vienen del código en _C++_, gracias a una librería llamada _libuv_ y manejan eventos que vienen del sistema operativo como por ejemplo: Terminé de leer una archivo, o recibí datos de la red, etc...
+* Eventos Customs: Estos eventos estan dentro de la parte Javascript del Core. Maneja eventos que podemos crear nosotros mismos, para eso vamos a usar el _Event Emitter_. Varias veces cuando un evento de _libuv_ sucede, genera un evento usando el _event emitter_.
 
 _Ejercicio_ Crear un forma simple de emitir eventos y capturarlos.
 
@@ -337,7 +343,7 @@ Dijimos que cuando ocurre un evento, queremos capturarlo y responder de alguna f
 
 Repasemos como funcionaba V8 internamente y veamos qué es exactamente el __event loop__:
 
-![event-loop](./img/eventloop.png)
+![event-loop](/_src/assets/01-Node//eventloop.png)
 
 Los componentes que vemos en la figura son:
 
@@ -349,9 +355,9 @@ Los componentes que vemos en la figura son:
 
 Toda esta interacción con el SO, el manejo del Task Queue y el Event loop está implementado en la libreria [__libuv__](http://docs.libuv.org/en/v1.x/) que es la piedra angular de Nodejs. De hecho, su logo es un Unicornio T-rex, es demasiado copada:
 
-![libuv](./img/libuv.png)
+![logo](/_src/assets/01-Node//libuv.png)
 
-# ¿Qué es un gestor de paquetes?
+## ¿Qué es un gestor de paquetes?
 
 Primero definamos lo que es un paquete. Básicamente es.. `código`! Es cualquier pieza de **código** manejada y mantenida por un gestor de paquetes.
 
@@ -373,7 +379,7 @@ Para crear este archivo npm nos da el comando `npm init`, que es una forma inter
 
 En la imagen vemos los datos que nos piden y a continuación vemos el archivo `package.json` que creó el comando:
 
-```javascript
+```json
 {
   "name": "test-app",
   "version": "1.0.0",
@@ -403,7 +409,7 @@ __usamos el argumento `--save` para indicar a npm que además de instalar el paq
 
 Luego de ejecutar el comando, vemos que en `package.json` hay una nueva propiedad llamada 'dependecies' que es un objeto que contiene los nombres y las versiones de los paquetes que hemos instalado (siempre que instalemos usando __--save__).
 
-```javascript
+```json
 {
   "name": "test-app",
   "version": "1.0.0",
@@ -425,7 +431,7 @@ Luego de ejecutar el comando, vemos que en `package.json` hay una nueva propieda
 
 Ahora creamos un archivo llamado `index.js` (el entry point de nuesta app), y dentro de él vamos a incorporar el nuevo módulo instalado.
 
-```jasvascript
+```javascript
 var moment = require('moment');
 console.log(moment().format("ddd/MM/YYYY, hA"));
 ```
@@ -443,7 +449,7 @@ _Según el sistema operativo pueden llegar a tener algún problema con permisos,
 
 Se acuerdan cuando hicimos el servidor web con Node? Cada vez que cambiamos algo en el código, teníamos que reiniciar el servidor para que los cambios sean reflejados. Con _Nodemon_ podemos olvidarnos de eso, ya que hace eso por nosotros.
 
-```
+```txt
 nodemon will watch the files in the directory in which nodemon was
 started, and if any files change, nodemon will automatically
 restart your node application.
@@ -451,17 +457,21 @@ restart your node application.
 
 Como verán este es un paquete que vamos a usar en casi todos los proyectos de node que hagamos, por lo tanto es un buen ejemplo de algo que instalariamos globalmente. Para hacerlo hacemos:
 
-`npm install -g nodemon`
+```bash
+npm install -g nodemon
+```
 
-o 
+o en Linux o Mac:
 
-`sudo npm install -g nodemon` en Linux o Mac.
+```bash
+sudo npm install -g nodemon 
+```
 
 Una vez instalado globalmente, puedo simplemente utilizarlo desde la línea de comandos, ya que viene con una interfaz CLI (_command line interface_). De hecho, varios paquetes de npm vienen con una interfaz CLI para ser usados desde la consola o terminal.
 
 En nuestro ejemplo al ejecutar `nodemon` obtenemos:
 
-```
+```bash
 [nodemon] 1.10.0
 [nodemon] to restart at any time, enter `rs`
 [nodemon] watching: *.*
@@ -472,13 +482,13 @@ Sun/07/2016, 11PM
 
 Para probar si funciona, hagamos un cambio en el archivo `index.js` y salvemos. Para mi ejemplo voy a agregar un `console.log()`.
 
-```
+```js
 var moment = require('moment');
 console.log('Salgo en la consola!!');
 console.log(moment().format("ddd/MM/YYYY, hA"));
 ```
 
-![Npm-Init](./img/npmnodemon.png)
+![Npm-Init](/_src/assets/01-Node//npmnodemon.png)
 
 Como vemos, no fue necesario volver a correr el archivo `index.js` a mano para ver los cambios, Nodemon hizo todo el trabajo por nosotros!
 
@@ -486,11 +496,13 @@ Como vemos, no fue necesario volver a correr el archivo `index.js` a mano para v
 
 Como dijimos, `npm` también nos sirve para mantener actualizados los paquetes. Para hacerlo sólo tenemos que escribir el siguiente comando:
 
-`npm update`
+```bash
+npm update
+```
 
 Para mantener la compatibilidad con las aplicaciones, `npm` sólo actualiza automáticamente los _patches_ y _minor changes_ ([Semantic Versioning](http://semver.org/))de un paquete, por defecto.
 
-De hecho, el **^** antes del número de versión en 'dependencies' indica qué puede actualizar los _minors_ automáticamente, si quisieramos restringir ese comportamiento para que actualize sólo los _patches_ deberíamos usar el carácter **~** antes de la versión: 
+De hecho, el **^** antes del número de versión en 'dependencies' indica qué puede actualizar los _minors_ automáticamente, si quisieramos restringir ese comportamiento para que actualize sólo los _patches_ deberíamos usar el carácter **~** antes de la versión:
 
 ```javascript
 "dependencies": {
@@ -517,13 +529,13 @@ var saludo = fs.readFileSync(__dirname + '/greet.txt', 'utf8');
 console.log(saludo);
 ```
 
-Como podemos ver en la [documentación](https://nodejs.org/dist/latest-v6.x/docs/api/fs.html#fs_fs_readfilesync_file_options) de `fs`, la función `readFileSync`, recibe un path como parametro y el encoding del file. 
+Como podemos ver en la [documentación](https://nodejs.org/dist/latest-v6.x/docs/api/fs.html#fs_fs_readfilesync_file_options) de `fs`, la función `readFileSync`, recibe un path como parametro y el encoding del file.
 
 >__\_\_dirname: esta variable tiene guardado el path completo del directorio donde está el archivo que está ejecutando el código__
 
 Por lo tanto le estamos diciendo que lea el archivo  greet que creamos _DE MANERA SINCRONICA_ (esto quiere decir que no va avanzar hasta que no lea de manera completa) y que guarde el resultado en la variable `saludo`, luego que muestre el contenido de saludo por consola. Como vemos, el resultado es que en `saludo` se guarda el contenido del archivo `greet.txt`!!
 
-![fs](./img/fs.png)
+![fs](/_src/assets/01-Node//fs.png)
 
 Al hacerlo sincronico, el programa se _bloquea_ hasta que no termine de leer el archivo completo, si el archivo fuera muy grande, veriamos que el programa queda _trabado_ y causa una mala experiencia de uso.
 
@@ -533,7 +545,7 @@ Para hacerlo, `fs` nos da la función `readFile`, que recibe el path del archivo
 ```javascript
 var fs = require('fs');
 fs.readFile(__dirname + '/greet.txt', 'utf8', function(err, data) {
-	console.log(data);
+ console.log(data);
 });
 console.log('Listo!');
 ```
@@ -544,11 +556,14 @@ __Es super importante que comprendan el porqué del orden en el que aparecen los
 
 Otra cosa a notar es que la función anónima que le pasamos tiene dos parámetros: _err_ y _data_. Esto se debe a que existe un standard llamado __error-first callback__ que dice que cada vez que escribas una función que ejecute un callback, le pases a ese _cb_ como __primer__ parámetro una variable de _Error_. En el caso que no haya habido errores en la ejecución, entonces esa variable tendrá _null_, en caso contrario tendrá algo que informe el error.
 
-![fs-2](./img/fs2.png)
+![fs-2](/_src/assets/01-Node//fs2.png)
 
-Como vemos, primero se ejecutó el segundo console log, luego el console log del _callback_. 
-
+Como vemos, primero se ejecutó el segundo console log, luego el console log del _callback_.
 
 ### Combinando Todo
 
 Bien! Ahora estamos listos para empezar a crear nuestro propio servidor web usando estos conceptos!
+
+## Homework
+
+Completa la tarea descrita en el archivo [README](https://github.com/soyHenry/FT-M3/tree/master/01-Node/homework)

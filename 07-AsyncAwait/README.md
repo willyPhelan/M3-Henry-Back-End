@@ -1,23 +1,25 @@
-# Henry
+![HenryLogo](https://d31uz8lwfmyn8g.cloudfront.net/Assets/logo-henry-white-lg.png)
 
-<table width="100%" style='table-layout:fixed;'>
+<table class='hide' width="100%" style='table-layout:fixed;'>
   <tr>
-	  <td>
-	  	<a href="https://airtable.com/shrBpWkYV4K12PPNZ?prefill_clase=03-WebServer">
-			<img src="https://static.thenounproject.com/png/204643-200.png" width="100"/>
-			<br>
-			Hacé click acá para dejar tu feedback sobre esta clase.
-	  	</a>
-	  </td>
+   <td>
+    <a href="https://airtable.com/shrBpWkYV4K12PPNZ?prefill_clase=03-WebServer">
+   <img src="https://static.thenounproject.com/png/204643-200.png" width="100"/>
+   <br>
+   Hacé click acá para dejar tu feedback sobre esta clase.
+    </a>
+   </td>
               <td>
-	    <a href="https://quiz.soyhenry.com/evaluation/new/60b9163656b4056ff032f732">
-	    	<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/HSQuiz.svg/768px-HSQuiz.svg.png" width="100" height="100"/>
-	    	<br>
-	    	Hacé click acá completar el quiz teórico de esta lecture.
-	    </a>
-	 </td>
+     <a href="https://quiz.soyhenry.com/evaluation/new/60b9163656b4056ff032f732">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/HSQuiz.svg/768px-HSQuiz.svg.png" width="100" height="100"/>
+      <br>
+      Hacé click acá completar el quiz teórico de esta lecture.
+     </a>
+  </td>
   </tr>
 </table>
+
+# Async/Await y Generators
 
 ## Generators
 
@@ -31,25 +33,23 @@ Podrían hacer la analogía de este tipo de funciones con un control remoto en e
 
 Lo que usualmente conocemos como "Run-to-completion Model" es el paradigma sobre el cual se basan todas las funciones de JS, a excepción de los generators. La idea principal consiste en que toda función va a ejecutarse por completo hasta llegar a su última instrucción o punto de salida, ya sea por:
 
-  - Return statement
-  - Error thrown
-  - Fin de instrucciones (implicit undefined return)
+- Return statement
+- Error thrown
+- Fin de instrucciones (implicit undefined return)
 
 ### Generators Model
 
 Por su parte el modelo en que se basan los generators previamente explicado consta de
 
-  - __Ejecución inical__: retorna un "generator object" que va a ser nuestro iterador
-  - __Comienzo__: comienza a ejecutarse el generator cuando se invoca la instrucción `next` o a través de algún ciclo de iteración
-  - __"Pausas"__: puede tener una cantidad infinita de puntos de pausa en los cuales se guarda su contexto y se cede nuevamente el control a la función o programa que invocó al generator
-  - __Resume__: luego de cada pausa es posible que el generator tome nuevamente el control para continuar con sus operaciones
-  - __Fin__: una vez completadas o pasados todos los puntos de pausa el generator llega a su fin
+- __Ejecución inical__: retorna un "generator object" que va a ser nuestro iterador
+- __Comienzo__: comienza a ejecutarse el generator cuando se invoca la instrucción `next` o a través de algún ciclo de iteración
+- __"Pausas"__: puede tener una cantidad infinita de puntos de pausa en los cuales se guarda su contexto y se cede nuevamente el control a la función o programa que invocó al generator
+- __Resume__: luego de cada pausa es posible que el generator tome nuevamente el control para continuar con sus operaciones
+- __Fin__: una vez completadas o pasados todos los puntos de pausa el generator llega a su fin
 
 La siguiente imagen muestra en detalle las diferencias entre ambos modelos recién expuestas:
 
-<p align="center">
-  <img src="./img/flow.png" />
-</p>
+![Flow](/_src/assets/07-AsyncAwait/flow.png)
 
 ### Generators Syntax
 
@@ -137,8 +137,8 @@ var thirdNext = generatorObject.next();
 
 Si bien a simple vista pueden parecer equivalentes tanto el `yield` como el `return`, no lo son:
 
- - Yield: se encarga de establecer los "puntos de pausa" por lo que al llegar a un yield se pausa el generator y se retorna un objecto como el que vimos en el ejemplo de arriba que indica el estado actual del generator
- - Return: una vez que se alcanza un return statement dentro de un generator, se finaliza su ejecución seteando el valor de "done" del objeto devuelto en true.
+- Yield: se encarga de establecer los "puntos de pausa" por lo que al llegar a un yield se pausa el generator y se retorna un objecto como el que vimos en el ejemplo de arriba que indica el estado actual del generator
+- Return: una vez que se alcanza un return statement dentro de un generator, se finaliza su ejecución seteando el valor de "done" del objeto devuelto en true.
 
 ```javascript
   function* generatorUnreacheableValue() {
@@ -186,6 +186,10 @@ generatorObject.next(); // <-- Retorna {done: false, value: 4}
 // En value tendremos la secuendia de números naturales que queríamos
 ```
 
+## Homework 1
+
+Completa la tarea descrita en el archivo [README](https://github.com/soyHenry/FT-M3/tree/master/07-AsyncAwait/Generators/homework/)
+
 ## Async/Await
 
 Las funcines asíncronas o async functions nos van a permitir, como su nombre lo indica, definir código asíncrono con una sintaxis distinta a la que veníamos utilizando con las promesas por lo que no tendremos que encadenarlas nosotros mismos de forma explícita.
@@ -205,7 +209,6 @@ La palabra async es la que va a informarle al intérprete que se trata de una as
 ### Basic Flow
 
 A continuación analizaremos un pequeño ejemplo para comprender mejor el flow de estas nuevas funciones:
-
 
 ```javascript
 function resolveAfter2Seconds() {
@@ -361,9 +364,7 @@ Si quisieramos que el orden de ejecución seá:
 
 ¿Cómo deberíamos modificar el código previo?
 
-<p align="center">
-  <img src="./img/Spoiler-Alert.png" />
-</p>
+![no-box](/_src/assets/07-AsyncAwait/Spoiler-Alert.png)
 
 ```javascript
 async function showInstructors() {
@@ -385,7 +386,7 @@ console.log("FIN");
 
 ### Ventajas
 
-* El código suele ser más prolijo y similar a código sincrónico:
+- El código suele ser más prolijo y similar a código sincrónico:
 
 ```javascript
 const readFilePromise = (archivo) => {
@@ -401,9 +402,10 @@ const readFileAsync = async(archivo) => {
   return "Lectura exitosa";
 }
 ```
+
 Para más detalle ver la demo `demoCleanCode.js`
 
-* Permite manejar tanto errores de código sincrónico como asincrónico en un mismo lugar (try/catch)
+- Permite manejar tanto errores de código sincrónico como asincrónico en un mismo lugar (try/catch)
 
 ```javascript
 const readFileAsync = async(archivo) => {
@@ -415,16 +417,19 @@ const readFileAsync = async(archivo) => {
   }
 }
 ```
+
 Para más detalle ver la demo `demoErrorHandler.js`
 
 ### Desventajas
 
-* El código suele ser más prolijo y similar a código sincrónico. ¿¿¿Qué??? ¿No les habíamos dicho hace un par de líneas que era una ventaja esto?
+- El código suele ser más prolijo y similar a código sincrónico. ¿¿¿Qué??? ¿No les habíamos dicho hace un par de líneas que era una ventaja esto?
 
 Si, no estamos locos, esto puede ser un arma de doble filo, porque al maquillar código asíncrono haciendolo parecer como sincrónico muchas veces solemos utilizarlo de forma incorrecta y terminando sin entender el flow del programa. Recuerden el ejemplo que hicimos más arriba de showInstructors y verán que si no se comprende bien como funcionan `async` y `await` puede llevar a grandes confusiones.
 
 Por eso mismo, ustedes que ya entienden a la perfección el funcionamiento de promesas si comprender en el fondo que es lo que está ocurriendo y no pensar que es simplemente 'magia'.
 
-Por último podríamos pensar que Async/Await tomo y combinó las ideas de Generators junto con Promesas:
+Por último podríamos pensar que Async/Await tomó y combinó las ideas de Generators junto con Promesas: ***Async/Await = Generators + Promises***
 
-<center><h3>Async/Await = Generators + Promises</h3></center>
+## Homework 2
+
+Completa la tarea descrita en el archivo [README](https://github.com/soyHenry/FT-M3/tree/master/07-AsyncAwait/AsyncAwait/homework/)

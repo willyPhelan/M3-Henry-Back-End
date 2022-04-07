@@ -1,0 +1,11 @@
+{
+  "layout": "lesson",
+  "lessonTitle": "Node",
+  "permalink": "/Node/",
+  "feedbackID": "01-Node",
+  "homeworkUrl": "https://github.com/soyHenry/FT-M3/tree/master/01-Node/homework",
+  "eleventyNavigation": {
+    "key": "Node",
+    "order": 1
+  }
+}

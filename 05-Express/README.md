@@ -1,14 +1,14 @@
-# Henry
+![HenryLogo](https://d31uz8lwfmyn8g.cloudfront.net/Assets/logo-henry-white-lg.png)
 
-<table width="100%" style='table-layout:fixed;'>
+<table class="hide" width="100%" style='table-layout:fixed;'>
   <tr>
-	  <td>
-	  	<a href="https://airtable.com/shrBpWkYV4K12PPNZ?prefill_clase=05-Express">
-			<img src="https://static.thenounproject.com/png/204643-200.png" width="100"/>
-			<br>
-			Hacé click acá para dejar tu feedback sobre esta clase.
-	  	</a>
-	  </td>
+   <td>
+    <a href="https://airtable.com/shrBpWkYV4K12PPNZ?prefill_clase=05-Express">
+   <img src="https://static.thenounproject.com/png/204643-200.png" width="100"/>
+   <br>
+   Hacé click acá para dejar tu feedback sobre esta clase.
+    </a>
+   </td>
               <td>
       <a href="https://quiz.soyhenry.com/evaluation/new/606f7234656c8d23c2e60f8b">
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/HSQuiz.svg/768px-HSQuiz.svg.png" width="100" height="100"/>
@@ -27,7 +27,9 @@ _Express.js_ o simplemente _Express_ es un framework diseñado para crear aplica
 
 Vamos a iniciar una app nueva con `npm init` a la que vamos a llamar _expresstest_ y luego vamos a instalar express usando `npm`:
 
-`npm install express --save` _--save para que se guarde en package.json_
+```bash
+npm install express
+```
 
 Ahora vamos a crear un archivo `index.js` _( o con el nombre que hayan definido como entry point)_ y vamos a requerir 'express'.
 
@@ -72,7 +74,7 @@ app.get("/", function (req, res) {
 
 Como ejemplo, vamos a usar `res.send()` para enviar texto como respuesta. No fué necesario explicitar el `Content-type`, ya que _express_ se encarga de eso por nosotros tambien!
 
-![Express-Example](./img/expressexample.png)
+![Express-Example](/_src/assets/05-Express/expressexample.png)
 
 Podemos ejecutar el server con `nodemon` y probar la URL `'/'` en el browser.
 
@@ -91,7 +93,7 @@ app.get("/api", function (req, res) {
 
 Probemos el nuevo _endpoint_ en el browser:
 
-![Express-Api](./img/expressapi.png)
+![Express-Api](/_src/assets/05-Express/expressapi.png)
 
 Veamos que más podemos hacer con _express_!
 
@@ -139,7 +141,7 @@ Para mostrar el comportamiento, esa ruta a va a devolver un objeto json con la p
 
 Probando en el browser:
 
-![Params-gif](./img/params.gif)
+![Params-gif](/_src/assets/05-Express/params.gif)
 
 :D
 
@@ -150,7 +152,7 @@ Prueben armar una ruta que maneje la siguiente URL: _/api/:id/:nombre/:valor_.
 
 **Middleware**: hace referencia a código que existe entre dos capas de software, en el caso de _express_ a código que este entre el `request` y el `response`.
 
-![Express-Middleware](./img/life.png)
+![Express-Middleware](/_src/assets/05-Express/life.png)
 
 Veamos un ejemplo muy común de middlware en _express_. En casi todas las aplicaciones web vamos a tener archivos que queremos que se bajen siempre, por ejemplo: imágenes, archivos `.css` o `.js`, etc. Como sabemos, para poder acceder a estos archivos vamos a tener que crear para cada archivo una ruta tal que sean accesibles a través de una URL. Esto puede llegar a complicarse fácilmente, no?
 Por suerte, _express_ ya pensó en esto y nos da un middleware para manejar estos _static files_ (se llaman estáticos porque no dependen de ningún input y no deben ser procesados de ninguna manera,siempre son iguales).
@@ -163,11 +165,11 @@ Digamos que queremos tener una carpeta donde guardamos todos los _archivo estát
 app.get("/static", function (req, res) {
   res.send(
     '<html><head> \
-			<link href="/assets/style.css" rel="stylesheet"> \
-			</head><body> \
-				<p>Archivos estaticos rapido y facil!!</p>\
-				<img src="/assets/imagen.jpg">\
-			</body></html>'
+      <link href="/assets/style.css" rel="stylesheet"> \
+      </head><body> \
+      <p>Archivos estaticos rapido y facil!!</p>\
+      <img src="/assets/imagen.jpg">\
+      </body></html>'
   );
 });
 ```
@@ -184,13 +186,13 @@ El único parámetro que recibe _static_ es el nombre del directorio donde está
 
 Ahora probemos la nueva ruta `/static/` y probemos si carga los archivos estáticos:
 
-![pagina-static](./img/expresstatic.png)
+![pagina-static](/_src/assets/05-Express/expresstatic.png)
 
 Como vemos la imagen, y vemos el párrafo de color rojo, sabemos que se cargaron correctamente los archivos estáticos!
 
 Si accedemos a cada uno individualmente:
 
-![pagina-static](./img/static.gif)
+![pagina-static](/_src/assets/05-Express/static.gif)
 
 Vemos que cada uno tiene su propia ruta dentro de `/assets/` y que fue mapeada automáticamente por _express.static_ a cada archivo dentro de la carpeta `public`. Muy potente, no? Such express!
 
@@ -210,11 +212,11 @@ middle;
 
 Por lo tanto al hacer un request al servidor, primero se pasará por ese middleware (veremos el console log en la terminal) y luego se creará el response según lo que habiamos definido para esa ruta:
 
-![middleware](./img/middleware.gif)
+![middleware](/_src/assets/05-Express/middleware.gif)
 
 Como se podrán imaginar, esta forma de trabajar de _express_ hace que sea super potente. Además hay muchísimos middlewares ya creados por otros desarrolladores que podremos usar. ¿Donde buscarlos? Sí, en npm! También pueden empezar por esta [lista de middleware creados por el equipo de _express_](http://expressjs.com/resources/middleware.html).
 
-## Enviado datos al servidor:
+## Enviado datos al servidor
 
 Por ahora nos habiamos concentado sólo en obtener contenido de nuestra app usando requests tipo **GET**, sin mandar datos nosotros (de hecho el único dato que enviamos fue como un parámetro en la URL).
 Ahora veremos que hay distintas formas de enviar datos al servidor.
@@ -227,13 +229,13 @@ Una forma de enviar datos es hacerlo en la URL a la que apuntamos el request. Pa
 
 o
 
-![query_string](./img/queryString.png)
+![query_string](/_src/assets/05-Express/queryString.png)
 
 ### POST y Forms
 
 Otras formas de enviar datos al servidor es a través de Formularios. Ahora usaremos otro verbo HTTP, el **POST**.
 
-![query_string](./img/postform.png)
+![query_string](/_src/assets/05-Express/postform.png)
 
 En este caso, los datos iran dentro del `body` del request, y lo que nos indica que es datos de un formulario es el `content-type` que estará seteado a `x-www-form-urlencoded'.
 
@@ -241,7 +243,7 @@ En este caso, los datos iran dentro del `body` del request, y lo que nos indica 
 
 También podemos enviar datos al servidor en formato JSON, donde también usamos POST, pero el `content-type` es ahora `application/json`. Por ejemplo en un request generado por AJAX. En este caso los datos también estarán en el `body` del request.
 
-![ajax-post](./img/postajax.png)
+![ajax-post](/_src/assets/05-Express/postajax.png)
 
 En fin, como vemos vamos a necesitar middleware para lograr procesar cada una de estas formar de recibir datos (pensando desde el lado del servidor).
 
@@ -257,7 +259,7 @@ app.get("/datos/", function (req, res) {
 
 Corramos el servidor y probemos nuestra nueva ruta:
 
-![query-string](./img/queryString.gif)
+![query-string](/_src/assets/05-Express/queryString.gif)
 
 Como vemos, _Express_ toma las variables del query string y al parsearla las guarda en un objeto cuyas propiedades son el nombre de esas variables junto con sus respectivos valores.
 
@@ -275,15 +277,15 @@ También vamos a necesitar crear un formulario en html. Haremos que un GET en `/
 app.get("/form", function (req, res) {
   res.send(
     '<html><head> \
-			<link href="/assets/style.css" rel="stylesheet"> \
-			</head><body>\
-				<form method="POST" action="/form">\
-				Nombre <input name="nombre" type="text"><br>\
-				Apellido <input name="apellido" type="text"><br>\
-				Curso <input name="curso" type="text"><br>\
-				<input type="submit">\
-				</form>\
-			</body></html>'
+   <link href="/assets/style.css" rel="stylesheet"> \
+   </head><body>\
+    <form method="POST" action="/form">\
+    Nombre <input name="nombre" type="text"><br>\
+    Apellido <input name="apellido" type="text"><br>\
+    Curso <input name="curso" type="text"><br>\
+    <input type="submit">\
+    </form>\
+   </body></html>'
   );
 });
 
@@ -298,7 +300,7 @@ Ahora vamos a ir a `/form` y vamos a probar submitear el formulario. Cuando hace
 
 Vamos a probarlo:
 
-![form-data](./img/form.gif)
+![form-data](/_src/assets/05-Express/form.gif)
 
 Excelente! con la ayuda del método `express.json()` que tiene express vamos a poder trabajar con las variables que recibiamos de un formulario.
 
@@ -323,19 +325,19 @@ _También probá usando un request generado desde una página con AJAX_
 
 Veamos como usarlo para generar un post apuntado a `/formjson` y que envie data en formato JSON.
 
-![Postman](./img/postman.png)
+![Postman](/_src/assets/05-Express/postman.png)
 
 Como vemos en la imagen, la interfaz es bastante intuitiva, a la izquierda seleccionamos qué tipo de http request queremos hacer (en el ejemplo hicimos un GET). Especificamos la URL ('/form') en este caso, y al apretar el botón SEND se genera el request.
 Abajo podremos ver el resultado del mismo. En este caso, el servidor nos devolvió el html del formulario que habiamos creado en ese endpoint. Estos son los datos que recibe el browser cuando escribimos la URL en la barra de direcciones, pero el broswer al recibir los datos los parsea y los dibujo automáticamente, por eso vemos el formulario directamente.
 
 Ahora, queremos probar hacer un **POST** a `/formjson`, por lo tanto vamos a cambiar la URL en postman y el tipo de request. Si probamos veremos el siguiente resultado: `{}`.
 
-![Postman](./img/postmanform.png)
+![Postman](/_src/assets/05-Express/postmanform.png)
 
 Lo primero que queremos saber es si el request fué procesado con éxito, sabemos que sí porque el `status` que trajo el response es el número `200`, que significa **'Todo ok'** en el standart HTTP. También sabemos que ese endpoint nos debería devolver un JSON con los datos que hayamos enviado en el POST, como no había datos en el request, era esperable que recibamos un objeto vacío. Por lo tanto, hasta acá venimos bien.
 Intentemos agregar datos al **POST** a ver que pasa:
 
-![Postman](./img/postman.gif)
+![Postman](/_src/assets/05-Express/postman.gif)
 
 Como vemos en la imagen de arriba, para agregar datos al post tenemos que ir a la pestaña `Body`, y allí seleccionar `raw`, y como tipo de datos usar `application/json`.
 Luego completamos dentro del cuadro de texto con el objeto en formato JSON que queremos enviar (tengan cuidado con el formato, de hecho las dobles comillas con obligatorias para los nombres).
@@ -357,7 +359,7 @@ _Express_ tiene un generador de projectos (parecido al `npm init` pero más pote
 Para este ejemplo he creado una app con el nombre 'myapp' y le indiqué que el template engine a usar será `EJS`.
 Veamos todos los archivos que _express-generator_ creó por nosotros:
 
-```
+```bash
 create : myapp
 create : myapp/package.json
 create : myapp/app.js
@@ -436,51 +438,47 @@ app.use("/users", users);
 
 Hay que notar que cuando usamos `app.use` y le pasamos un `Router` también le pasamos un path, esto quiere decir que las rutas definidas dentro del `Router` que les pasamos serán accesibles desde el path origin que le pasamos. Por ejemplo:
 
+Como en el archivo `routes/users.js` tenemos una ruta para el URL `/`, al cargarlo usando `app.use()` en `/users`, ese path será accesible en el path `/users/`. Para que se entienda mejor, creé una nueva ruta dentro de `users.js` con la URL `/api`, esa ruta será accesible desde `/users/api/`, ya que cargamos ese `Router` en `/users`. ;D
 
-Como en el archivo `routes/users.js` tenemos una ruta para el URL `/`, al cargarlo usando `app.use()` en `/users`, ese path será accesible en el path `/users/`. Para que se entienda mejor, creé una nueva ruta dentro de `users.js` con la URL `/api`, esa ruta será accesible desde `/users/api/`, ya que cargamos ese `Router` en `/users`. ;D 
+## Cross-Origin Resource Sharing (CORS)
 
+Por razones de seguridad, los navegadores sólo permiten que se carguen recursos que provengan del mismo origen. Dos URL tienen el mismo origen si el protocolo , el puerto y el host son los mismos para ambos. Esto es lo que llamamos Same-Origin Policy (SOP). Esta política ya viene por default en los navegadores y controla las interacciones entre orígenes diferentes ayudando así a aislar documentos potencialmente maliciosos y reduciendo posibles ataques.
 
-## Cross-Origin Resource Sharing (CORS) 
+Ejemplos de URL con mismo origen:
 
-Por razones de seguridad, los navegadores sólo permiten que se carguen recursos que provengan del mismo origen. Dos URL tienen el mismo origen si el protocolo , el puerto y el host son los mismos para ambos. Esto es lo que llamamos Same-Origin Policy (SOP). Esta política ya viene por default en los navegadores y controla las interacciones entre orígenes diferentes ayudando así a aislar documentos potencialmente maliciosos y reduciendo posibles ataques. 
-
-Ejemplos de URL con mismo origen: 
-
-```
+```bash
 http://e-commerce.com/admin/orders   //Mismo origen, Path diferente
 
 http://e-commerce.com/user/me        //Mismo origen, Path diferente
 ```
 
-Sin embargo, muchas veces necesitamos cargar en nuestro sitio recursos provenientes de otro origen, por ejemplo, cuando utilizamos una fuente distinta o queremos mostrar una imágen. ¿Qué pasaría si quisiéramos realizar una petición a un servidor con un dominio diferente? En ese caso, veríamos un error como este: 
+Sin embargo, muchas veces necesitamos cargar en nuestro sitio recursos provenientes de otro origen, por ejemplo, cuando utilizamos una fuente distinta o queremos mostrar una imágen. ¿Qué pasaría si quisiéramos realizar una petición a un servidor con un dominio diferente? En ese caso, veríamos un error como este:
 
-![CORS Blocking](./img/cors.png)
+![CORS Blocking](/_src/assets/05-Express/cors.png)
 
-¿Qué está pasando? Desde ‘http://localhost:3001’ se realizó una petición a ‘http://localhost:3004/second-server’ y el navegador bloqueó la solicitud por política de CORS (Cross-Origin Resource Sharing). A diferencia de la política del mismo origen (SOP) este mecanismo nos permite, mediante el uso de cabeceras HTTP adicionales, acceder a recursos desde un dominio, un protocolo o un puerto diferente al del documento que lo generó. Este tipo de solicitudes se denominan de origen cruzado.
+¿Qué está pasando? Desde ‘<http://localhost:3001>’ se realizó una petición a ‘<http://localhost:3004/second-server>’ y el navegador bloqueó la solicitud por política de CORS (Cross-Origin Resource Sharing). A diferencia de la política del mismo origen (SOP) este mecanismo nos permite, mediante el uso de cabeceras HTTP adicionales, acceder a recursos desde un dominio, un protocolo o un puerto diferente al del documento que lo generó. Este tipo de solicitudes se denominan de origen cruzado.
 
-Ejemplos de URL con distinto origen: 
+Ejemplos de URL con distinto origen:
 
-```
-https://e-commerce.com/user/me	     //Diferente protocolo
+```js
+https://e-commerce.com/user/me      //Diferente protocolo
 
-http://api.e-commerce.com/user/me	//Diferente host
+http://api.e-commerce.com/user/me   //Diferente host
 ```
 
 ### Access-Control-Allow-Origin
 
-Para habilitar una petición de origen cruzado debemos incluir una cabecera denominada Access-Control-Allow-Origin en la respuesta de la petición, donde debe indicarse el dominio al que se le quiere dar permiso. Es decir, en nuestro ejemplo el servidor que está utilizando el puerto 3004 debería incluir en su respuesta  a la solicitud de localhost.3001 un header Access-Control-Allow-Origin donde se indica el dominio al que se le quiere dar permiso. 
+Para habilitar una petición de origen cruzado debemos incluir una cabecera denominada Access-Control-Allow-Origin en la respuesta de la petición, donde debe indicarse el dominio al que se le quiere dar permiso. Es decir, en nuestro ejemplo el servidor que está utilizando el puerto 3004 debería incluir en su respuesta  a la solicitud de localhost.3001 un header Access-Control-Allow-Origin donde se indica el dominio al que se le quiere dar permiso.
 
+```js
+Access-Control-Allow-Origin: 'http://localhost:3001'
 ```
-Access-Control-Allow-Origin: http://localhost:3001
-```
 
-De esta forma, el navegador comprobará dichas cabeceras y si coinciden con el dominio de origen que realizó la petición, ésta se permitirá. En el ejemplo anterior, la cabecera tiene el valor http://localhost:3001, pero en algunos casos el valor puede ser un "*". El asterisco indica que se permiten peticiones de origen cruzado a cualquier dominio.
+De esta forma, el navegador comprobará dichas cabeceras y si coinciden con el dominio de origen que realizó la petición, ésta se permitirá. En el ejemplo anterior, la cabecera tiene el valor <http://localhost:3001>, pero en algunos casos el valor puede ser un "*". El asterisco indica que se permiten peticiones de origen cruzado a cualquier dominio.
 
+![Headers](/_src/assets/05-Express/headers.png)
 
-![Headers](./img/headers.png)
-
-
-Además de ese, existen otros cors headers. Algunos de ellos son: 
+Además de ese, existen otros cors headers. Algunos de ellos son:
 
 - Access-Control-Allow-Origin: ¿qué origen está permitido?
 - Access-Control-Allow-Credentials: ¿también se aceptan solicitudes cuando el modo de credenciales es include?
@@ -491,6 +489,8 @@ Además de ese, existen otros cors headers. Algunos de ellos son:
 - Access-Control-Request-Headers: ¿qué header HTTP se indica en la solicitud preflight?
 - Access-Control-Request-Method: ¿qué método de petición HTTP se indica en la solicitud preflight?
 
+Otra forma que tenemos para habilitar las solicitudes CORS pueden ser librerías que manejen las autorizaciones por nosotros a modo de middleware. Por ejemplo, el módulo [cors](https://www.npmjs.com/package/cors).
 
-Otra forma que tenemos para habilitar las solicitudes CORS pueden ser librerías que manejen las autorizaciones por nosotros a modo de middleware. Por ejemplo, el módulo [cors](https://www.npmjs.com/package/cors). 
+## Homework
 
+Completa la tarea descrita en el archivo [README](https://github.com/soyHenry/FT-M3/tree/master/05-Express/homework/)

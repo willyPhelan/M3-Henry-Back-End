@@ -1,0 +1,11 @@
+{
+  "layout": "lesson",
+  "title": "Testing",
+  "permalink": "/Testing/",
+  "feedbackID": "06-Testing",
+  "homeworkUrl": "https://github.com/soyHenry/FT-M3/tree/master/06-Testing/homework",
+  "eleventyNavigation": {
+    "key": "Testing",
+    "order": 6
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "layout": "lesson",
+  "lessonTitle": "Advanced Promises",
+  "permalink": "/AdvancedPromises/",
+  "feedbackID": "04-AdvancePromises",
+  "homeworkUrl": "https://github.com/soyHenry/FT-M3/tree/master/04-AdvancePromises/homework",
+  "eleventyNavigation": {
+    "key": "Advanced Promises",
+    "order": 4
+  }
+}
