@@ -3,6 +3,7 @@
   "lessonTitle": "Promises",
   "permalink": "/Promises/",
   "feedbackID": "02-Promises",
+  "quizzID" : "60931e4456b4056ff032a73f",
   "homeworkUrl": "https://github.com/soyHenry/FT-M3/tree/master/02-Promises/homework",
   "eleventyNavigation": {
     "key": "Promises",
