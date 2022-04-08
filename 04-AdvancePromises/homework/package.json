@@ -18,13 +18,13 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "docco": "^0.8.1",
+    "docco": "^0.9.1",
     "gulp-jasmine-livereload-task": "^0.11.0",
     "jasmine-core": "^3.7.1",
     "opn-cli": "^4.1.0"
   },
   "dependencies": {
     "gulp": "^4.0.2",
-    "jest": "^26.6.3"
+    "jest": "^27.5.1"
   }
 }
